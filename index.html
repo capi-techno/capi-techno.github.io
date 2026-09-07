@@ -1,22 +1,714 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CAPI Technologies</title>
+  <title>CAPI Technologies | Intelligent SaaS & LLM Orchestration</title>
+  <meta name="description" content="CAPI is a product-driven technology venture developing intelligent SaaS tools powered by optimized LLM orchestration pipelines, transforming unstructured data into structured outcomes." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="Logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            capi: {
+              dark: '#060913',
+              card: '#0D1424',
+              blue: '#0066FF',
+              cyan: '#00F0FF',
+              slate: '#94A3B8'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Design System & Animations -->
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-gray-950 text-gray-100 flex min-h-screen items-center justify-center p-6">
-  <main class="max-w-xl text-center">
-    <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">CAPI Technologies</h1>
-    <p class="mt-4 text-lg text-gray-400">
-      Building intelligent, workflow-driven SaaS powered by modern LLMs.
-    </p>
-    <div class="mt-8 flex justify-center gap-4">
-      <a href="https://github.com/capi-techno" class="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-500">
-        GitHub Organization
-      </a>
+<body class="bg-capi-dark text-white font-sans selection:bg-blue-600 selection:text-white">
+
+  <!-- Ambient Background Mesh -->
+  <div class="bg-mesh"></div>
+  <div class="bg-grid-pattern"></div>
+
+  <!-- ==========================================================================
+       SPLASH SCREEN INTRO ANIMATION
+       ========================================================================== -->
+  <div id="splash-screen">
+    <div class="splash-content">
+      <div class="splash-logo-container">
+        <div class="ring-glow"></div>
+        <div class="splash-ring ring-1"></div>
+        <div class="splash-ring ring-2"></div>
+        <img src="Logo.png" alt="CAPI Logo" class="splash-logo" />
+      </div>
+      <h1 class="splash-title">CAPI TECHNOLOGIES</h1>
+      <p class="splash-subtitle">Intelligent SaaS Tools & LLM Orchestration</p>
+      <div class="splash-loader-bar">
+        <div class="splash-loader-progress"></div>
+      </div>
+      <button id="skip-splash" class="splash-skip-btn">Skip Intro ➔</button>
     </div>
-  </main>
+  </div>
+
+  <!-- ==========================================================================
+       HEADER & NAVIGATION BAR
+       ========================================================================== -->
+  <header class="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between">
+        <!-- Logo & Name -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="relative w-10 h-10 flex items-center justify-center rounded-xl bg-blue-950/60 border border-blue-500/30 group-hover:border-blue-400/60 transition-all">
+            <img src="Logo.png" alt="CAPI Logo" class="w-7 h-7 object-contain filter drop-shadow-[0_0_8px_rgba(0,102,255,0.8)]" />
+          </div>
+          <div class="flex flex-col">
+            <span class="text-lg font-extrabold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-blue-400">CAPI</span>
+            <span class="text-[9px] text-blue-400/80 font-mono tracking-widest uppercase -mt-1">TECHNOLOGIES</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+          <a href="#overview" class="hover:text-white hover:shadow-[0_2px_10px_rgba(0,102,255,0.4)] transition-all">Overview</a>
+          <a href="#pipeline-simulator" class="hover:text-white transition-all">Live Pipeline</a>
+          <a href="#tech-stack" class="hover:text-white transition-all">Tech Stack</a>
+          <a href="#statistics" class="hover:text-white transition-all">Metrics</a>
+          <a href="#architecture" class="hover:text-white transition-all">Architecture</a>
+          <a href="#roadmap" class="hover:text-white transition-all">Roadmap</a>
+        </nav>
+
+        <!-- Right Header Action -->
+        <div class="flex items-center gap-3">
+          <a href="https://github.com/capi-techno" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-300 bg-slate-900/80 hover:bg-slate-800 border border-slate-700/60 rounded-xl transition-all">
+            <svg class="w-4 h-4 fill-current text-white" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            <span>GitHub Org</span>
+          </a>
+          <button class="open-contact-modal inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 rounded-xl shadow-[0_0_15px_rgba(0,102,255,0.4)] transition-all">
+            <span>Connect Team</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <section id="overview" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto space-y-6">
+        
+        <!-- Status Badge -->
+        <div class="inline-flex">
+          <span class="badge-glow">
+            <span class="dot-pulse"></span>
+            MVP Core Validation Stage
+          </span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+          Transforming Unstructured Inputs into 
+          <span class="gradient-text-blue block mt-2">Structured Intelligence</span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="text-lg sm:text-xl text-slate-300 font-light leading-relaxed">
+          CAPI is a product-driven technology venture developing intelligent SaaS tools powered by optimized LLM orchestration pipelines. We convert complex, unstructured data into actionable, exportable outcomes.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
+          <a href="#pipeline-simulator" class="px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-[0_0_25px_rgba(0,102,255,0.5)] transition-all flex items-center gap-2">
+            <span>Try Pipeline Demo</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a href="#tech-stack" class="px-7 py-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-sm transition-all">
+            Explore Tech Stack
+          </a>
+        </div>
+
+        <!-- Quick Specs Banner -->
+        <div class="pt-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center border-t border-slate-800/80 mt-10">
+          <div class="p-3">
+            <div class="text-xs text-slate-400 uppercase tracking-widest font-mono mb-1">Architecture</div>
+            <div class="text-sm font-semibold text-slate-200">Serverless TypeScript</div>
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-slate-400 uppercase tracking-widest font-mono mb-1">Orchestration</div>
+            <div class="text-sm font-semibold text-slate-200">Claude & OpenAI API</div>
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-slate-400 uppercase tracking-widest font-mono mb-1">Performance</div>
+            <div class="text-sm font-semibold text-cyan-400">Sub-Second Responses</div>
+          </div>
+          <div class="p-3">
+            <div class="text-xs text-slate-400 uppercase tracking-widest font-mono mb-1">Security</div>
+            <div class="text-sm font-semibold text-slate-200">Strict Data Isolation</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       LIVE INTERACTIVE LLM PIPELINE SIMULATOR
+       ========================================================================== -->
+  <section id="pipeline-simulator" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase bg-cyan-950/50 border border-cyan-500/30 px-3 py-1 rounded-full">Interactive Demo</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-4">Optimized LLM Pipeline Engine</h2>
+        <p class="text-slate-400 mt-2">Test how CAPI transforms raw unstructured text into strictly typed JSON structures in sub-second execution windows.</p>
+      </div>
+
+      <!-- Simulator Card Window -->
+      <div class="glass-card p-6 md:p-8 max-w-5xl mx-auto relative overflow-hidden">
+        
+        <!-- Tab Selector -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-800">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono text-slate-400 mr-2 uppercase">Select Input Payload:</span>
+            <button data-key="support" class="demo-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-medium border transition-all">Support Ticket</button>
+            <button data-key="financial" class="demo-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-medium border transition-all">Raw Invoice</button>
+            <button data-key="tech" class="demo-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-medium border transition-all">Diagnostic Logs</button>
+          </div>
+          <button id="run-pipeline-btn" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold flex items-center gap-2 shadow-[0_0_12px_rgba(0,102,255,0.4)] transition-all">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
+            <span>Run Pipeline</span>
+          </button>
+        </div>
+
+        <!-- 3-Column Pipeline Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+          
+          <!-- Column 1: Raw Unstructured Input -->
+          <div class="lg:col-span-4 flex flex-col">
+            <div class="text-xs font-mono text-slate-400 mb-2 flex items-center justify-between">
+              <span>INPUT: UNSTRUCTURED DATA</span>
+              <span class="text-slate-500">RAW FILE / STRING</span>
+            </div>
+            <textarea id="pipeline-raw-input" class="w-full h-64 bg-slate-950/80 border border-slate-800 rounded-xl p-3 text-xs font-mono text-slate-300 focus:outline-none focus:border-blue-500 resize-none" readonly></textarea>
+          </div>
+
+          <!-- Column 2: CAPI Orchestration Pipeline -->
+          <div class="lg:col-span-3 flex flex-col justify-between space-y-4">
+            <div class="text-xs font-mono text-slate-400 mb-1">ORCHESTRATION PIPELINE</div>
+            
+            <!-- Step 1 Card -->
+            <div class="p-3 bg-slate-900/60 border border-blue-500/20 rounded-xl">
+              <div class="text-[10px] text-blue-400 font-mono font-semibold uppercase">Step 01: Context Evaluation</div>
+              <div id="pipeline-context" class="mt-1">
+                <div class="text-xs text-slate-400">Analyzing schema...</div>
+              </div>
+            </div>
+
+            <!-- Step 2 Card -->
+            <div class="p-3 bg-slate-900/60 border border-blue-500/20 rounded-xl">
+              <div class="text-[10px] text-cyan-400 font-mono font-semibold uppercase">Step 02: Model Routing</div>
+              <div id="pipeline-engine" class="text-xs font-semibold text-slate-200 mt-1">Anthropic Claude 3.5 Sonnet</div>
+            </div>
+
+            <!-- Step 3 Card -->
+            <div class="p-3 bg-slate-900/60 border border-emerald-500/20 rounded-xl">
+              <div class="text-[10px] text-emerald-400 font-mono font-semibold uppercase flex items-center justify-between">
+                <span>Step 03: Latency Check</span>
+                <span id="pipeline-latency" class="text-emerald-300 font-bold">382ms</span>
+              </div>
+              <div class="text-xs text-slate-400 mt-0.5">Sub-second SLA verified</div>
+            </div>
+          </div>
+
+          <!-- Column 3: Structured JSON Output -->
+          <div class="lg:col-span-5 flex flex-col">
+            <div class="text-xs font-mono text-slate-400 mb-2 flex items-center justify-between">
+              <span>OUTPUT: STRUCTURED JSON</span>
+              <span class="text-emerald-400 font-bold text-[10px]">100% VALIDATED SCHEMA</span>
+            </div>
+            <div class="code-window h-64 flex flex-col">
+              <div class="code-header">
+                <div class="window-dots">
+                  <div class="window-dot red"></div>
+                  <div class="window-dot yellow"></div>
+                  <div class="window-dot green"></div>
+                </div>
+                <span class="text-[10px] text-slate-500 font-mono">output.json</span>
+              </div>
+              <pre id="pipeline-json-output" class="p-3 text-[11px] leading-relaxed text-emerald-300 overflow-auto flex-1 font-mono">// Output JSON will render here...</pre>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       STATISTICS & METRICS DASHBOARD
+       ========================================================================== -->
+  <section id="statistics" class="py-20 bg-slate-950/60 border-y border-slate-800/60 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase bg-blue-950/50 border border-blue-500/30 px-3 py-1 rounded-full">Benchmarked Quality</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-4">Platform Performance Statistics</h2>
+        <p class="text-slate-400 mt-2">Built for speed, deterministic accuracy, and multi-tenant security.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Stat 1 -->
+        <div class="glass-card p-6 text-center">
+          <div class="w-12 h-12 rounded-xl bg-blue-950/80 border border-blue-500/30 flex items-center justify-center mx-auto mb-4 text-blue-400">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div class="text-4xl font-extrabold text-white font-mono mb-1">
+            <span class="counter-val" data-target="450" data-prefix="< " data-suffix="ms">0</span>
+          </div>
+          <div class="text-sm font-semibold text-slate-200">Avg Response Latency</div>
+          <p class="text-xs text-slate-400 mt-2">Optimized caching & streaming handler pipelines for instant throughput.</p>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="glass-card p-6 text-center">
+          <div class="w-12 h-12 rounded-xl bg-cyan-950/80 border border-cyan-500/30 flex items-center justify-center mx-auto mb-4 text-cyan-400">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div class="text-4xl font-extrabold text-white font-mono mb-1">
+            <span class="counter-val" data-target="99.8" data-suffix="%" data-decimals="1">0</span>
+          </div>
+          <div class="text-sm font-semibold text-slate-200">Schema Precision</div>
+          <p class="text-xs text-slate-400 mt-2">Strict JSON schema validation guaranteeing structured compliance.</p>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="glass-card p-6 text-center">
+          <div class="w-12 h-12 rounded-xl bg-indigo-950/80 border border-indigo-500/30 flex items-center justify-center mx-auto mb-4 text-indigo-400">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <div class="text-4xl font-extrabold text-white font-mono mb-1">
+            <span class="counter-val" data-target="100" data-suffix="%">0</span>
+          </div>
+          <div class="text-sm font-semibold text-slate-200">TypeScript Data Isolation</div>
+          <p class="text-xs text-slate-400 mt-2">Serverless boundaries ensuring total tenant data confidentiality.</p>
+        </div>
+
+        <!-- Stat 4 -->
+        <div class="glass-card p-6 text-center">
+          <div class="w-12 h-12 rounded-xl bg-emerald-950/80 border border-emerald-500/30 flex items-center justify-center mx-auto mb-4 text-emerald-400">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          </div>
+          <div class="text-4xl font-extrabold text-white font-mono mb-1">
+            <span class="counter-val" data-target="2" data-suffix=" Top LLMs">0</span>
+          </div>
+          <div class="text-sm font-semibold text-slate-200">Model Orchestrators</div>
+          <p class="text-xs text-slate-400 mt-2">Anthropic Claude & OpenAI API dynamic intelligent routing.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TECHNOLOGY STACK & INFRASTRUCTURE
+       ========================================================================== -->
+  <section id="tech-stack" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div>
+          <span class="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase bg-cyan-950/50 border border-cyan-500/30 px-3 py-1 rounded-full">Modern Stack</span>
+          <h2 class="text-3xl sm:text-4xl font-bold mt-4">Engineering Technology Stack</h2>
+        </div>
+        <p class="text-slate-400 max-w-md mt-4 md:mt-0 text-sm">
+          Built on modern enterprise tooling designed for sub-second response handling, zero downtime, and end-to-end type safety.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        
+        <!-- Stack 1: Frontend -->
+        <div class="glass-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="text-[10px] font-mono text-blue-400 font-bold uppercase tracking-wider mb-2">Frontend Layer</div>
+            <h3 class="text-lg font-bold text-white mb-3">Next.js & React</h3>
+            <ul class="text-xs text-slate-300 space-y-2">
+              <li class="flex items-center gap-2"><span class="text-blue-400">✓</span> Next.js App Router</li>
+              <li class="flex items-center gap-2"><span class="text-blue-400">✓</span> React 19 Client Components</li>
+              <li class="flex items-center gap-2"><span class="text-blue-400">✓</span> Tailwind CSS Styling</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-500 font-mono">
+            Optimized SPA & SSR
+          </div>
+        </div>
+
+        <!-- Stack 2: Backend & APIs -->
+        <div class="glass-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider mb-2">Backend & APIs</div>
+            <h3 class="text-lg font-bold text-white mb-3">Node.js & Route Handlers</h3>
+            <ul class="text-xs text-slate-300 space-y-2">
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Next.js Route Handlers</li>
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Edge Runtime Options</li>
+              <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Strict Zod Validation</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-500 font-mono">
+            Sub-Second API Engine
+          </div>
+        </div>
+
+        <!-- Stack 3: Data & Storage -->
+        <div class="glass-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="text-[10px] font-mono text-indigo-400 font-bold uppercase tracking-wider mb-2">Data & Storage</div>
+            <h3 class="text-lg font-bold text-white mb-3">PostgreSQL via Supabase</h3>
+            <ul class="text-xs text-slate-300 space-y-2">
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> Supabase Platform</li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> Row Level Security (RLS)</li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">✓</span> Real-Time Subscriptions</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-500 font-mono">
+            Relational & Vector Ready
+          </div>
+        </div>
+
+        <!-- Stack 4: Model Integration -->
+        <div class="glass-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="text-[10px] font-mono text-purple-400 font-bold uppercase tracking-wider mb-2">Model Layer</div>
+            <h3 class="text-lg font-bold text-white mb-3">Claude & OpenAI API</h3>
+            <ul class="text-xs text-slate-300 space-y-2">
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Anthropic Claude 3.5</li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> OpenAI GPT-4o JSON</li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Dynamic Fallback Router</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-500 font-mono">
+            Multi-LLM Orchestration
+          </div>
+        </div>
+
+        <!-- Stack 5: Infrastructure -->
+        <div class="glass-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-wider mb-2">Infrastructure</div>
+            <h3 class="text-lg font-bold text-white mb-3">Vercel & Supabase</h3>
+            <ul class="text-xs text-slate-300 space-y-2">
+              <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Vercel Serverless Network</li>
+              <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Automated CI/CD</li>
+              <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Global CDN Deployment</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-500 font-mono">
+            High Availability 99.9%
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ENGINEERING ARCHITECTURE
+       ========================================================================== -->
+  <section id="architecture" class="py-20 bg-slate-950/60 border-t border-slate-800/60 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        
+        <div>
+          <span class="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase bg-blue-950/50 border border-blue-500/30 px-3 py-1 rounded-full">Engineering Core</span>
+          <h2 class="text-3xl sm:text-4xl font-bold mt-4">Robust LLM Pipeline Architecture</h2>
+          <p class="text-slate-300 mt-4 leading-relaxed">
+            Our pipeline is engineered from the ground up to solve the brittleness of standard LLM calls. We enforce context evaluation, schema validation, and multi-model failovers before returning data to client applications.
+          </p>
+
+          <div class="space-y-4 mt-8">
+            
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+              <div class="w-9 h-9 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">Prompt Engineering & Context Evaluation</h4>
+                <p class="text-xs text-slate-400 mt-1">Pre-evaluates input tokens, cleans noisy text formatting, and injects strict system schemas before model execution.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+              <div class="w-9 h-9 rounded-lg bg-cyan-600/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">Sub-Second Response Handling</h4>
+                <p class="text-xs text-slate-400 mt-1">Utilizes Node.js edge route handlers and response streaming to achieve ultra-fast completion speeds.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+              <div class="w-9 h-9 rounded-lg bg-emerald-600/20 text-emerald-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">Secure Data Isolation</h4>
+                <p class="text-xs text-slate-400 mt-1">Strict multi-tenant boundary checks powered by Supabase RLS and serverless microservices.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Architecture Flow Schematic -->
+        <div class="glass-card p-6 relative">
+          <div class="text-xs font-mono text-slate-400 mb-4 border-b border-slate-800 pb-3 flex items-center justify-between">
+            <span>PIPELINE DATAFLOW SCHEMATIC</span>
+            <span class="text-blue-400 font-bold text-[10px]">CAPI ORCHESTRATION</span>
+          </div>
+
+          <div class="space-y-4 font-mono text-xs">
+            
+            <!-- Box 1 -->
+            <div class="p-3 bg-slate-950 border border-slate-800 rounded-lg flex items-center justify-between">
+              <span class="text-slate-300">01. Unstructured Payload</span>
+              <span class="text-slate-500 text-[10px]">[Text / PDF / Logs]</span>
+            </div>
+            
+            <div class="text-center text-blue-500 text-xs">↓ API Gateway & Route Handler</div>
+
+            <!-- Box 2 -->
+            <div class="p-3 bg-blue-950/40 border border-blue-500/40 rounded-lg flex items-center justify-between">
+              <span class="text-blue-300 font-bold">02. CAPI Context Evaluator</span>
+              <span class="text-blue-400 text-[10px]">Zod Validation & Token Clean</span>
+            </div>
+
+            <div class="text-center text-cyan-500 text-xs">↓ Dynamic Model Router</div>
+
+            <!-- Box 3 -->
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-3 bg-purple-950/30 border border-purple-500/30 rounded-lg text-center">
+                <div class="text-purple-300 font-bold">Anthropic Claude</div>
+                <div class="text-[9px] text-slate-400">High Reasoning</div>
+              </div>
+              <div class="p-3 bg-emerald-950/30 border border-emerald-500/30 rounded-lg text-center">
+                <div class="text-emerald-300 font-bold">OpenAI GPT-4o</div>
+                <div class="text-[9px] text-slate-400">JSON Mode Engine</div>
+              </div>
+            </div>
+
+            <div class="text-center text-emerald-500 text-xs">↓ Sub-Second JSON Serializer</div>
+
+            <!-- Box 4 -->
+            <div class="p-3 bg-slate-950 border border-emerald-500/40 rounded-lg flex items-center justify-between">
+              <span class="text-emerald-300 font-bold">04. Structured Actionable Output</span>
+              <span class="text-emerald-400 text-[10px]">Exportable SaaS Payload</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       DEVELOPMENT ROADMAP
+       ========================================================================== -->
+  <section id="roadmap" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase bg-cyan-950/50 border border-cyan-500/30 px-3 py-1 rounded-full">Execution Milestones</span>
+        <h2 class="text-3xl sm:text-4xl font-bold mt-4">Product Development Roadmap</h2>
+        <p class="text-slate-400 mt-2">Currently iterating through MVP core validation and user feedback cycles.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+        
+        <!-- Q1 Milestone (ACTIVE) -->
+        <div class="glass-card p-6 border-blue-500/60 relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg font-mono">ACTIVE STAGE</div>
+          <div class="text-xs font-mono text-blue-400 font-bold mb-1">PHASE 01</div>
+          <h3 class="text-lg font-bold text-white mb-2">MVP Core Validation</h3>
+          <p class="text-xs text-slate-300 mb-4">Validating LLM orchestration pipelines with early feedback cycles.</p>
+          <ul class="text-xs text-slate-400 space-y-1.5 font-mono">
+            <li class="text-blue-400">▶ Prompt Engineering Rules</li>
+            <li class="text-blue-400">▶ Sub-second Handler SLA</li>
+            <li class="text-blue-400">▶ Initial Schema Benchmarks</li>
+          </ul>
+        </div>
+
+        <!-- Q2 Milestone -->
+        <div class="glass-card p-6">
+          <div class="text-xs font-mono text-slate-500 font-bold mb-1">PHASE 02</div>
+          <h3 class="text-lg font-bold text-white mb-2">Enterprise Router</h3>
+          <p class="text-xs text-slate-300 mb-4">Deploying multi-model dynamic failovers between Claude & OpenAI.</p>
+          <ul class="text-xs text-slate-400 space-y-1.5 font-mono">
+            <li>○ Automatic Model Failover</li>
+            <li>○ Real-time Latency Monitor</li>
+            <li>○ Advanced Token Budgeting</li>
+          </ul>
+        </div>
+
+        <!-- Q3 Milestone -->
+        <div class="glass-card p-6">
+          <div class="text-xs font-mono text-slate-500 font-bold mb-1">PHASE 03</div>
+          <h3 class="text-lg font-bold text-white mb-2">SaaS SDK & Connectors</h3>
+          <p class="text-xs text-slate-300 mb-4">Pre-built integrations for PostgreSQL, Supabase, and REST APIs.</p>
+          <ul class="text-xs text-slate-400 space-y-1.5 font-mono">
+            <li>○ TypeScript Client SDK</li>
+            <li>○ Webhook Subscriptions</li>
+            <li>○ Exportable JSON Handlers</li>
+          </ul>
+        </div>
+
+        <!-- Q4 Milestone -->
+        <div class="glass-card p-6">
+          <div class="text-xs font-mono text-slate-500 font-bold mb-1">PHASE 04</div>
+          <h3 class="text-lg font-bold text-white mb-2">Public Platform Launch</h3>
+          <p class="text-xs text-slate-300 mb-4">Opening CAPI intelligent SaaS platform for enterprise production.</p>
+          <ul class="text-xs text-slate-400 space-y-1.5 font-mono">
+            <li>○ Multi-Tenant SaaS Portal</li>
+            <li>○ SLA 99.9% Uptime Guarantee</li>
+            <li>○ Global Partner API Access</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CONTACT & COLLABORATION SECTION
+       ========================================================================== -->
+  <section id="contact" class="py-20 bg-slate-950 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="glass-card p-8 md:p-12 max-w-4xl mx-auto text-center relative overflow-hidden">
+        
+        <div class="relative z-10 space-y-6">
+          <div class="w-16 h-16 rounded-2xl bg-blue-950/80 border border-blue-500/40 flex items-center justify-center mx-auto mb-2">
+            <img src="Logo.png" alt="CAPI Logo" class="w-10 h-10 object-contain" />
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Contact & Collaboration</h2>
+          
+          <p class="text-slate-300 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+            We are currently focused on foundational development. For technical discussions, partnerships, or inquiries, reach out through our repositories or connect via our founding team.
+          </p>
+
+          <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
+            <button id="copy-email-btn" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center gap-2 shadow-[0_0_20px_rgba(0,102,255,0.4)] transition-all">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span>Copy Team Email</span>
+            </button>
+            <a href="https://github.com/capi-techno" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-xs flex items-center gap-2 transition-all">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              <span>Explore GitHub Repositories</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CONTACT FORM MODAL DIALOG
+       ========================================================================== -->
+  <div id="contact-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[999] hidden items-center justify-center p-4">
+    <div class="glass-card max-w-lg w-full p-6 md:p-8 relative border-blue-500/40">
+      
+      <button class="close-contact-modal absolute top-4 right-4 text-slate-400 hover:text-white transition-all">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="mb-6">
+        <h3 class="text-xl font-bold text-white">Connect with CAPI Founding Team</h3>
+        <p class="text-xs text-slate-400 mt-1">Technical discussions, venture partnerships, or enterprise inquiries.</p>
+      </div>
+
+      <form id="contact-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-mono text-slate-300 mb-1">Your Name</label>
+          <input type="text" required placeholder="Jane Doe" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500" />
+        </div>
+        <div>
+          <label class="block text-xs font-mono text-slate-300 mb-1">Email Address</label>
+          <input type="email" required placeholder="jane@company.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500" />
+        </div>
+        <div>
+          <label class="block text-xs font-mono text-slate-300 mb-1">Inquiry Type</label>
+          <select class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500">
+            <option>Technical Discussion & Architecture</option>
+            <option>Partnership & Venture Collaboration</option>
+            <option>Early SaaS MVP Access</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-mono text-slate-300 mb-1">Message</label>
+          <textarea rows="3" required placeholder="Describe your topic or technical question..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500 resize-none"></textarea>
+        </div>
+        
+        <button type="submit" class="w-full py-3 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white rounded-xl text-xs font-bold shadow-[0_0_20px_rgba(0,102,255,0.5)] transition-all">
+          Send Message ➔
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="py-8 bg-slate-950 border-t border-slate-900 text-slate-500 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      
+      <div class="flex items-center gap-3">
+        <img src="Logo.png" alt="CAPI Logo" class="w-5 h-5 object-contain" />
+        <span>© 2026 CAPI Technologies. All rights reserved.</span>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/capi-techno" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-all">GitHub Organization</a>
+        <a href="#overview" class="hover:text-slate-300 transition-all">Back to Top ↑</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Script Execution -->
+  <script src="script.js"></script>
 </body>
 </html>
