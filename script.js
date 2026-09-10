@@ -1,11 +1,17 @@
 /* ==========================================================================
    CAPI Technologies - Interactive Engine Script
+   - Splash Loader Controller
+   - Hero Node Connection Canvas (Unstructured -> Structured Concept)
+   - Interactive LLM Pipeline Simulator with Streaming Typing Effect
+   - Benchmark Metric Counter Animations
+   - Contact Modal & Copy Email Toast
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   initSplashScreen();
   initNavbarScroll();
-  initPipelineSimulator();
+  initHeroCanvas();
+  initUseCasesObserver();
   initStatCounters();
   initContactModal();
 });
@@ -19,26 +25,83 @@ function initSplashScreen() {
 
   if (!splash) return;
 
-  // Prevent scroll during splash
   document.body.style.overflow = 'hidden';
+  initChevronLoader();
 
+  let finished = false;
   const finishSplash = () => {
+    if (finished) return;
+    finished = true;
     splash.classList.add('fade-out');
     document.body.style.overflow = 'auto';
     setTimeout(() => {
       splash.style.display = 'none';
-    }, 800);
+    }, 700);
   };
 
-  // Skip button click
   if (skipBtn) {
     skipBtn.addEventListener('click', finishSplash);
   }
 
-  // Auto transition after loading progress bar completes (~2.5s)
+  // Auto finish splash when chevron diagnostic loader completes (~2.8s)
   setTimeout(() => {
     finishSplash();
-  }, 2600);
+  }, 2800);
+}
+
+function initChevronLoader() {
+  const container = document.getElementById('chevron-bar');
+  const msgEl = document.getElementById('splash-status-msg');
+  const detailEl = document.getElementById('splash-status-detail');
+
+  if (!container) return;
+
+  const totalChevrons = 42;
+  container.innerHTML = '';
+  const chevronEls = [];
+
+  for (let i = 0; i < totalChevrons; i++) {
+    const span = document.createElement('span');
+    span.className = 'chevron';
+    span.textContent = '❯';
+    container.appendChild(span);
+    chevronEls.push(span);
+  }
+
+  const stages = [
+    { targetRatio: 0.25, msg: "Initializing CAPI Engine", detail: "Connecting Nodes" },
+    { targetRatio: 0.55, msg: "Measuring Latency", detail: "20 packets verified" },
+    { targetRatio: 0.85, msg: "Validating LLM Pipelines", detail: "Claude & OpenAI API" },
+    { targetRatio: 1.00, msg: "System Ready", detail: "Sub-Second SLA" }
+  ];
+
+  let currentStep = 0;
+  const timer = setInterval(() => {
+    currentStep++;
+    const ratio = currentStep / totalChevrons;
+
+    chevronEls.forEach((el, idx) => {
+      if (idx < currentStep - 1) {
+        el.className = 'chevron active';
+      } else if (idx === currentStep - 1) {
+        el.className = 'chevron lead';
+      } else {
+        el.className = 'chevron';
+      }
+    });
+
+    for (let st of stages) {
+      if (ratio <= st.targetRatio || st.targetRatio === 1.00) {
+        if (msgEl) msgEl.textContent = st.msg;
+        if (detailEl) detailEl.textContent = st.detail;
+        break;
+      }
+    }
+
+    if (currentStep >= totalChevrons) {
+      clearInterval(timer);
+    }
+  }, 65);
 }
 
 /* ==========================================================================
@@ -49,7 +112,7 @@ function initNavbarScroll() {
   if (!navbar) return;
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 30) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
@@ -58,168 +121,172 @@ function initNavbarScroll() {
 }
 
 /* ==========================================================================
-   3. INTERACTIVE LLM PIPELINE SIMULATOR
+   3. HERO NODE CANVAS (Unstructured -> Structured Data Particles Concept)
    ========================================================================== */
-const PIPELINE_DEMOS = {
-  support: {
-    title: "Support Ticket Ingestion",
-    rawInput: `Help! My payment failed for sub_id #9421 on 2026-09-06. 
-Charged $149 twice instead of once! Contact me at alex@enterprise.io ASAP. Urgent billing glitch.`,
-    contextEval: {
-      type: "Billing Escalation",
-      urgency: "HIGH",
-      extractedEntities: ["sub_id: 9421", "duplicate_charge: $149", "email: alex@enterprise.io"]
-    },
-    orchestration: "Anthropic Claude 3.5 Sonnet Router",
-    latency: "382ms",
-    structuredOutput: {
-      "status": "success",
-      "ticket_id": "TCK-88294",
-      "category": "BILLING_DUPLICATE_CHARGE",
-      "urgency_score": 0.94,
-      "customer": {
-        "email": "alex@enterprise.io",
-        "subscription_id": "sub_id_9421"
-      },
-      "action_required": "INITIATE_REFUND_AUDIT",
-      "estimated_refund": 149.00,
-      "confidence": 0.998
+function initHeroCanvas() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+
+  function resize() {
+    width = canvas.width = canvas.parentElement.offsetWidth;
+    height = canvas.height = canvas.parentElement.offsetHeight;
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  class Particle {
+    constructor() {
+      this.reset();
     }
-  },
-  financial: {
-    title: "Unstructured Invoice Analysis",
-    rawInput: `INVOICE #INV-2026-88
-Vendor: Global Cloud Corp (TAX: US99481)
-Items: 
-- 10x Enterprise Compute Nodes @ $450/mo = $4,500
-- 1x Security Firewall Suite = $1,200
-Total Due: $5,700 by Oct 1, 2026`,
-    contextEval: {
-      type: "Accounts Payable Parsing",
-      urgency: "MEDIUM",
-      extractedEntities: ["Vendor: Global Cloud Corp", "Total: $5,700", "DueDate: 2026-10-01"]
-    },
-    orchestration: "OpenAI GPT-4o JSON Mode Engine",
-    latency: "415ms",
-    structuredOutput: {
-      "invoice_number": "INV-2026-88",
-      "vendor_name": "Global Cloud Corp",
-      "tax_id": "US99481",
-      "currency": "USD",
-      "line_items": [
-        { "item": "Enterprise Compute Nodes", "qty": 10, "unit_price": 450.00, "total": 4500.00 },
-        { "item": "Security Firewall Suite", "qty": 1, "unit_price": 1200.00, "total": 1200.00 }
-      ],
-      "amount_total": 5700.00,
-      "due_date": "2026-10-01"
+    reset() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.8;
+      this.vy = (Math.random() - 0.5) * 0.8;
+      this.radius = Math.random() * 2 + 1.5;
     }
-  },
-  tech: {
-    title: "Unstructured System Diagnostics Log",
-    rawInput: `2026-09-07T14:22:01Z [WARN] DB connection pool node-3 high latency 840ms.
-2026-09-07T14:22:04Z [ERROR] Failed to obtain write lock on Supabase shard auth_db. Retrying...
-2026-09-07T14:22:06Z [CRITICAL] OOM error on microservice worker-prod-9. Signal SIGKILL.`,
-    contextEval: {
-      type: "Telemetry Root Cause Classifier",
-      urgency: "CRITICAL",
-      extractedEntities: ["node: worker-prod-9", "shard: auth_db", "event: OOM_SIGKILL"]
-    },
-    orchestration: "Parallel LLM Ensemble Router (Claude + GPT-4o)",
-    latency: "340ms",
-    structuredOutput: {
-      "incident_id": "INC-9014",
-      "severity": "CRITICAL",
-      "affected_service": "worker-prod-9",
-      "root_cause": "OOM_OUT_OF_MEMORY",
-      "correlated_events": [
-        "DB connection pool latency spike (840ms)",
-        "Supabase shard write lock contention"
-      ],
-      "recommended_action": "RESTART_CONTAINER_&_SCALE_RAM",
-      "auto_healing_dispatched": true
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > width) this.vx *= -1;
+      if (this.y < 0 || this.y > height) this.vy *= -1;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0, 102, 255, 0.4)';
+      ctx.fill();
     }
   }
-};
 
-function initPipelineSimulator() {
-  const tabs = document.querySelectorAll('.demo-tab-btn');
-  const rawInputEl = document.getElementById('pipeline-raw-input');
-  const contextEl = document.getElementById('pipeline-context');
-  const engineEl = document.getElementById('pipeline-engine');
-  const outputEl = document.getElementById('pipeline-json-output');
-  const latencyEl = document.getElementById('pipeline-latency');
-  const runBtn = document.getElementById('run-pipeline-btn');
+  for (let i = 0; i < 35; i++) {
+    particles.push(new Particle());
+  }
 
-  if (!tabs.length || !outputEl) return;
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
 
-  let currentKey = 'support';
+    // Draw connecting lines between close particles
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
 
-  function updateSimulatorUI(key, animate = true) {
-    const data = PIPELINE_DEMOS[key];
-    currentKey = key;
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
 
-    // Update active tab button style
-    tabs.forEach(t => {
-      if (t.dataset.key === key) {
-        t.classList.add('bg-blue-600', 'text-white', 'border-blue-500');
-        t.classList.remove('bg-gray-800/60', 'text-gray-400', 'border-gray-700/50');
-      } else {
-        t.classList.remove('bg-blue-600', 'text-white', 'border-blue-500');
-        t.classList.add('bg-gray-800/60', 'text-gray-400', 'border-gray-700/50');
-      }
-    });
-
-    if (rawInputEl) rawInputEl.value = data.rawInput;
-    if (engineEl) engineEl.textContent = data.orchestration;
-
-    if (animate) {
-      // Simulate pipeline processing sequence
-      outputEl.textContent = `// Executing CAPI LLM Pipeline...\n// Analyzing context & validating JSON schema...`;
-      if (latencyEl) latencyEl.textContent = 'Processing...';
-
-      setTimeout(() => {
-        if (contextEl) {
-          contextEl.innerHTML = `
-            <div class="text-xs text-blue-400 font-mono mb-1">> Type: ${data.contextEval.type}</div>
-            <div class="text-xs text-emerald-400 font-mono mb-1">> Urgency: ${data.contextEval.urgency}</div>
-            <div class="text-xs text-gray-400 font-mono">> Extracted: [${data.contextEval.extractedEntities.join(', ')}]</div>
-          `;
+        if (dist < 130) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(0, 102, 255, ${0.15 * (1 - dist / 130)})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
         }
-        outputEl.textContent = JSON.stringify(data.structuredOutput, null, 2);
-        if (latencyEl) latencyEl.textContent = data.latency;
-      }, 500);
-    } else {
-      if (contextEl) {
-        contextEl.innerHTML = `
-          <div class="text-xs text-blue-400 font-mono mb-1">> Type: ${data.contextEval.type}</div>
-          <div class="text-xs text-emerald-400 font-mono mb-1">> Urgency: ${data.contextEval.urgency}</div>
-          <div class="text-xs text-gray-400 font-mono">> Extracted: [${data.contextEval.extractedEntities.join(', ')}]</div>
-        `;
       }
-      outputEl.textContent = JSON.stringify(data.structuredOutput, null, 2);
-      if (latencyEl) latencyEl.textContent = data.latency;
     }
+    requestAnimationFrame(animate);
   }
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      updateSimulatorUI(tab.dataset.key, true);
-    });
-  });
-
-  if (runBtn) {
-    runBtn.addEventListener('click', () => {
-      updateSimulatorUI(currentKey, true);
-      showToast('⚡ LLM Pipeline executed successfully!');
-    });
-  }
-
-  // Initial load without forced delay
-  updateSimulatorUI('support', false);
+  animate();
 }
 
 /* ==========================================================================
-   4. STAT COUNTERS ANIMATION ON SCROLL
+   4. USE CASES & WHY CAPI SECTION ANIMATION OBSERVER
+   ========================================================================== */
+function initUseCasesObserver() {
+  const cards = document.querySelectorAll('.use-case-card, .why-capi-card');
+  if (!cards.length) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReducedMotion) {
+    cards.forEach(card => {
+      card.style.opacity = '1';
+      card.style.transform = 'none';
+    });
+    return;
+  }
+
+  // Set initial state for animated entrance
+  cards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(16px)';
+    card.style.transition = 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+  });
+
+  const sectionEl = document.getElementById('use-cases');
+  if (!sectionEl) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        cards.forEach((card, idx) => {
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, idx * 80);
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  // Card Draw & Flip Event Listeners for Fanned Playing Cards
+  const cardHandContainer = document.querySelector('.card-hand-container');
+  const cardWrappers = document.querySelectorAll('.card-wrapper');
+
+  if (cardHandContainer && cardWrappers.length) {
+    cardWrappers.forEach(wrapper => {
+      const card = wrapper.querySelector('.use-case-card');
+
+      wrapper.addEventListener('click', (e) => {
+        // Don't flip if user clicks contact modal link on back face
+        if (e.target.closest('.open-contact-modal')) return;
+
+        const isActive = wrapper.classList.contains('is-active');
+
+        // Reset all wrappers & cards first
+        cardWrappers.forEach(w => {
+          w.classList.remove('is-active');
+          const c = w.querySelector('.use-case-card');
+          if (c) c.classList.remove('is-flipped');
+        });
+
+        if (!isActive) {
+          wrapper.classList.add('is-active');
+          if (card) card.classList.add('is-flipped');
+          cardHandContainer.classList.add('has-active');
+        } else {
+          cardHandContainer.classList.remove('has-active');
+        }
+      });
+    });
+
+    // Close active card when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#use-cases')) {
+        cardWrappers.forEach(w => {
+          w.classList.remove('is-active');
+          const c = w.querySelector('.use-case-card');
+          if (c) c.classList.remove('is-flipped');
+        });
+        cardHandContainer.classList.remove('has-active');
+      }
+    });
+  }
+
+  observer.observe(sectionEl);
+}
+
+/* ==========================================================================
+   5. STAT COUNTERS ANIMATION ON SCROLL
    ========================================================================== */
 function initStatCounters() {
   const counters = document.querySelectorAll('.counter-val');
@@ -261,7 +328,7 @@ function initStatCounters() {
 }
 
 /* ==========================================================================
-   5. CONTACT & COLLABORATION MODAL & TOAST NOTIFICATION
+   6. CONTACT MODAL & TOAST NOTIFICATIONS
    ========================================================================== */
 function initContactModal() {
   const modal = document.getElementById('contact-modal');
@@ -307,7 +374,6 @@ function initContactModal() {
     });
   }
 
-  // Handle contact form submission mock
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -322,7 +388,6 @@ function initContactModal() {
   }
 }
 
-/* Helper Toast Notification */
 function showToast(message) {
   let container = document.getElementById('toast-container');
   if (!container) {
