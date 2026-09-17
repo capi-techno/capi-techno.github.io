@@ -689,3 +689,501 @@ header.navbar.scrolled {
     opacity: 1 !important;
   }
 }
+
+/* ==========================================================================
+   TECH STACK — Interactive Architecture Flow Pipeline
+   ========================================================================== */
+
+/* Ambient blobs */
+.ts-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+.ts-blob-1 {
+  width: 420px; height: 420px;
+  top: -80px; left: -80px;
+  background: radial-gradient(circle, rgba(0,102,255,0.07) 0%, transparent 70%);
+}
+.ts-blob-2 {
+  width: 380px; height: 380px;
+  bottom: -60px; right: -40px;
+  background: radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%);
+}
+
+/* Pipeline wrapper: positions beam behind nodes */
+.ts-pipeline-wrapper {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+/* Beam track */
+.ts-beam-track {
+  position: absolute;
+  top: 28px;
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  background: #E2E8F0;
+  border-radius: 99px;
+  overflow: visible;
+  z-index: 0;
+}
+
+.ts-beam-fill {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #0066FF, #8B5CF6);
+  border-radius: 99px;
+  width: 0%;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ts-beam-pulse {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #0066FF;
+  box-shadow: 0 0 0 4px rgba(0,102,255,0.18), 0 0 14px rgba(0,102,255,0.5);
+  transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: ts-pulse-dot 1.2s ease-in-out infinite;
+  left: 0%;
+  z-index: 2;
+}
+
+@keyframes ts-pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(0,102,255,0.18), 0 0 14px rgba(0,102,255,0.5); }
+  50%       { box-shadow: 0 0 0 8px rgba(0,102,255,0.08), 0 0 22px rgba(0,102,255,0.35); }
+}
+
+/* Nodes Row */
+.ts-nodes-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+  padding: 0 4%;
+}
+
+/* Single Node */
+.ts-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ts-node:hover {
+  transform: translateY(-4px);
+}
+
+/* Pulsing ring behind icon (only on active) */
+.ts-node-ring {
+  position: absolute;
+  top: -6px; left: -6px;
+  width: calc(100% + 12px); height: calc(100% - 28px);
+  border-radius: 16px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  pointer-events: none;
+}
+
+.ts-node--active .ts-node-ring {
+  border-color: rgba(0,102,255,0.3);
+  box-shadow: 0 0 20px rgba(0,102,255,0.12);
+  animation: ts-ring-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ts-ring-pulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(0,102,255,0.15); }
+  50%       { box-shadow: 0 0 24px rgba(0,102,255,0.3); }
+}
+
+/* Node icon box */
+.ts-node-icon {
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid transparent;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(15,23,42,0.07);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ts-node--active .ts-node-icon,
+.ts-node:hover .ts-node-icon {
+  transform: scale(1.1);
+  box-shadow: 0 8px 28px rgba(0,102,255,0.15);
+}
+
+/* Node label */
+.ts-node-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.ts-node-step {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ts-node-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+  white-space: nowrap;
+}
+
+.ts-node--active .ts-node-name {
+  color: #0F172A;
+}
+
+/* ─── Color Tokens ─── */
+.ts-color-blue    { color: #0066FF; }
+.ts-color-sky     { color: #0284C7; }
+.ts-color-purple  { color: #7C3AED; }
+.ts-color-indigo  { color: #4F46E5; }
+.ts-color-emerald { color: #059669; }
+
+/* Node icon color tints */
+.ts-node-icon.ts-color-blue   { border-color: #BFDBFE; background: #EFF6FF; color: #0066FF; }
+.ts-node-icon.ts-color-sky    { border-color: #BAE6FD; background: #F0F9FF; color: #0284C7; }
+.ts-node-icon.ts-color-purple { border-color: #DDD6FE; background: #F5F3FF; color: #7C3AED; }
+.ts-node-icon.ts-color-indigo { border-color: #C7D2FE; background: #EEF2FF; color: #4F46E5; }
+.ts-node-icon.ts-color-emerald{ border-color: #A7F3D0; background: #ECFDF5; color: #059669; }
+
+.ts-node--active .ts-node-icon.ts-color-blue   { box-shadow: 0 8px 24px rgba(0,102,255,0.2); }
+.ts-node--active .ts-node-icon.ts-color-sky    { box-shadow: 0 8px 24px rgba(2,132,199,0.2); }
+.ts-node--active .ts-node-icon.ts-color-purple { box-shadow: 0 8px 24px rgba(124,58,237,0.2); }
+.ts-node--active .ts-node-icon.ts-color-indigo { box-shadow: 0 8px 24px rgba(79,70,229,0.2); }
+.ts-node--active .ts-node-icon.ts-color-emerald{ box-shadow: 0 8px 24px rgba(5,150,105,0.2); }
+
+/* ─── Inspector Panel ─── */
+.ts-inspector {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  min-height: 300px;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 8px 40px -4px rgba(15,23,42,0.09), 0 2px 8px rgba(15,23,42,0.04);
+}
+
+/* Inspector Left */
+.ts-inspector-left {
+  flex: 0 0 38%;
+  padding: 2rem 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-right: 1px solid #F1F5F9;
+}
+
+.ts-inspector-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  width: fit-content;
+  transition: all 0.25s ease;
+}
+
+.ts-inspector-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.25;
+  transition: all 0.2s ease;
+}
+
+.ts-inspector-desc {
+  font-size: 0.78rem;
+  color: #64748B;
+  line-height: 1.7;
+  flex: 1;
+}
+
+/* Chips */
+.ts-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ts-chip {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.ts-chip-blue   { background: #EFF6FF; color: #0066FF; border-color: #BFDBFE; }
+.ts-chip-sky    { background: #F0F9FF; color: #0284C7; border-color: #BAE6FD; }
+.ts-chip-purple { background: #F5F3FF; color: #7C3AED; border-color: #DDD6FE; }
+.ts-chip-indigo { background: #EEF2FF; color: #4F46E5; border-color: #C7D2FE; }
+.ts-chip-emerald{ background: #ECFDF5; color: #059669; border-color: #A7F3D0; }
+
+/* Metrics strip */
+.ts-metrics {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid #F1F5F9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #FAFAFA;
+}
+
+.ts-metric {
+  flex: 1;
+  text-align: center;
+  padding: 10px 6px;
+}
+
+.ts-metric-val {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 3px;
+  transition: color 0.25s ease;
+}
+
+.ts-metric-key {
+  font-size: 9px;
+  font-weight: 600;
+  color: #94A3B8;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ts-metric-divider {
+  width: 1px;
+  height: 36px;
+  background: #E2E8F0;
+}
+
+/* Inspector Divider */
+.ts-inspector-divider {
+  width: 1px;
+  background: #F1F5F9;
+  flex-shrink: 0;
+}
+
+/* Inspector Right */
+.ts-inspector-right {
+  flex: 1;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+/* Tabs */
+.ts-tabs {
+  display: flex;
+  gap: 4px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 3px;
+  width: fit-content;
+}
+
+.ts-tab {
+  padding: 5px 14px;
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #94A3B8;
+  transition: all 0.2s ease;
+  letter-spacing: 0.03em;
+}
+
+.ts-tab:hover:not(.ts-tab--active) {
+  color: #475569;
+  background: #F1F5F9;
+}
+
+.ts-tab--active {
+  background: #fff !important;
+  color: #0F172A !important;
+  box-shadow: 0 1px 4px rgba(15,23,42,0.08);
+}
+
+/* Code Window customisations */
+.ts-code-window {
+  flex: 1;
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+
+.ts-code-filename {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #94A3B8;
+  font-weight: 600;
+}
+
+.ts-code-body {
+  padding: 1rem 1.25rem;
+  margin: 0;
+  font-size: 11.5px;
+  line-height: 1.75;
+  overflow-x: auto;
+  background: #0F172A;
+  min-height: 140px;
+}
+
+/* Syntax highlight tokens */
+.ts-kw      { color: #93C5FD; }  /* keywords: import, function, const, return */
+.ts-fn      { color: #6EE7B7; }  /* function names */
+.ts-str     { color: #FCA5A5; }  /* string literals */
+.ts-sym     { color: #CBD5E1; }  /* symbols: {}()[], = */
+.ts-attr    { color: #67E8F9; }  /* attributes / keys */
+.ts-tag     { color: #A78BFA; }  /* JSX tags */
+.ts-num     { color: #FDBA74; }  /* numbers */
+.ts-comment { color: #475569; font-style: italic; }
+
+/* ─── Simulate Request Bar ─── */
+.ts-sim-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1.25rem;
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 10px 16px;
+  box-shadow: 0 1px 4px rgba(15,23,42,0.04);
+}
+
+.ts-sim-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 6px rgba(16,185,129,0.6);
+  flex-shrink: 0;
+  animation: ts-dot-idle 2s ease-in-out infinite;
+}
+
+@keyframes ts-dot-idle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(0.8); }
+}
+
+.ts-sim-dot--running {
+  background: #F59E0B !important;
+  box-shadow: 0 0 8px rgba(245,158,11,0.7) !important;
+  animation: ts-dot-run 0.4s ease-in-out infinite alternate !important;
+}
+
+@keyframes ts-dot-run {
+  from { transform: scale(0.85); opacity: 0.8; }
+  to   { transform: scale(1.2); opacity: 1; }
+}
+
+.ts-sim-label {
+  flex: 1;
+  font-size: 11px;
+  color: #64748B;
+  font-family: var(--font-mono);
+}
+
+.ts-sim-label strong {
+  color: #0F172A;
+  font-weight: 700;
+}
+
+.ts-sim-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: #0F172A;
+  color: #fff;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  letter-spacing: 0.04em;
+}
+
+.ts-sim-btn:hover:not(:disabled) {
+  background: #0066FF;
+  box-shadow: 0 4px 14px rgba(0,102,255,0.3);
+}
+
+.ts-sim-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ─── Responsive: Mobile / Tablet ─── */
+@media (max-width: 1024px) {
+  .ts-inspector {
+    flex-direction: column;
+    min-height: unset;
+  }
+  .ts-inspector-left {
+    flex: unset;
+    border-right: none;
+    border-bottom: 1px solid #F1F5F9;
+  }
+  .ts-inspector-divider { display: none; }
+}
+
+@media (max-width: 768px) {
+  .ts-nodes-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem 1rem;
+    padding: 0;
+  }
+  .ts-beam-track { display: none; }
+  .ts-sim-bar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .ts-sim-label {
+    width: 100%;
+    font-size: 10px;
+  }
+}
