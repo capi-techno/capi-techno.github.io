@@ -520,8 +520,8 @@ header.navbar.scrolled {
 
 .card-wrapper {
   position: absolute;
-  width: 275px;
-  height: 360px;
+  width: 280px;
+  height: 380px;
   transform-origin: 50% 120%;
   transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
               z-index 0.3s ease, 
@@ -603,7 +603,7 @@ header.navbar.scrolled {
   .card-wrapper {
     position: relative !important;
     width: 100% !important;
-    height: 350px !important;
+    height: 380px !important;
     transform: none !important;
   }
   .card-wrapper:not(.is-active):hover {
@@ -626,6 +626,37 @@ header.navbar.scrolled {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px -4px rgba(0, 102, 255, 0.1);
   border-color: rgba(0, 102, 255, 0.25);
+}
+
+/* ==========================================================================
+   LIGHT TELEMETRY DASHBOARD & INTERACTIVE PIPELINE
+   ========================================================================== */
+.telemetry-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.telemetry-card:hover {
+  transform: translateY(-4px);
+}
+
+@keyframes flowDash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+.pipeline-connector-line {
+  stroke-dasharray: 6 4;
+  animation: flowDash 1.2s linear infinite;
+}
+
+.pipeline-stage-card {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.pipeline-stage-card:hover {
+  transform: translateY(-2px);
+}
+.pipeline-stage-card.is-active {
+  border-color: #0066FF !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 102, 255, 0.12), 0 0 0 2px rgba(0, 102, 255, 0.15) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

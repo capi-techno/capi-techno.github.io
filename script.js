@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroCanvas();
   initUseCasesObserver();
   initStatCounters();
+  initPipelineInspector();
   initContactModal();
 });
 
@@ -69,10 +70,10 @@ function initChevronLoader() {
   }
 
   const stages = [
-    { targetRatio: 0.25, msg: "Initializing CAPI Engine", detail: "Connecting Nodes" },
-    { targetRatio: 0.55, msg: "Measuring Latency", detail: "20 packets verified" },
-    { targetRatio: 0.85, msg: "Validating LLM Pipelines", detail: "Claude & OpenAI API" },
-    { targetRatio: 1.00, msg: "System Ready", detail: "Sub-Second SLA" }
+    { targetRatio: 0.25, msg: "Initializing Venture Studio", detail: "Connecting Nodes" },
+    { targetRatio: 0.55, msg: "Booting Project Alpha", detail: "Mobile & Web Sandbox" },
+    { targetRatio: 0.85, msg: "Validating AI Core", detail: "Claude & OpenAI API" },
+    { targetRatio: 1.00, msg: "Venture Systems Ready", detail: "2026 Roadmap Active" }
   ];
 
   let currentStep = 0;
@@ -221,7 +222,7 @@ function initUseCasesObserver() {
     card.style.transition = 'opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
   });
 
-  const sectionEl = document.getElementById('use-cases');
+  const sectionEl = document.getElementById('ventures') || document.getElementById('use-cases');
   if (!sectionEl) return;
 
   const observer = new IntersectionObserver((entries) => {
@@ -271,7 +272,7 @@ function initUseCasesObserver() {
 
     // Close active card when clicking outside
     document.addEventListener('click', (e) => {
-      if (!e.target.closest('#use-cases')) {
+      if (!e.target.closest('#ventures') && !e.target.closest('#use-cases')) {
         cardWrappers.forEach(w => {
           w.classList.remove('is-active');
           const c = w.querySelector('.use-case-card');
@@ -323,8 +324,115 @@ function initStatCounters() {
     });
   }, { threshold: 0.3 });
 
-  const statsSection = document.getElementById('statistics');
+  const statsSection = document.getElementById('metrics') || document.getElementById('statistics');
   if (statsSection) observer.observe(statsSection);
+}
+
+/* ==========================================================================
+   5B. INTERACTIVE PIPELINE ARCHITECTURE INSPECTOR
+   ========================================================================== */
+function initPipelineInspector() {
+  const stages = document.querySelectorAll('.pipeline-stage-card');
+  const tabs = document.querySelectorAll('.stage-tab-btn');
+  const titleEl = document.getElementById('pipeline-stage-title');
+  const codeEl = document.getElementById('pipeline-code-output');
+
+  if (!stages.length || !codeEl) return;
+
+  const payloads = {
+    "1": {
+      title: "Stage 01 // Context Normalization & Schema Lock",
+      code: `// Stage 01: Context Normalization & Pre-Evaluation
+{
+  "stage": "01_NORMALIZATION",
+  "status": "VALIDATED_LOCKED",
+  "token_metrics": {
+    "input_tokens": 1420,
+    "noise_reduction_ratio": "38.4%",
+    "sanitization": "CLEANSED_EXCESS_WHITESPACE_STRIPPED"
+  },
+  "schema_contract": {
+    "target": "zod.infer<typeof VentureDocumentSchema>",
+    "strict_types": true,
+    "allow_unknown_keys": false
+  }
+}`
+    },
+    "2": {
+      title: "Stage 02 // Edge Stream & Dual-Model Fallback",
+      code: `// Stage 02: Edge Streaming & Dynamic Failover
+{
+  "stage": "02_EDGE_STREAMING",
+  "routing": {
+    "primary": "anthropic.claude-3-5-sonnet",
+    "fallback": "openai.gpt-4o-json",
+    "selection_criteria": "LOWEST_EDGE_LATENCY"
+  },
+  "telemetry": {
+    "stream_ttfb_ms": 185,
+    "avg_completion_ms": 395,
+    "token_throughput": "84 tokens/sec",
+    "failover_triggered": false
+  }
+}`
+    },
+    "3": {
+      title: "Stage 03 // RLS Boundary Gate & Tenant Isolation",
+      code: `// Stage 03: Cryptographic Isolation & Persistence
+{
+  "stage": "03_RLS_BOUNDARY_GATE",
+  "tenant_context": {
+    "tenant_id": "tenant_98c12a4b",
+    "isolation_level": "CRYPTOGRAPHIC_TENANT_STRICT"
+  },
+  "security_policies": {
+    "supabase_rls": "ENABLED (SELECT/INSERT USING auth.uid())",
+    "audit_trail": "ENCRYPTED_APPEND_ONLY",
+    "persistence_verified": true
+  }
+}`
+    }
+  };
+
+  function setStage(stageId) {
+    const data = payloads[stageId];
+    if (!data) return;
+
+    stages.forEach(s => {
+      if (s.dataset.stage === stageId) {
+        s.classList.add('is-active');
+      } else {
+        s.classList.remove('is-active');
+      }
+    });
+
+    tabs.forEach(t => {
+      if (t.dataset.stage === stageId) {
+        t.className = 'stage-tab-btn active px-3 py-1.5 rounded-lg text-xs font-mono font-bold bg-white text-blue-600 border border-blue-200 shadow-2xs transition-all';
+      } else {
+        t.className = 'stage-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium text-slate-500 hover:text-slate-800 transition-all';
+      }
+    });
+
+    if (titleEl) titleEl.textContent = data.title;
+    if (codeEl) codeEl.textContent = data.code;
+  }
+
+  stages.forEach(stage => {
+    stage.addEventListener('click', () => {
+      setStage(stage.dataset.stage);
+    });
+    stage.addEventListener('mouseenter', () => {
+      setStage(stage.dataset.stage);
+    });
+  });
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setStage(tab.dataset.stage);
+    });
+  });
 }
 
 /* ==========================================================================
