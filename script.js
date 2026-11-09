@@ -12,10 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbarScroll();
   initHeroCanvas();
   initUseCasesObserver();
+  initWhyCapiInteractive();
   initStatCounters();
-  initPipelineInspector();
+  initTechStackObserver();
   initContactModal();
   initRoadmapInteractive();
+  initThemeController();
 });
 
 /* ==========================================================================
@@ -73,7 +75,7 @@ function initChevronLoader() {
   const stages = [
     { targetRatio: 0.25, msg: "Initializing Venture Studio", detail: "Connecting Nodes" },
     { targetRatio: 0.55, msg: "Booting Project Alpha", detail: "Mobile & Web Sandbox" },
-    { targetRatio: 0.85, msg: "Validating AI Core", detail: "Claude & OpenAI API" },
+    { targetRatio: 0.85, msg: "Validating AI Core", detail: "Claude 3.7 & OpenAI API" },
     { targetRatio: 1.00, msg: "Venture Systems Ready", detail: "2026 Roadmap Active" }
   ];
 
@@ -159,9 +161,10 @@ function initHeroCanvas() {
       if (this.y < 0 || this.y > height) this.vy *= -1;
     }
     draw() {
+      const isDark = document.documentElement.classList.contains('dark');
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0, 102, 255, 0.4)';
+      ctx.fillStyle = isDark ? 'rgba(56, 189, 248, 0.6)' : 'rgba(0, 102, 255, 0.4)';
       ctx.fill();
     }
   }
@@ -187,7 +190,8 @@ function initHeroCanvas() {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(0, 102, 255, ${0.15 * (1 - dist / 130)})`;
+          const isDark = document.documentElement.classList.contains('dark');
+          ctx.strokeStyle = isDark ? `rgba(56, 189, 248, ${0.22 * (1 - dist / 130)})` : `rgba(0, 102, 255, ${0.15 * (1 - dist / 130)})`;
           ctx.lineWidth = 1;
           ctx.stroke();
         }
@@ -203,7 +207,7 @@ function initHeroCanvas() {
    4. USE CASES & WHY CAPI SECTION ANIMATION OBSERVER
    ========================================================================== */
 function initUseCasesObserver() {
-  const cards = document.querySelectorAll('.use-case-card, .why-capi-card');
+  const cards = document.querySelectorAll('.use-case-card');
   if (!cards.length) return;
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -288,6 +292,98 @@ function initUseCasesObserver() {
 }
 
 /* ==========================================================================
+   4B. WHY CAPI — INTERACTIVE RELIABILITY RAIL & LASER SPOTLIGHT CONTROLLER
+   ========================================================================== */
+function initWhyCapiInteractive() {
+  const section = document.getElementById('why-capi');
+  if (!section) return;
+
+  const consoleEl = section.querySelector('.reliability-console');
+  const stages = section.querySelectorAll('.reliability-stage');
+  const laserBeam = section.querySelector('.reliability-laser-beam');
+  const spotlight = section.querySelector('.reliability-spotlight-glow');
+
+  if (!consoleEl || !stages.length) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReducedMotion) {
+    stages.forEach(stage => stage.classList.add('is-revealed'));
+    return;
+  }
+
+  // 1. Scroll-Down Sequence: Laser Beam Sweep + Staggered Stage Entrance ("when go down")
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Sweep laser beam across top track
+        if (laserBeam) {
+          laserBeam.style.transition = 'left 0.9s cubic-bezier(0.16, 1, 0.3, 1), width 0.9s cubic-bezier(0.16, 1, 0.3, 1)';
+          laserBeam.style.left = '0%';
+          laserBeam.style.width = '100%';
+          setTimeout(() => {
+            laserBeam.style.transition = 'left 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease';
+            laserBeam.style.width = '140px';
+            laserBeam.style.left = 'calc(50% - 70px)';
+          }, 950);
+        }
+
+        // Sequential stage reveal
+        stages.forEach((stage, idx) => {
+          setTimeout(() => {
+            stage.classList.add('is-revealed');
+          }, idx * 110 + 200);
+        });
+
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  revealObserver.observe(section);
+
+  // 2. Mouse Move Effect: Dynamic Spotlight & Laser Beam Tracking
+  const isPointerFine = window.matchMedia('(pointer: fine)').matches;
+  if (!isPointerFine) return;
+
+  let rafId = null;
+
+  const onConsoleMouseMove = (e) => {
+    const rect = consoleEl.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    if (spotlight) {
+      spotlight.style.opacity = '1';
+      consoleEl.style.setProperty('--mouse-x', `${x}px`);
+      consoleEl.style.setProperty('--mouse-y', `${y}px`);
+    }
+
+    if (laserBeam) {
+      const beamHalfWidth = 70;
+      const targetLeft = Math.max(0, Math.min(rect.width - 140, x - beamHalfWidth));
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        laserBeam.style.left = `${targetLeft}px`;
+      });
+    }
+  };
+
+  const onConsoleMouseLeave = () => {
+    if (spotlight) {
+      spotlight.style.opacity = '0';
+    }
+    if (laserBeam) {
+      if (rafId) cancelAnimationFrame(rafId);
+      laserBeam.style.left = 'calc(50% - 70px)';
+    }
+  };
+
+  consoleEl.addEventListener('mousemove', onConsoleMouseMove);
+  consoleEl.addEventListener('mouseleave', onConsoleMouseLeave);
+}
+
+/* ==========================================================================
    5. STAT COUNTERS ANIMATION ON SCROLL
    ========================================================================== */
 function initStatCounters() {
@@ -330,110 +426,35 @@ function initStatCounters() {
 }
 
 /* ==========================================================================
-   5B. INTERACTIVE PIPELINE ARCHITECTURE INSPECTOR
+   5A. ENGINEERING TECH STACK — TIER BOARD REVEAL OBSERVER
    ========================================================================== */
-function initPipelineInspector() {
-  const stages = document.querySelectorAll('.pipeline-stage-card');
-  const tabs = document.querySelectorAll('.stage-tab-btn');
-  const titleEl = document.getElementById('pipeline-stage-title');
-  const codeEl = document.getElementById('pipeline-code-output');
+function initTechStackObserver() {
+  const section = document.getElementById('tech-stack');
+  if (!section) return;
 
-  if (!stages.length || !codeEl) return;
+  const rows = section.querySelectorAll('.tech-tier-row');
+  if (!rows.length) return;
 
-  const payloads = {
-    "1": {
-      title: "Stage 01 // Context Normalization & Schema Lock",
-      code: `// Stage 01: Context Normalization & Pre-Evaluation
-{
-  "stage": "01_NORMALIZATION",
-  "status": "VALIDATED_LOCKED",
-  "token_metrics": {
-    "input_tokens": 1420,
-    "noise_reduction_ratio": "38.4%",
-    "sanitization": "CLEANSED_EXCESS_WHITESPACE_STRIPPED"
-  },
-  "schema_contract": {
-    "target": "zod.infer<typeof VentureDocumentSchema>",
-    "strict_types": true,
-    "allow_unknown_keys": false
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    rows.forEach(r => r.classList.add('is-revealed'));
+    return;
   }
-}`
-    },
-    "2": {
-      title: "Stage 02 // Edge Stream & Dual-Model Fallback",
-      code: `// Stage 02: Edge Streaming & Dynamic Failover
-{
-  "stage": "02_EDGE_STREAMING",
-  "routing": {
-    "primary": "anthropic.claude-3-5-sonnet",
-    "fallback": "openai.gpt-4o-json",
-    "selection_criteria": "LOWEST_EDGE_LATENCY"
-  },
-  "telemetry": {
-    "stream_ttfb_ms": 185,
-    "avg_completion_ms": 395,
-    "token_throughput": "84 tokens/sec",
-    "failover_triggered": false
-  }
-}`
-    },
-    "3": {
-      title: "Stage 03 // RLS Boundary Gate & Tenant Isolation",
-      code: `// Stage 03: Cryptographic Isolation & Persistence
-{
-  "stage": "03_RLS_BOUNDARY_GATE",
-  "tenant_context": {
-    "tenant_id": "tenant_98c12a4b",
-    "isolation_level": "CRYPTOGRAPHIC_TENANT_STRICT"
-  },
-  "security_policies": {
-    "supabase_rls": "ENABLED (SELECT/INSERT USING auth.uid())",
-    "audit_trail": "ENCRYPTED_APPEND_ONLY",
-    "persistence_verified": true
-  }
-}`
-    }
-  };
 
-  function setStage(stageId) {
-    const data = payloads[stageId];
-    if (!data) return;
-
-    stages.forEach(s => {
-      if (s.dataset.stage === stageId) {
-        s.classList.add('is-active');
-      } else {
-        s.classList.remove('is-active');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        rows.forEach((row, idx) => {
+          setTimeout(() => {
+            row.classList.add('is-revealed');
+          }, idx * 80);
+        });
+        observer.unobserve(entry.target);
       }
     });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-    tabs.forEach(t => {
-      if (t.dataset.stage === stageId) {
-        t.className = 'stage-tab-btn active px-3 py-1.5 rounded-lg text-xs font-mono font-bold bg-white text-blue-600 border border-blue-200 shadow-2xs transition-all';
-      } else {
-        t.className = 'stage-tab-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium text-slate-500 hover:text-slate-800 transition-all';
-      }
-    });
-
-    if (titleEl) titleEl.textContent = data.title;
-    if (codeEl) codeEl.textContent = data.code;
-  }
-
-  stages.forEach(stage => {
-    stage.addEventListener('click', () => {
-      setStage(stage.dataset.stage);
-    });
-    stage.addEventListener('mouseenter', () => {
-      setStage(stage.dataset.stage);
-    });
-  });
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', (e) => {
-      e.stopPropagation();
-      setStage(tab.dataset.stage);
-    });
-  });
+  observer.observe(section);
 }
 
 /* ==========================================================================
@@ -538,7 +559,7 @@ const ROADMAP_DATA = {
     sla: 'Sub-second handler latency (< 450ms tested, P95 at 580ms)',
     deliverables: [
       '✓ Deterministic Prompt Engineering validation schema rules engine',
-      '✓ Sub-second handler SLA verification across Claude 3.5 and OpenAI models',
+      '✓ Sub-second handler SLA verification across Claude 3.7 and OpenAI models',
       '✓ Baseline streaming token-throughput latency profiling',
       '⚡ Multi-turn session payload benchmark matrix'
     ],
@@ -552,7 +573,7 @@ const ROADMAP_DATA = {
     "max_input_tokens": 8192,
     "sla_threshold_ms": 450
   },
-  "primary_model": "claude-3-5-sonnet-20241022",
+  "primary_model": "claude-3-7-sonnet-latest",
   "deterministic_guardrails": [
     "json_mode_enforced",
     "prompt_injection_filter",
@@ -565,7 +586,7 @@ const ROADMAP_DATA = {
     status: 'IN ACTIVE DESIGN',
     statusClass: 'bg-blue-50 text-[#0066FF] border-blue-200',
     title: 'Enterprise Router & Multi-Model Dynamic Failover',
-    description: 'Building an intelligent traffic routing layer that automatically hedges latency spikes, routes between Claude 3.5, OpenAI o1, and DeepSeek, and manages token budgets.',
+    description: 'Building an intelligent traffic routing layer that automatically hedges latency spikes, routes between Claude 3.7 Sonnet, OpenAI o3-mini, and DeepSeek-R1, and manages token budgets.',
     quarter: 'Q2 2025 (Design & Benchmark)',
     sla: 'Failover transition latency < 120ms with 0% dropped packets',
     deliverables: [
@@ -816,5 +837,194 @@ function initRoadmapInteractive() {
         }
       }
     });
+  }
+}
+
+/* ==========================================================================
+   7. HANGING LIGHT BULB & DUAL THEME CONTROLLER
+   - Real-world bulb pulling cord & mechanical switch audio
+   - Default: Light Theme, Toggle: Dark Theme
+   ========================================================================== */
+function initThemeController() {
+  const pullCord = document.getElementById('lamp-pull-cord');
+  const bulbEnvelope = document.getElementById('bulb-glass-envelope');
+  const bulbFilament = document.getElementById('bulb-filament');
+  const lampSvg = document.getElementById('lamp-svg');
+  const navToggle = document.getElementById('nav-theme-toggle');
+
+  // Realistic mechanical toggle switch sound via Web Audio API
+  function playSwitchClick() {
+    try {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContext) return;
+      const ctx = new AudioContext();
+      
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(180, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(30, ctx.currentTime + 0.035);
+      
+      gain.gain.setValueAtTime(0.25, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.035);
+      
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      
+      osc.start();
+      osc.stop(ctx.currentTime + 0.035);
+    } catch (e) {}
+  }
+
+  function updateTooltip(isDark) {
+    if (lampSvg) {
+      lampSvg.setAttribute('title', isDark ? 'Click bulb or pull cord to switch to Light Theme' : 'Click bulb or pull cord to switch to Dark Theme');
+    }
+  }
+
+  function applyTheme(theme, animateCord = false) {
+    const isDark = theme === 'dark';
+    
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      try { localStorage.setItem('capi-theme', 'dark'); } catch(e) {}
+    } else {
+      document.documentElement.classList.remove('dark');
+      try { localStorage.setItem('capi-theme', 'light'); } catch(e) {}
+    }
+
+    updateTooltip(isDark);
+
+    if (animateCord && pullCord) {
+      playSwitchClick();
+      pullCord.classList.remove('spring-back');
+      pullCord.classList.add('is-pulled');
+      
+      setTimeout(() => {
+        pullCord.classList.remove('is-pulled');
+        pullCord.classList.add('spring-back');
+      }, 140);
+
+      setTimeout(() => {
+        pullCord.classList.remove('spring-back');
+      }, 550);
+    }
+  }
+
+  function toggleTheme(animate = true) {
+    const isCurrentlyDark = document.documentElement.classList.contains('dark');
+    applyTheme(isCurrentlyDark ? 'light' : 'dark', animate);
+  }
+
+  // Load saved preference (defaults to light mode)
+  try {
+    const saved = localStorage.getItem('capi-theme');
+    if (saved === 'dark') {
+      applyTheme('dark', false);
+    } else {
+      applyTheme('light', false);
+    }
+  } catch (e) {
+    applyTheme('light', false);
+  }
+
+  // Event Listeners for Pull Cord
+  if (pullCord) {
+    pullCord.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleTheme(true);
+    });
+
+    // Touch / Drag pull cord support
+    let startY = 0;
+    let isDragging = false;
+
+    pullCord.addEventListener('pointerdown', (e) => {
+      startY = e.clientY;
+      isDragging = true;
+      try { pullCord.setPointerCapture(e.pointerId); } catch(err) {}
+    });
+
+    pullCord.addEventListener('pointermove', (e) => {
+      if (!isDragging) return;
+      const deltaY = e.clientY - startY;
+      if (deltaY > 3) {
+        pullCord.style.transform = `translateY(${Math.min(deltaY, 14)}px)`;
+      }
+    });
+
+    const finishDrag = (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      const deltaY = e.clientY - startY;
+      pullCord.style.transform = '';
+      if (deltaY > 5) {
+        toggleTheme(true);
+      }
+    };
+
+    pullCord.addEventListener('pointerup', finishDrag);
+    pullCord.addEventListener('pointercancel', finishDrag);
+  }
+
+  // Click on Bulb envelope or filament toggles theme with pull animation
+  if (bulbEnvelope) {
+    bulbEnvelope.addEventListener('click', () => toggleTheme(true));
+  }
+  if (bulbFilament) {
+    bulbFilament.addEventListener('click', () => toggleTheme(true));
+  }
+
+  // Click on Navbar companion toggle button
+  if (navToggle) {
+    navToggle.addEventListener('click', () => toggleTheme(true));
+  }
+
+  // Click on any part of the exposed lower bulb to toggle theme
+  if (lampSvg) {
+    lampSvg.addEventListener('click', (e) => {
+      if (!e.target.closest('#lamp-pull-cord')) {
+        toggleTheme(true);
+      }
+    });
+  }
+
+  // Dynamic pixel-perfect alignment of the hanging light bulb under navbar theme toggle icon
+  function alignLampWithNavToggle() {
+    const toggleBtn = document.getElementById('nav-theme-toggle');
+    const lampContainer = document.getElementById('hanging-lamp-container');
+    const lampSvg = document.getElementById('lamp-svg');
+    const navbar = document.querySelector('header.navbar');
+    const overview = document.getElementById('overview');
+    if (!toggleBtn || !lampContainer || !lampSvg || !navbar || !overview) return;
+
+    const toggleRect = toggleBtn.getBoundingClientRect();
+    const overviewRect = overview.getBoundingClientRect();
+    const navRect = navbar.getBoundingClientRect();
+    const svgRect = lampSvg.getBoundingClientRect();
+
+    // The horizontal center of toggleBtn relative to overview's left edge
+    const centerX = (toggleRect.left + toggleRect.width / 2) - overviewRect.left;
+    lampContainer.style.left = `${centerX}px`;
+    lampContainer.style.right = 'auto';
+    // Center the bulb body (located at x=24 of 54 in viewBox, approx 44.4%)
+    lampContainer.style.transform = 'translateX(-44.4%)';
+
+    // Position vertically so the navbar bottom border bisects the upper bulb neck (approx 52% down SVG)
+    // Only update idealTop when near top of page to prevent displacement during scrolling
+    if (window.scrollY < 20) {
+      const svgHeight = svgRect.height || (window.innerWidth >= 640 ? 128 : 112);
+      const idealTop = Math.max(0, Math.round(navRect.height - svgHeight * 0.52));
+      lampContainer.style.top = `${idealTop}px`;
+    }
+  }
+
+  // Run alignment immediately on load, resize, and font ready
+  alignLampWithNavToggle();
+  window.addEventListener('resize', alignLampWithNavToggle);
+  window.addEventListener('orientationchange', alignLampWithNavToggle);
+  window.addEventListener('load', alignLampWithNavToggle);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(alignLampWithNavToggle);
   }
 }

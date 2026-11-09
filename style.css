@@ -364,6 +364,11 @@ body {
   100% { opacity: 1; transform: scale(1.3); }
 }
 
+/* Venture Card Micro-Interactions */
+.group\/btn:hover svg {
+  transform: translateX(3px);
+}
+
 /* Navigation Bar */
 header.navbar {
   position: fixed;
@@ -373,8 +378,9 @@ header.navbar {
   z-index: 100;
   transition: all 0.3s ease;
   padding: 1.1rem 0;
-  background: rgba(250, 250, 250, 0.85);
-  backdrop-filter: blur(12px);
+  background: rgba(250, 250, 250, 0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
 }
 
 header.navbar.scrolled {
@@ -572,8 +578,8 @@ header.navbar.scrolled {
 
 .card-wrapper {
   position: absolute;
-  width: 280px;
-  height: 380px;
+  width: 290px;
+  height: 410px;
   transform-origin: 50% 120%;
   transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
               z-index 0.3s ease, 
@@ -583,22 +589,22 @@ header.navbar.scrolled {
 
 /* Fanned Playing Card Deck Positions */
 .card-wrapper.card-1 {
-  transform: translateX(-270px) rotate(-16deg);
+  transform: translateX(-280px) rotate(-15deg);
   z-index: 1;
 }
 
 .card-wrapper.card-2 {
-  transform: translateX(-90px) rotate(-5.5deg);
+  transform: translateX(-95px) rotate(-5deg);
   z-index: 2;
 }
 
 .card-wrapper.card-3 {
-  transform: translateX(90px) rotate(5.5deg);
+  transform: translateX(95px) rotate(5deg);
   z-index: 3;
 }
 
 .card-wrapper.card-4 {
-  transform: translateX(270px) rotate(16deg);
+  transform: translateX(280px) rotate(15deg);
   z-index: 4;
 }
 
@@ -643,6 +649,15 @@ header.navbar.scrolled {
   transform: rotateY(180deg) !important;
 }
 
+.card-face {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.card-back {
+  overflow: hidden !important;
+}
+
 /* Tablet & Mobile Fallback Stack */
 @media (max-width: 992px) {
   .card-hand-container {
@@ -655,7 +670,7 @@ header.navbar.scrolled {
   .card-wrapper {
     position: relative !important;
     width: 100% !important;
-    height: 380px !important;
+    height: 410px !important;
     transform: none !important;
   }
   .card-wrapper:not(.is-active):hover {
@@ -670,19 +685,201 @@ header.navbar.scrolled {
   }
 }
 
-.why-capi-card {
-  transition: transform 150ms ease-out, box-shadow 150ms ease-out, border-color 150ms ease-out;
+/* ==========================================================================
+   WHY CAPI — Interactive Reliability Rail & Spotlight Console
+   ========================================================================== */
+.reliability-console {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
 }
 
-.why-capi-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px -4px rgba(0, 102, 255, 0.1);
-  border-color: rgba(0, 102, 255, 0.25);
+.reliability-console:hover {
+  box-shadow: 0 20px 40px -12px rgba(0, 102, 255, 0.1), 0 4px 16px -2px rgba(0, 0, 0, 0.04);
+}
+
+.reliability-laser-track {
+  pointer-events: none;
+}
+
+.reliability-laser-beam {
+  position: absolute;
+  left: 0;
+  width: 140px;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 6px #0066FF);
+  transition: left 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.reliability-spotlight-glow {
+  background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 102, 255, 0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.reliability-stage {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.reliability-stage.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Desktop Fluid Flex Rail Expansion on Hover */
+@media (min-width: 1024px) {
+  .reliability-rail .reliability-stage {
+    flex: 1;
+    transition: flex 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.3s ease,
+                background-color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reliability-rail:hover .reliability-stage {
+    opacity: 0.82;
+    flex: 0.9;
+  }
+
+  html:not(.dark) .reliability-rail .reliability-stage:hover {
+    opacity: 1;
+    flex: 1.35;
+    background-color: #ffffff !important;
+    border-color: rgba(0, 102, 255, 0.35) !important;
+    box-shadow: 0 14px 30px -8px rgba(0, 102, 255, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+  }
+
+  html.dark .reliability-rail .reliability-stage:hover {
+    opacity: 1;
+    flex: 1.35;
+    background-color: #1A2538 !important;
+    border-color: rgba(59, 130, 246, 0.5) !important;
+    box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(59, 130, 246, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .reliability-rail .reliability-stage:hover .stage-icon-box {
+    transform: scale(1.08) translateY(-1px);
+    box-shadow: 0 6px 16px -2px rgba(0, 102, 255, 0.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reliability-stage {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .reliability-laser-beam {
+    display: none !important;
+  }
 }
 
 /* ==========================================================================
-   LIGHT TELEMETRY DASHBOARD & INTERACTIVE PIPELINE
+   LIGHT TELEMETRY COCKPIT & BENCHMARK MATRIX
    ========================================================================== */
+.telemetry-cockpit {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.telemetry-cockpit:hover {
+  box-shadow: 0 20px 40px -12px rgba(0, 102, 255, 0.08), 0 4px 16px -2px rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 102, 255, 0.3);
+}
+
+.telemetry-cell {
+  transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.telemetry-cockpit:hover .telemetry-cell {
+  opacity: 0.88;
+}
+
+.telemetry-cockpit .telemetry-cell:hover {
+  opacity: 1;
+  background-color: #ffffff;
+  box-shadow: 0 10px 25px -5px rgba(0, 102, 255, 0.08);
+}
+
+.telemetry-scan-track {
+  pointer-events: none;
+}
+
+@keyframes telemetryScan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(600%); }
+}
+
+.animate-telemetry-scan {
+  animation: telemetryScan 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* ==========================================================================
+   TECH STACK — Architectural Tier Board
+   ========================================================================== */
+.tech-tier-board {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.tech-tier-row {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.tech-tier-row.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tech-tier-board:hover .tech-tier-row {
+  opacity: 0.75;
+}
+
+.tech-tier-board .tech-tier-row:hover {
+  opacity: 1;
+  background-color: #fafcff;
+  border-color: rgba(0, 102, 255, 0.3) !important;
+  box-shadow: 0 10px 25px -6px rgba(0, 102, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.tech-badge {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease,
+              background-color 0.2s ease;
+}
+
+.tech-badge:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: rgba(0, 102, 255, 0.45) !important;
+  box-shadow: 0 4px 12px -2px rgba(0, 102, 255, 0.12);
+  color: #0066FF !important;
+  background-color: #ffffff !important;
+}
+
+.tech-badge:hover svg {
+  transform: scale(1.1);
+  color: #0066FF;
+}
+
+.tech-badge svg {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
 .telemetry-card {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -1217,4 +1414,449 @@ header.navbar.scrolled {
     width: 100%;
     font-size: 10px;
   }
+}
+
+/* ==========================================================================
+   CREATIVE REAL-WORLD HANGING LIGHT BULB & DARK THEME SYSTEM
+   ========================================================================== */
+
+/* --- Hanging Lamp Fixture & Pull Cord --- */
+#hanging-lamp-container {
+  position: absolute;
+  top: 8px;
+  right: calc(max(1rem, (100vw - 80rem) / 2) + 9.5rem);
+  transform: translateX(-44.4%);
+  transform-origin: top center;
+  transition: opacity 0.3s ease;
+  z-index: 30;
+}
+
+#lamp-svg {
+  animation: lampSway 7s ease-in-out infinite;
+  transform-origin: 24px 0px;
+}
+
+#lamp-svg:hover {
+  animation-play-state: paused;
+}
+
+@keyframes lampSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(0.6deg);
+  }
+  70% {
+    transform: rotate(-0.6deg);
+  }
+}
+
+/* Ambient Radial Bulb Aura (Light Mode) */
+#lamp-ambient-glow {
+  top: 4.4rem;
+  left: 45%;
+  transform: translateX(-50%);
+  width: 6.5rem;
+  height: 6.5rem;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.45) 0%, rgba(245, 158, 11, 0.18) 40%, rgba(217, 119, 6, 0.05) 65%, transparent 75%);
+  filter: blur(14px);
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+/* Downward Ambient Light Cone */
+#lamp-light-cone {
+  top: 5rem;
+  left: 45%;
+  transform: translateX(-50%);
+  width: 8rem;
+  height: 11rem;
+  background: linear-gradient(180deg, rgba(253, 224, 71, 0.18) 0%, rgba(251, 191, 36, 0.04) 55%, transparent 95%);
+  clip-path: polygon(46% 0%, 54% 0%, 100% 100%, 0% 100%);
+  filter: blur(10px);
+  opacity: 0.85;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+/* Incandescent Filament Glow (When Bulb is ON / Light Theme) */
+html:not(.dark) #bulb-filament {
+  stroke: #FFFBEB;
+  filter: drop-shadow(0 0 2px #FEF08A) drop-shadow(0 0 5px #F59E0B) drop-shadow(0 0 10px #D97706);
+}
+
+html:not(.dark) #bulb-filament-core {
+  fill: #FFFFFF;
+  filter: drop-shadow(0 0 4px #FFFBEB);
+}
+
+html:not(.dark) #bulb-glass-envelope {
+  fill: rgba(254, 240, 138, 0.14);
+  stroke: rgba(254, 240, 138, 0.7);
+  filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.3));
+}
+
+html:not(.dark) #lamp-tooltip-btn,
+html:not(.dark) #lamp-tooltip {
+  background-color: #FFFFFF;
+  color: #854D0E;
+  border-color: #FEF08A;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15);
+}
+
+/* Pull Cord Physical Elastic Pull States */
+#lamp-pull-cord {
+  transform-origin: 38px 34px;
+  transition: transform 0.12s cubic-bezier(0.2, 0, 0.38, 0.9);
+}
+
+#lamp-pull-cord:hover {
+  filter: drop-shadow(0 0 3px #F59E0B);
+}
+
+#lamp-pull-cord.is-pulled {
+  transform: translateY(10px);
+}
+
+#lamp-pull-cord.spring-back {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: translateY(0);
+}
+
+/* --- Dark Mode Bulb States (Bulb is OFF / Light Switched Off) --- */
+html.dark #lamp-ambient-glow {
+  opacity: 0 !important;
+}
+
+html.dark #lamp-light-cone {
+  opacity: 0 !important;
+}
+
+html.dark #bulb-glass-glow {
+  opacity: 0 !important;
+}
+
+html.dark #bulb-glass-envelope {
+  fill: rgba(30, 41, 59, 0.4) !important;
+  stroke: rgba(148, 163, 184, 0.35) !important;
+  filter: none !important;
+}
+
+html.dark #bulb-filament {
+  stroke: #475569 !important;
+  filter: none !important;
+}
+
+html.dark #bulb-filament-core {
+  fill: #334155 !important;
+  filter: none !important;
+}
+
+html.dark #lamp-tooltip-btn,
+html.dark #lamp-tooltip {
+  background-color: #121824;
+  color: #94A3B8;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   COMPREHENSIVE DARK THEME SYSTEM (Midnight Obsidian Palette)
+   ========================================================================== */
+
+/* Smooth Global Transition */
+html, body, section, header, footer, 
+.bg-white, .glass-card, .telemetry-cockpit, .telemetry-cell, 
+.pipeline-stage-card, .tech-tier-row, .reliability-stage {
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Root Dark Variables */
+html.dark {
+  --bg-main: #0A0D14;
+  --bg-subtle: #0E131D;
+  --bg-card: #121824;
+  --primary-blue: #3B82F6;
+  --primary-blue-hover: #60A5FA;
+  --primary-blue-light: rgba(59, 130, 246, 0.15);
+  --accent-cyan: #38BDF8;
+  --accent-teal: #2DD4BF;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.16);
+  --border-blue: rgba(59, 130, 246, 0.35);
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.6);
+  --shadow-hover: 0 16px 36px -4px rgba(0, 102, 255, 0.22);
+}
+
+html.dark body {
+  background-color: #0A0D14 !important;
+  color: #F8FAFC !important;
+}
+
+/* Ambient Mesh in Dark Mode */
+html.dark .bg-mesh {
+  background: 
+    radial-gradient(at 15% 15%, rgba(30, 58, 138, 0.2) 0px, transparent 55%),
+    radial-gradient(at 85% 85%, rgba(15, 23, 42, 0.9) 0px, transparent 60%);
+  opacity: 0.85;
+}
+
+/* Dark Mode Navbar */
+html.dark header.navbar,
+html.dark .navbar {
+  background-color: rgba(10, 13, 20, 0.88) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark header.navbar nav a,
+html.dark header.navbar .nav-link {
+  color: #94A3B8 !important;
+}
+
+html.dark header.navbar nav a:hover,
+html.dark header.navbar .nav-link:hover {
+  color: #FFFFFF !important;
+}
+
+html.dark header.navbar .bg-slate-50,
+html.dark #nav-theme-toggle {
+  background-color: #121824 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #E2E8F0 !important;
+}
+
+/* Section Backgrounds in Dark Mode */
+html.dark #overview {
+  background-color: #0A0D14 !important;
+}
+
+html.dark #ventures {
+  background-color: #0E131D !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark #why-capi {
+  background-color: #0A0D14 !important;
+}
+
+html.dark #metrics {
+  background-color: #0A0D14 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark #tech-stack {
+  background-color: #0E131D !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark #architecture {
+  background-color: #0A0D14 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark #roadmap {
+  background-color: #0E131D !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark #contact {
+  background-color: #0A0D14 !important;
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark #contact .glass-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, #121824 50%, #0E131D 100%) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
+}
+
+html.dark #contact h2 {
+  color: #F8FAFC !important;
+}
+
+html.dark #contact p {
+  color: #94A3B8 !important;
+}
+
+html.dark #contact a[href="https://github.com/capi-techno"] {
+  background-color: #1A2436 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #F1F5F9 !important;
+}
+
+html.dark #contact a[href="https://github.com/capi-techno"]:hover {
+  background-color: #243048 !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #FFFFFF !important;
+}
+
+/* Dark Mode Surface Cards */
+html.dark .bg-white {
+  background-color: #121824 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #F8FAFC !important;
+}
+
+html.dark .glass-card {
+  background-color: rgba(18, 24, 36, 0.88) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark .bg-slate-50, 
+html.dark .bg-slate-50\/70, 
+html.dark .bg-slate-50\/80, 
+html.dark .bg-slate-50\/50,
+html.dark .bg-slate-50\/30,
+html.dark .bg-slate-50\/40 {
+  background-color: #162030 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark .bg-slate-100,
+html.dark .bg-slate-100\/70,
+html.dark .bg-slate-100\/90 {
+  background-color: #1A2436 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Dark Mode Typography */
+html.dark .text-slate-900 {
+  color: #F8FAFC !important;
+}
+
+html.dark .text-slate-800 {
+  color: #E2E8F0 !important;
+}
+
+html.dark .text-slate-700 {
+  color: #CBD5E1 !important;
+}
+
+html.dark .text-slate-600 {
+  color: #94A3B8 !important;
+}
+
+html.dark .text-slate-500 {
+  color: #64748B !important;
+}
+
+html.dark .text-slate-400 {
+  color: #94A3B8 !important;
+}
+
+/* Dark Mode Borders */
+html.dark .border-slate-200,
+html.dark .border-slate-200\/90,
+html.dark .border-slate-200\/80,
+html.dark .border-slate-200\/60,
+html.dark .border-slate-100 {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark .divide-slate-100 > * + *,
+html.dark .divide-slate-200 > * + * {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Badges in Dark Mode */
+html.dark .bg-blue-50,
+html.dark .bg-blue-50\/80,
+html.dark .bg-blue-50\/90,
+html.dark .bg-blue-50\/20,
+html.dark .bg-blue-50\/30 {
+  background-color: rgba(59, 130, 246, 0.15) !important;
+  color: #60A5FA !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+html.dark .bg-emerald-50,
+html.dark .bg-emerald-50\/30,
+html.dark .bg-emerald-50\/40 {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  color: #34D399 !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+/* Specific Interactive Components in Dark Mode */
+html.dark .reliability-console {
+  background-color: #0E131D !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark .reliability-stage {
+  background-color: #141C2B !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+html.dark .reliability-laser-track {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+html.dark .telemetry-cockpit {
+  background-color: #121824 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark .reliability-stage:hover {
+  background-color: #162030 !important;
+}
+
+html.dark .telemetry-cell:hover {
+  background-color: #162030 !important;
+}
+
+html.dark .card-face {
+  background-color: #121824 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #F8FAFC !important;
+}
+
+html.dark .pipeline-stage-card {
+  background-color: #121824 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark .tech-tier-row {
+  background-color: #141C2B !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark .tech-badge {
+  background-color: #1B2538 !important;
+  color: #E2E8F0 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark .stage-icon-box {
+  background-color: #1B2538 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark #contact-modal .bg-white {
+  background-color: #121824 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html.dark input, 
+html.dark textarea, 
+html.dark select {
+  background-color: #0A0D14 !important;
+  color: #F8FAFC !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Secondary Buttons */
+html.dark a[href="#tech-stack"] {
+  background-color: #162030 !important;
+  color: #F1F5F9 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+html.dark a[href="#tech-stack"]:hover {
+  background-color: #1C273B !important;
 }
