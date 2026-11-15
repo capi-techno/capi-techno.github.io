@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CAPI Technologies | Connecting Traditional Craftsmanship with Modern Digital Horizons</title>
-  <meta name="description" content="CAPI Technologies is a purpose-driven technology company dedicated to creating digital opportunities that connect traditional creators, artisans, and independent makers with people who value authentic craftsmanship." />
+  <title>CAPI Technologies | Bringing Traditional Craftsmanship into the Digital World.</title>
+  <meta name="description"
+    content="CAPI Technologies is a purpose-driven technology company dedicated to creating digital opportunities that connect traditional creators, craftsmen, and independent makers with people who value authentic craftsmanship." />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="Logo.png" />
 
-  <!-- Typography: Plus Jakarta Sans for warm, modern clarity & JetBrains Mono for subtle accents -->
+  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -45,51 +49,64 @@
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Theme Persistence Initializer (Default: Light Theme, with zero flash) -->
+  <!-- Theme Persistence Initializer (Default: Light Theme, Zero Flash) -->
   <script>
-    (function() {
-      try {
-        const saved = localStorage.getItem('capi-theme');
-        if (saved === 'dark') {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-      } catch (e) {}
-    })();
+      (function () {
+        try {
+          const saved = localStorage.getItem('capi-theme');
+          if (saved === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) { }
+      })();
   </script>
 </head>
-<body class="bg-[#FAFAFA] dark:bg-[#0A0D14] text-slate-800 dark:text-slate-200 font-sans selection:bg-[#0066FF] selection:text-white transition-colors duration-300">
 
-  <!-- Subtle Ambient Background Gradient -->
-  <div class="bg-mesh pointer-events-none fixed inset-0 z-0 opacity-40 dark:opacity-20"></div>
+<body
+  class="bg-[#FAFAFA] dark:bg-[#0A0D14] text-slate-800 dark:text-slate-200 font-sans selection:bg-[#0066FF] selection:text-white transition-colors duration-300">
 
   <!-- ==========================================================================
-       SPLASH SCREEN INTRO ANIMATION (Refined Brand Entrance)
+       INTRO / SPLASH SCREEN
+       Refined entrance with Blue Husky as the loading hero (No CAPI logo)
        ========================================================================== -->
-  <div id="splash-screen">
+  <div id="splash-screen" class="splash-screen" role="dialog" aria-modal="true" aria-label="Loading Experience">
     <div class="splash-content">
-      <div class="splash-logo-container">
-        <div class="ring-glow"></div>
-        <div class="splash-ring ring-1"></div>
-        <div class="splash-ring ring-2"></div>
-        <img src="Logo.png" alt="CAPI Technologies Logo" class="splash-logo" />
-      </div>
-      <h1 class="splash-title">CAPI <span>TECHNOLOGIES</span></h1>
-      <p class="splash-subtitle">Thoughtful Digital Innovation &amp; Creator Opportunities</p>
-      
-      <!-- Refined Brand Progress Bar -->
-      <div class="splash-status-wrapper">
-        <div class="splash-status-text text-xs">
-          <span class="splash-spinner-dot"></span>
-          <span id="splash-status-msg" class="text-[#0066FF] dark:text-blue-400 font-semibold">Honoring Traditional Craft</span>
-          <span class="text-slate-400 dark:text-slate-500"> · <span id="splash-status-detail">Opening Digital Horizons</span></span>
+      <!-- Blue Husky Mascot Container with Ambient Glow -->
+      <div class="splash-mascot-wrapper">
+        <div class="splash-aura"></div>
+        <div class="splash-mascot-box">
+          <img src="assests/Blue Husky intro.gif" alt="CAPI Welcome Character" class="splash-mascot-gif" />
         </div>
-        <div class="splash-chevron-bar" id="chevron-bar"></div>
       </div>
-      <button id="skip-splash" class="splash-skip-btn">Enter Site ➔</button>
+
+      <!-- Minimal Loading Track & Status -->
+      <div class="splash-loading-group">
+        <div class="splash-track-wrapper">
+          <div class="splash-progress-track">
+            <div id="splash-progress-bar" class="splash-progress-bar"></div>
+          </div>
+        </div>
+
+        <div class="splash-meta">
+          <span class="splash-caption">INITIALIZING EXPERIENCE</span>
+          <span id="splash-percent" class="splash-percent">0%</span>
+        </div>
+      </div>
+
+      <!-- Clean Enter / Skip Action -->
+      <button id="splash-skip-btn" class="splash-skip-btn" type="button" aria-label="Enter Site">
+        <span>Enter Site</span>
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </button>
     </div>
   </div>
+
+  <!-- Subtle Ambient Background Mesh -->
+  <div class="bg-mesh pointer-events-none fixed inset-0 z-0 opacity-40 dark:opacity-20"></div>
 
   <!-- ==========================================================================
        HEADER & NAVIGATION BAR
@@ -97,27 +114,32 @@
   <header class="navbar">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between">
-        
+
         <!-- Logo & Brand Name -->
-        <a href="#overview" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-xl">
-          <div class="relative w-10 h-10 flex items-center justify-center rounded-xl bg-[#050B17] border border-blue-500/40 group-hover:border-blue-400 transition-all shadow-sm overflow-hidden">
+        <a href="#overview"
+          class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-xl">
+          <div
+            class="relative w-10 h-10 flex items-center justify-center rounded-xl bg-[#050B17] border border-blue-500/40 group-hover:border-blue-400 transition-all shadow-sm overflow-hidden">
             <video autoplay muted loop playsinline class="w-full h-full object-cover mix-blend-screen">
               <source src="assests/CAPI-Logo.mp4" type="video/mp4" />
               <img src="Logo.png" alt="CAPI Logo" class="w-7 h-7 object-contain" />
             </video>
           </div>
           <div class="flex flex-col">
-            <span class="text-lg font-extrabold tracking-wider text-slate-900 dark:text-white transition-colors">CAPI</span>
-            <span class="text-[9px] text-[#0066FF] font-mono tracking-widest uppercase -mt-1 font-bold">TECHNOLOGIES</span>
+            <span
+              class="text-lg font-extrabold tracking-wider text-slate-900 dark:text-white transition-colors">CAPI</span>
+            <span
+              class="text-[9px] text-[#0066FF] font-mono tracking-widest uppercase -mt-1 font-bold">TECHNOLOGIES</span>
           </div>
         </a>
 
         <!-- Desktop Navigation Links -->
         <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-semibold">
           <a href="#about" class="nav-link">About</a>
+          <a href="#craft" class="nav-link">Craft &amp; Horizons</a>
           <a href="#purpose" class="nav-link">Our Purpose</a>
-          <a href="#vision-mission" class="nav-link">Vision &amp; Mission</a>
           <a href="#why-us" class="nav-link">Why Us</a>
+          <a href="#vision-mission" class="nav-link">Vision &amp; Mission</a>
           <a href="#team" class="nav-link">Our Team</a>
           <a href="#future" class="nav-link">Future</a>
           <a href="#contact" class="nav-link">Contact</a>
@@ -125,315 +147,376 @@
 
         <!-- Header Action Buttons -->
         <div class="flex items-center gap-3 flex-shrink-0">
-          
+
           <!-- Companion Theme Switcher Button -->
-          <button id="nav-theme-toggle" type="button" aria-label="Toggle light/dark theme" title="Toggle theme" class="w-9 h-9 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-blue-600 hover:border-blue-300 shadow-2xs transition-all cursor-pointer">
-            <svg class="w-4 h-4 hidden dark:block text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
-            <svg class="w-4 h-4 block dark:hidden text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
+          <button id="nav-theme-toggle" type="button" aria-label="Toggle light/dark theme" title="Toggle theme"
+            class="w-9 h-9 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-blue-600 hover:border-blue-300 shadow-2xs transition-all cursor-pointer">
+            <svg class="w-4 h-4 hidden dark:block text-amber-400" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+            </svg>
+            <svg class="w-4 h-4 block dark:hidden text-slate-600" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+            </svg>
           </button>
 
           <!-- Primary CTA Button -->
-          <button class="open-contact-modal inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] active:scale-98 rounded-xl shadow-sm transition-all whitespace-nowrap cursor-pointer">
+          <button
+            class="open-contact-modal inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] active:scale-98 rounded-xl shadow-sm transition-all whitespace-nowrap cursor-pointer">
             <span>Get in Touch</span>
           </button>
 
           <!-- Mobile Hamburger Toggle -->
-          <button id="mobile-menu-btn" type="button" aria-label="Toggle mobile menu" class="lg:hidden w-9 h-9 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-blue-600 transition-all cursor-pointer">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <button id="mobile-menu-btn" type="button" aria-label="Toggle mobile menu"
+            class="lg:hidden w-9 h-9 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-blue-600 transition-all cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
           </button>
         </div>
       </div>
     </div>
 
     <!-- Mobile Dropdown Navigation Menu -->
-    <div id="mobile-nav" class="hidden lg:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#0A0D14]/95 backdrop-blur-md px-4 py-4 space-y-3 transition-all">
-      <a href="#about" class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">About Our Company</a>
-      <a href="#purpose" class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Our Purpose</a>
-      <a href="#vision-mission" class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Vision &amp; Mission</a>
-      <a href="#why-us" class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Why Choose Us</a>
-      <a href="#team" class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Meet Our Team</a>
-      <a href="#future" class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Future Direction</a>
-      <a href="#contact" class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Contact &amp; Connect</a>
+    <div id="mobile-nav"
+      class="hidden lg:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#0A0D14]/95 backdrop-blur-md px-4 py-4 space-y-3 transition-all">
+      <a href="#about"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">About Our
+        Company</a>
+      <a href="#craft"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Craft &amp;
+        Horizons</a>
+      <a href="#purpose"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Our Purpose</a>
+      <a href="#why-us"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Why Choose
+        Us</a>
+      <a href="#vision-mission"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Vision &amp;
+        Mission</a>
+      <a href="#team"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Meet Our
+        Team</a>
+      <a href="#future"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Future
+        Direction</a>
+      <a href="#contact"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Contact &amp;
+        Connect</a>
     </div>
   </header>
 
   <!-- ==========================================================================
        SECTION A: HERO SECTION
-       Memorable, Meaningful Headline & Visual Craft Showcase
+       Living Interactive Node Canvas + Vintage CRT Television + Craft Vision
        ========================================================================== -->
   <section id="overview" class="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
-    
-    <!-- ==========================================================================
-         CREATIVE REAL-WORLD HANGING LIGHT BULB & PULL CORD ("DRAWER") THEME SWITCHER
-         Sleek, Compact Designer Pendant Fixture dropping from behind the navbar
-         ========================================================================== -->
-    <div id="hanging-lamp-container" class="absolute top-2 z-30 select-none pointer-events-auto transition-opacity duration-300">
-      <div id="hanging-lamp" class="relative flex flex-col items-center">
-        
-        <!-- Ambient Warm Light Glow (Only active in Light Mode / Bulb ON) -->
-        <div id="lamp-ambient-glow" class="absolute top-[4.4rem] left-1/2 -translate-x-1/2 w-24 h-24 rounded-full pointer-events-none transition-all duration-700"></div>
-        
-        <!-- Downward Ambient Light Cone (Casts gentle warm ambient light into hero) -->
-        <div id="lamp-light-cone" class="absolute top-[5rem] left-1/2 -translate-x-1/2 w-32 h-44 pointer-events-none transition-all duration-700"></div>
 
-        <!-- Realistic Minimalist Hanging Industrial Lamp SVG (Sleek & Compact) -->
-        <svg id="lamp-svg" class="w-14 h-28 sm:w-16 sm:h-32 filter drop-shadow-md transition-transform duration-300 origin-top cursor-pointer" viewBox="0 0 54 110" fill="none" xmlns="http://www.w3.org/2000/svg" role="button" aria-label="Toggle theme light or dark" title="Click bulb or pull cord to switch theme">
-          <defs>
-            <!-- 3D Cylindrical Brushed Brass Gradient -->
-            <linearGradient id="brassGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#B45309" />
-              <stop offset="25%" stop-color="#F59E0B" />
-              <stop offset="50%" stop-color="#FEF08A" />
-              <stop offset="75%" stop-color="#D97706" />
-              <stop offset="100%" stop-color="#92400E" />
-            </linearGradient>
-
-            <!-- Metallic Beaded Chain Gradient -->
-            <linearGradient id="beadGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#FEF08A" />
-              <stop offset="50%" stop-color="#F59E0B" />
-              <stop offset="100%" stop-color="#78350F" />
-            </linearGradient>
-
-            <!-- Specular Curved Glass Shine -->
-            <linearGradient id="glassReflection" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8" />
-              <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.2" />
-              <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
-            </linearGradient>
-
-            <!-- Warm Incandescent Radial Glow -->
-            <radialGradient id="bulbCoreGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#FFFDF5" stop-opacity="0.95" />
-              <stop offset="35%" stop-color="#FEF08A" stop-opacity="0.75" />
-              <stop offset="70%" stop-color="#F59E0B" stop-opacity="0.3" />
-              <stop offset="100%" stop-color="#B45309" stop-opacity="0" />
-            </radialGradient>
-          </defs>
-
-          <!-- 1. Ceiling Rosette Mount -->
-          <rect x="19" y="0" width="10" height="3" rx="1" fill="url(#brassGradient)" stroke="#78350F" stroke-width="0.4" />
-
-          <!-- 2. Fine Suspension Cable -->
-          <line x1="24" y1="3" x2="24" y2="25" stroke="#334155" stroke-width="1.6" stroke-linecap="round" />
-
-          <!-- 3. Sleek Turned Brass Socket -->
-          <rect x="21.5" y="25" width="5" height="3" rx="0.8" fill="url(#brassGradient)" stroke="#78350F" stroke-width="0.4" />
-          <rect x="18" y="28" width="12" height="13" rx="1.5" fill="url(#brassGradient)" stroke="#78350F" stroke-width="0.4" />
-          <line x1="18" y1="32" x2="30" y2="32" stroke="rgba(120,53,15,0.4)" stroke-width="0.5" />
-          <line x1="18" y1="36" x2="30" y2="36" stroke="rgba(120,53,15,0.4)" stroke-width="0.5" />
-          <path d="M 17,41 L 31,41 L 30,44 L 18,44 Z" fill="url(#brassGradient)" stroke="#78350F" stroke-width="0.4" />
-
-          <!-- 4. Chain Switch Port on Socket Collar -->
-          <rect x="29.5" y="31.5" width="3" height="3.5" rx="0.8" fill="url(#brassGradient)" stroke="#78350F" stroke-width="0.3" />
-          <path d="M 31,33.5 Q 38,33.5 38,38" fill="none" stroke="#92400E" stroke-width="1.2" stroke-linecap="round" />
-
-          <!-- 5. Glass Bulb Interior Core Glow (Toggles in Light vs Dark) -->
-          <ellipse id="bulb-glass-glow" cx="24" cy="65" rx="10" ry="11" fill="url(#bulbCoreGlow)" class="transition-opacity duration-500 opacity-95" />
-
-          <!-- 6. Vintage Teardrop Edison Glass Envelope (Clickable) -->
-          <path id="bulb-glass-envelope" 
-                d="M 19,44 L 18.5,49 C 17,54 12,59 12,66 C 12,73 17,77 24,77 C 31,77 36,73 36,66 C 36,59 31,54 29.5,49 L 29,44 Z" 
-                fill="rgba(254, 240, 138, 0.16)" 
-                stroke="rgba(255, 255, 255, 0.85)" 
-                stroke-width="1.2" 
-                class="transition-colors duration-500 cursor-pointer" />
-
-          <!-- 7. Glass Specular 3D Curved Highlight -->
-          <path d="M 14.5,58 C 13.5,62 13.5,68 16,72" stroke="url(#glassReflection)" stroke-width="1.4" stroke-linecap="round" fill="none" />
-          <ellipse cx="32" cy="60" rx="1" ry="2" fill="rgba(255, 255, 255, 0.4)" transform="rotate(-15 32 60)" />
-
-          <!-- 8. Inner Mount Stem -->
-          <path d="M 22.5,44 L 23,50 L 25,50 L 25.5,44" fill="#78350F" opacity="0.6" />
-          <line x1="23" y1="50" x2="21" y2="56" stroke="#94A3B8" stroke-width="0.7" />
-          <line x1="25" y1="50" x2="27" y2="56" stroke="#94A3B8" stroke-width="0.7" />
-
-          <!-- 9. Incandescent Tungsten Filament -->
-          <path id="bulb-filament" 
-                d="M 21,56 Q 22.5,50 23,54 Q 24,47 24,54 Q 24,47 25,54 Q 25.5,50 27,56" 
-                fill="none" 
-                stroke="#FEF08A" 
-                stroke-width="1.4" 
-                stroke-linecap="round" 
-                stroke-linejoin="round"
-                class="transition-all duration-300 cursor-pointer" />
-          <circle id="bulb-filament-core" cx="24" cy="52" r="1.3" fill="#FFFDF0" class="transition-all duration-300" />
-
-          <!-- 10. Seamlessly Connected Interactive Pull Chain / Cord ("Drawer") -->
-          <g id="lamp-pull-cord" class="cursor-pointer transition-transform ease-out" title="Pull cord to toggle light/dark theme">
-            <!-- Continuous Visible Metallic Chain Line -->
-            <line x1="38" y1="38" x2="38" y2="84" stroke="#92400E" stroke-width="1" />
-            <!-- Real Rendered Golden Brass Beads -->
-            <circle cx="38" cy="40" r="1.1" fill="url(#beadGradient)" stroke="#78350F" stroke-width="0.25" />
-            <circle cx="38" cy="44" r="1.1" fill="url(#beadGradient)" stroke="#78350F" stroke-width="0.25" />
-            <circle cx="38" cy="48" r="1.1" fill="url(#beadGradient)" stroke="#78350F" stroke-width="0.25" />
-            <circle cx="38" cy="52" r="1.1" fill="url(#beadGradient)" stroke="#78350F" stroke-width="0.25" />
-            <circle cx="38" cy="56" r="1.1" fill="url(#beadGradient)" stroke="#78350F" stroke-width="0.25" />
-            <circle cx="38" cy="60" r="1.1" fill="url(#beadGradient)" stroke="#78350F" stroke-width="0.25" />
-            <circle cx="38" cy="64" r="1.1" fill="url(#beadGradient)" stroke="#78350F" stroke-width="0.25" />
-            <circle cx="38" cy="68" r="1.1" fill="url(#beadGradient)" stroke="#78350F" stroke-width="0.25" />
-            <circle cx="38" cy="72" r="1.1" fill="url(#beadGradient)" stroke="#78350F" stroke-width="0.25" />
-            <circle cx="38" cy="76" r="1.1" fill="url(#beadGradient)" stroke="#78350F" stroke-width="0.25" />
-            <circle cx="38" cy="80" r="1.1" fill="url(#beadGradient)" stroke="#78350F" stroke-width="0.25" />
-            <circle cx="38" cy="84" r="1.1" fill="url(#beadGradient)" stroke="#78350F" stroke-width="0.25" />
-            <!-- Weighted Brass Teardrop Handle -->
-            <rect x="36.8" y="84" width="2.4" height="1.8" rx="0.5" fill="#CA8A04" stroke="#78350F" stroke-width="0.3" />
-            <path d="M 36.5,85.8 L 39.5,85.8 L 40.2,95 C 40.2,97.5 35.8,97.5 35.8,95 Z" fill="url(#brassGradient)" stroke="#78350F" stroke-width="0.5" />
-            <circle cx="38" cy="96.5" r="1.2" fill="#FDE047" stroke="#78350F" stroke-width="0.3" />
-          </g>
-        </svg>
-      </div>
-    </div>
+    <!-- Interactive Particle Node Network Canvas (Living Creative Backdrop) -->
+    <canvas id="hero-canvas"></canvas>
 
     <!-- Main Container -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-        
+
         <!-- Left Column: Core Brand Narrative -->
         <div class="lg:col-span-7 space-y-6 text-left">
-          
+
           <!-- Brand Badge -->
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 shadow-2xs">
-            <span class="w-2 h-2 rounded-full bg-[#0066FF] animate-pulse"></span>
+          <div
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 shadow-2xs">
             <span class="text-xs font-semibold tracking-wider text-[#0066FF] dark:text-blue-400 uppercase font-mono">
-              Digital Opportunity &amp; Creator Innovation
+              Empowering Creators Through Digital Innovation
             </span>
           </div>
 
           <!-- Main Hero Headline -->
-          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
-            Connecting Traditional Craftsmanship with <span class="bg-gradient-to-r from-[#0066FF] via-blue-600 to-indigo-600 bg-clip-text text-transparent">Modern Digital Horizons.</span>
+          <h1
+            class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+            Bringing Traditional Craftsmanship into the<span
+              class="bg-gradient-to-r from-[#0066FF] via-blue-600 to-indigo-600 bg-clip-text text-transparent"> Digital
+              World.</span>
           </h1>
 
           <!-- Supporting Description -->
           <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl font-normal">
-            We are a dedicated four-member technology company exploring how thoughtful digital experiences can empower traditional creators, artisans, and independent makers to reach wider audiences and connect with people who value authentic craftsmanship.
+            We bring traditional artisans and independent creators closer to the digital world through thoughtful
+            technology and meaningful digital experiences. Helping handmade creations reach wider audiences, share their
+            stories, and receive the appreciation they deserve. Every creation has a story. Let's bring it to the world.
           </p>
 
           <!-- Action CTAs -->
           <div class="flex flex-wrap items-center gap-4 pt-2">
-            <a href="#purpose" class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-sm font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] rounded-xl shadow-sm hover:shadow-md transition-all active:scale-98">
+            <a href="#craft"
+              class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-sm font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] rounded-xl shadow-sm hover:shadow-md transition-all active:scale-98">
               <span>Explore Our Vision</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
             </a>
-            <button class="open-contact-modal inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#121824] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xs transition-all cursor-pointer">
+            <button
+              class="open-contact-modal inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#121824] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xs transition-all cursor-pointer">
               <span>Get in Touch</span>
               <span class="text-xs text-slate-400">➔</span>
             </button>
           </div>
 
-          <!-- Trust & Value Bullets -->
-          <div class="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 border-t border-slate-200/80 dark:border-slate-800">
-            <div class="flex items-center gap-2.5 text-xs text-slate-600 dark:text-slate-400 font-medium">
-              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              <span>Championing human creativity over mass automation</span>
-            </div>
-            <div class="flex items-center gap-2.5 text-xs text-slate-600 dark:text-slate-400 font-medium">
-              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-              <span>Designed for creators, patrons &amp; mindful partners</span>
-            </div>
-          </div>
         </div>
 
-        <!-- Right Column: Visual Craft Showcase Composition -->
+        <!-- Right Column: Vintage Retro CRT Television with 4 Craft Channels -->
         <div class="lg:col-span-5 relative">
           <div class="relative mx-auto max-w-md lg:max-w-none">
-            
-            <!-- Main Hero Card: The Essence of Craftsmanship -->
-            <div class="glass-card rounded-2xl p-6 sm:p-7 shadow-lg relative z-10 border border-slate-200/80 dark:border-white/10 bg-white/90 dark:bg-[#121824]/90 backdrop-blur-md">
-              
-              <!-- Card Header -->
-              <div class="flex items-center justify-between pb-5 border-b border-slate-100 dark:border-slate-800/80">
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 flex items-center justify-center text-amber-600 dark:text-amber-400">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                  </div>
-                  <div>
-                    <h3 class="text-sm font-bold text-slate-900 dark:text-white">The Maker's Craft</h3>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400 font-mono">Tradition &amp; Cultural Heritage</p>
-                  </div>
-                </div>
-                <span class="text-[11px] font-mono px-2.5 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-[#0066FF] dark:text-blue-400 border border-blue-200/60 dark:border-blue-800 font-semibold">
-                  CORE FOCUS
-                </span>
+
+            <!-- Vintage Television Assembly -->
+            <div class="retro-tv-container relative flex flex-col items-center">
+
+              <!-- 1. Realistic Segmented Chrome Telescopic Antenna with UHF Loop -->
+              <div
+                class="retro-tv-antenna w-full max-w-[320px] sm:max-w-[360px] -mb-3 z-10 select-none pointer-events-none">
+                <svg class="retro-antenna-svg w-full h-16 sm:h-20 overflow-visible" viewBox="0 0 360 80" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <!-- Chrome Cylindrical Gradient for Telescopic Rods -->
+                    <linearGradient id="chromeRod" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#475569" />
+                      <stop offset="25%" stop-color="#CBD5E1" />
+                      <stop offset="50%" stop-color="#FFFFFF" />
+                      <stop offset="75%" stop-color="#CBD5E1" />
+                      <stop offset="100%" stop-color="#334155" />
+                    </linearGradient>
+
+                    <!-- Chrome Ball Tip Radial Specular Shine -->
+                    <radialGradient id="chromeBall" cx="35%" cy="35%" r="65%">
+                      <stop offset="0%" stop-color="#FFFFFF" />
+                      <stop offset="35%" stop-color="#E2E8F0" />
+                      <stop offset="70%" stop-color="#94A3B8" />
+                      <stop offset="100%" stop-color="#334155" />
+                    </radialGradient>
+
+                    <!-- Turret Base Die-Cast Gradient -->
+                    <linearGradient id="turretBase" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#CBD5E1" />
+                      <stop offset="40%" stop-color="#94A3B8" />
+                      <stop offset="85%" stop-color="#475569" />
+                      <stop offset="100%" stop-color="#1E293B" />
+                    </linearGradient>
+
+                    <!-- UHF Center Ring Gradient -->
+                    <linearGradient id="uhfRing" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#94A3B8" />
+                      <stop offset="30%" stop-color="#FFFFFF" />
+                      <stop offset="70%" stop-color="#64748B" />
+                      <stop offset="100%" stop-color="#1E293B" />
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Cast Soft Shadow on Cabinet Top -->
+                  <ellipse cx="180" cy="78" rx="36" ry="3.5" fill="rgba(0,0,0,0.35)" filter="blur(2px)" />
+
+                  <!-- Central UHF Circular Ring Antenna -->
+                  <circle cx="180" cy="46" r="22" stroke="url(#uhfRing)" stroke-width="2.2" fill="none" opacity="0.9" />
+                  <circle cx="180" cy="46" r="22" stroke="rgba(255,255,255,0.4)" stroke-width="0.8" fill="none" />
+
+                  <!-- Swivel Turret Base Mount -->
+                  <rect x="156" y="70" width="48" height="9" rx="3" fill="url(#turretBase)" stroke="#334155"
+                    stroke-width="0.75" />
+                  <ellipse cx="180" cy="71" rx="20" ry="2.5" fill="#E2E8F0" />
+
+                  <!-- Left Swivel Ball Pivot -->
+                  <circle cx="168" cy="68" r="6.5" fill="url(#chromeBall)" stroke="#334155" stroke-width="0.6" />
+                  <!-- Right Swivel Ball Pivot -->
+                  <circle cx="192" cy="68" r="6.5" fill="url(#chromeBall)" stroke="#334155" stroke-width="0.6" />
+
+                  <!-- Left Telescopic Antenna Rod (Angled Left -38 deg) -->
+                  <g transform="translate(168, 68) rotate(-38)">
+                    <rect x="-3" y="-22" width="6" height="22" rx="1.2" fill="url(#chromeRod)" stroke="#334155"
+                      stroke-width="0.5" />
+                    <rect x="-3.5" y="-24" width="7" height="2.5" rx="0.8" fill="#0F172A" />
+                    <rect x="-2.2" y="-56" width="4.4" height="32" rx="1" fill="url(#chromeRod)" stroke="#334155"
+                      stroke-width="0.4" />
+                    <rect x="-2.7" y="-58" width="5.4" height="2" rx="0.6" fill="#0F172A" />
+                    <rect x="-1.5" y="-95" width="3" height="37" rx="0.8" fill="url(#chromeRod)" stroke="#475569"
+                      stroke-width="0.3" />
+                    <circle cx="0" cy="-97" r="4.2" fill="url(#chromeBall)" stroke="#334155" stroke-width="0.5" />
+                  </g>
+
+                  <!-- Right Telescopic Antenna Rod (Angled Right +38 deg) -->
+                  <g transform="translate(192, 68) rotate(38)">
+                    <rect x="-3" y="-22" width="6" height="22" rx="1.2" fill="url(#chromeRod)" stroke="#334155"
+                      stroke-width="0.5" />
+                    <rect x="-3.5" y="-24" width="7" height="2.5" rx="0.8" fill="#0F172A" />
+                    <rect x="-2.2" y="-56" width="4.4" height="32" rx="1" fill="url(#chromeRod)" stroke="#334155"
+                      stroke-width="0.4" />
+                    <rect x="-2.7" y="-58" width="5.4" height="2" rx="0.6" fill="#0F172A" />
+                    <rect x="-1.5" y="-95" width="3" height="37" rx="0.8" fill="url(#chromeRod)" stroke="#475569"
+                      stroke-width="0.3" />
+                    <circle cx="0" cy="-97" r="4.2" fill="url(#chromeBall)" stroke="#334155" stroke-width="0.5" />
+                  </g>
+                </svg>
               </div>
 
-              <!-- Craft Disciplines Grid -->
-              <div class="py-5 space-y-3.5">
-                
-                <!-- Discipline 1: Ceramics & Pottery -->
-                <div class="flex items-start gap-3.5 p-3 rounded-xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-700/50 hover:border-amber-300 dark:hover:border-amber-600 transition-all">
-                  <div class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-700 dark:text-amber-300 flex-shrink-0 text-xs font-bold font-mono">
-                    01
+              <!-- 2. TV Main Chassis Cabinet (Matches Light & Dark Theme) -->
+              <div
+                class="retro-tv-cabinet w-full rounded-[24px] p-3 sm:p-4 relative overflow-hidden transition-all duration-300">
+
+                <!-- Sleek Metallic Pinstripe Accent -->
+                <div
+                  class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#0066FF]/50 dark:via-blue-400/60 to-transparent">
+                </div>
+                <div class="absolute inset-0 rounded-[22px] border border-blue-500/10 pointer-events-none"></div>
+
+                <!-- TV Front Face Grid: Screen on Left (9 cols), Controls on Right (3 cols) -->
+                <div class="grid grid-cols-12 gap-2.5 sm:gap-3.5 items-stretch">
+
+                  <!-- CRT Picture Tube Screen (Left / Main) -->
+                  <div class="col-span-9 relative">
+
+                    <!-- CRT Screen Bezel (Recessed Beveled Housing) -->
+                    <div class="retro-crt-bezel relative rounded-xl sm:rounded-2xl p-2 overflow-hidden">
+
+                      <!-- Curved Glass CRT Screen Inner Frame -->
+                      <div
+                        class="retro-crt-screen relative w-full h-56 sm:h-64 rounded-lg sm:rounded-xl bg-[#060A14] overflow-hidden flex flex-col justify-between p-2.5 select-none">
+
+                        <!-- CRT Scanlines Overlay -->
+                        <div class="crt-scanlines absolute inset-0 pointer-events-none z-20"></div>
+
+                        <!-- CRT Curved Glass Vignette & Tube Reflection -->
+                        <div class="crt-reflection absolute inset-0 pointer-events-none z-20"></div>
+                        <div class="crt-vignette absolute inset-0 pointer-events-none z-20"></div>
+
+                        <!-- CRT Static Noise Flash (Active during channel switch) -->
+                        <div id="crt-static"
+                          class="crt-static absolute inset-0 pointer-events-none z-30 opacity-0 transition-opacity duration-150">
+                        </div>
+
+                        <!-- CRT Phosphor Ambient Glow -->
+                        <div
+                          class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,102,255,0.24)_0%,rgba(56,189,248,0.06)_55%,transparent_80%)] pointer-events-none">
+                        </div>
+
+                        <!-- ─── Realistic CRT On-Screen Display (OSD): Top Bar (No Green Dot) ─── -->
+                        <div
+                          class="relative z-10 flex items-center justify-between px-1 select-none pointer-events-none">
+                          <!-- Left: Glowing Green Phosphor Character Generator OSD -->
+                          <div
+                            class="crt-osd-green font-mono text-[11px] sm:text-xs font-bold tracking-widest uppercase">
+                            <span id="tv-channel-label">CH 01 CERAMICS</span>
+                          </div>
+                          <!-- Right: Authentic OSD Recording Status -->
+                          <div
+                            class="crt-osd-amber font-mono text-[10px] sm:text-[11px] font-bold tracking-wider flex items-center gap-1.5">
+                            <span class="text-red-400 drop-shadow-[0_0_6px_rgba(239,68,68,0.8)]">● REC</span>
+                            <span class="text-slate-400/80 font-normal text-[9px]">SP</span>
+                          </div>
+                        </div>
+
+                        <!-- Center Animation: Blue Mascot Craft Action Scene -->
+                        <div class="relative z-10 flex-1 flex items-center justify-center py-1">
+                          <div class="relative flex items-center justify-center">
+                            <!-- Ground Shadow & Energy Aura -->
+                            <div class="absolute -bottom-2 w-32 h-6 bg-blue-500/25 blur-md rounded-full"></div>
+
+                            <!-- The Animated Mascot GIF (Channel 1: Ceramics & Pottery) -->
+                            <img id="tv-screen-gif" src="assests/Blue Husky’s Pottery.gif"
+                              alt="CAPI Craft Mascot - Ceramics & Pottery"
+                              class="h-36 sm:h-44 w-auto object-contain transition-transform duration-300 drop-shadow-[0_8px_16px_rgba(0,102,255,0.5)] transform hover:scale-105" />
+                          </div>
+                        </div>
+
+                        <!-- On-Screen Display (OSD): Bottom Marquee Chyron -->
+                        <div
+                          class="relative z-10 overflow-hidden bg-black/80 border-t border-blue-500/30 -mx-2.5 -mb-2.5 py-1 px-2 flex items-center">
+                          <div class="crt-ticker-wrap w-full overflow-hidden whitespace-nowrap">
+                            <div id="tv-ticker-text"
+                              class="crt-ticker inline-block text-[9.5px] font-mono tracking-wider font-semibold text-sky-300">
+                              <span>✦ THE ART OF THE MAKER ✦ CERAMICS &amp; CLAY ARTISTRY ✦ AUTHENTIC PROVENANCE ✦
+                                TRADITIONAL CREATORS ✦</span>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
                   </div>
-                  <div>
-                    <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100">Ceramics &amp; Clay Artistry</h4>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-snug mt-0.5">
-                      Earth, patience, and generational kiln techniques shaping timeless vessels.
-                    </p>
+
+                  <!-- Retro Control Panel (Right Column) -->
+                  <div class="col-span-3 flex flex-col justify-between items-center py-1 select-none">
+
+                    <!-- Metallic Vintage Badge -->
+                    <div class="text-center">
+                      <span
+                        class="text-[8px] sm:text-[9px] font-black tracking-widest text-[#0066FF] dark:text-blue-400 font-mono uppercase border-b border-blue-500/30 pb-0.5 block">CAPI-VISION</span>
+                      <span
+                        class="text-[7px] text-slate-500 dark:text-slate-400 font-mono tracking-tight block mt-0.5">COLOR
+                        CRT</span>
+                    </div>
+
+                    <!-- Rotary Channel Selector Knob (Clickable to switch channels) -->
+                    <div class="flex flex-col items-center gap-1">
+                      <span
+                        class="text-[8px] font-mono text-[#0066FF] dark:text-blue-400 font-bold tracking-tighter">VHF /
+                        CH</span>
+                      <button id="tv-channel-knob" type="button" aria-label="Switch TV Channel"
+                        title="Click to Switch Channels (CH 1 - CH 4)"
+                        class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-slate-200 via-slate-300 to-slate-400 dark:from-slate-700 dark:via-slate-800 dark:to-slate-900 border-2 border-slate-400 dark:border-slate-700 shadow-[0_3px_6px_rgba(0,0,0,0.25),inset_0_2px_3px_rgba(255,255,255,0.7)] relative flex items-center justify-center cursor-pointer transition-transform duration-300 active:scale-95 group">
+                        <div
+                          class="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-slate-100 via-slate-200 to-slate-300 dark:from-slate-800 dark:via-slate-900 dark:to-black border border-slate-300 dark:border-slate-700 flex items-center justify-center">
+                          <!-- Electric Blue Indicator Notch -->
+                          <div id="tv-knob-notch"
+                            class="w-1 h-3 sm:h-3.5 bg-[#0066FF] dark:bg-blue-400 rounded-full shadow-[0_0_5px_#0066FF] -mt-1.5 sm:-mt-2">
+                          </div>
+                        </div>
+                      </button>
+                    </div>
+
+                    <!-- 4 Channel Direct Preset Pushbuttons (1, 2, 3, 4) -->
+                    <div class="flex flex-col items-center gap-1 w-full px-1">
+                      <span
+                        class="text-[7px] font-mono text-slate-400 dark:text-slate-500 font-semibold tracking-tighter">PRESETS</span>
+                      <div class="grid grid-cols-2 gap-1 w-full max-w-[56px]">
+                        <button type="button" data-tv-channel="1"
+                          class="tv-channel-preset active text-[9px] font-mono font-bold py-1 rounded bg-blue-600 text-white shadow-xs transition-all cursor-pointer">1</button>
+                        <button type="button" data-tv-channel="2"
+                          class="tv-channel-preset text-[9px] font-mono font-bold py-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all cursor-pointer">2</button>
+                        <button type="button" data-tv-channel="3"
+                          class="tv-channel-preset text-[9px] font-mono font-bold py-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all cursor-pointer">3</button>
+                        <button type="button" data-tv-channel="4"
+                          class="tv-channel-preset text-[9px] font-mono font-bold py-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all cursor-pointer">4</button>
+                      </div>
+                    </div>
+
+                    <!-- Power LED & Status -->
+                    <div class="flex items-center gap-1.5 pt-1">
+                      <span class="text-[7.5px] font-mono text-slate-500 dark:text-slate-400 font-bold">PWR</span>
+                      <div id="tv-power-led"
+                        class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-500 border border-emerald-400 shadow-[0_0_8px_#10B981] animate-pulse">
+                      </div>
+                    </div>
+
+                    <!-- Speaker Acoustic Grille Slots -->
+                    <div class="w-full px-1 space-y-1 py-1">
+                      <div
+                        class="h-1 bg-slate-300 dark:bg-black/60 rounded-full border-t border-slate-400/40 dark:border-slate-800">
+                      </div>
+                      <div
+                        class="h-1 bg-slate-300 dark:bg-black/60 rounded-full border-t border-slate-400/40 dark:border-slate-800">
+                      </div>
+                      <div
+                        class="h-1 bg-slate-300 dark:bg-black/60 rounded-full border-t border-slate-400/40 dark:border-slate-800">
+                      </div>
+                    </div>
+
                   </div>
+
                 </div>
 
-                <!-- Discipline 2: Handloom & Heritage Textiles -->
-                <div class="flex items-start gap-3.5 p-3 rounded-xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-700/50 hover:border-blue-300 dark:hover:border-blue-600 transition-all">
-                  <div class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-[#0066FF] dark:text-blue-300 flex-shrink-0 text-xs font-bold font-mono">
-                    02
-                  </div>
-                  <div>
-                    <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100">Loom Weaving &amp; Fiber Arts</h4>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-snug mt-0.5">
-                      Intricate cultural patterns woven strand by strand with natural dyes.
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Discipline 3: Woodcraft & Joinery -->
-                <div class="flex items-start gap-3.5 p-3 rounded-xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-700/50 hover:border-emerald-300 dark:hover:border-emerald-600 transition-all">
-                  <div class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-700 dark:text-emerald-300 flex-shrink-0 text-xs font-bold font-mono">
-                    03
-                  </div>
-                  <div>
-                    <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100">Fine Woodworking &amp; Carving</h4>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-snug mt-0.5">
-                      Organic timber sculpted through hand-chiseled mortise and tenon joinery.
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Discipline 4: Metalsmithing & Cultural Ornamentation -->
-                <div class="flex items-start gap-3.5 p-3 rounded-xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-700/50 hover:border-purple-300 dark:hover:border-purple-600 transition-all">
-                  <div class="w-8 h-8 rounded-lg bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-700 dark:text-purple-300 flex-shrink-0 text-xs font-bold font-mono">
-                    04
-                  </div>
-                  <div>
-                    <h4 class="text-xs font-bold text-slate-800 dark:text-slate-100">Artisanal Metal &amp; Jewelry</h4>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-snug mt-0.5">
-                      Hand-hammered brass, copper, and precious filigree carrying heritage motifs.
-                    </p>
-                  </div>
-                </div>
               </div>
 
-              <!-- Card Footer: Our Bridge Role -->
-              <div class="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs">
-                <span class="text-slate-500 dark:text-slate-400">Our Digital Role:</span>
-                <span class="font-bold text-[#0066FF] dark:text-blue-400 flex items-center gap-1.5">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                  Thoughtful Digital Bridges
-                </span>
-              </div>
-            </div>
-
-            <!-- Floating Subtle Accent Card -->
-            <div class="hidden sm:block absolute -bottom-5 -left-5 bg-white dark:bg-[#1A2436] rounded-xl p-3.5 shadow-md border border-slate-200 dark:border-slate-700 z-20 max-w-xs">
-              <div class="flex items-center gap-2.5">
-                <span class="w-7 h-7 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs font-bold">
-                  ✓
-                </span>
-                <p class="text-[11px] font-semibold text-slate-700 dark:text-slate-200">
-                  Making rare craftsmanship accessible to the modern world.
-                </p>
-              </div>
             </div>
 
           </div>
@@ -447,80 +530,93 @@
        SECTION B: ABOUT OUR COMPANY
        Who we are, why we exist, what we believe, and the impact we create
        ========================================================================== -->
-  <section id="about" class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+  <section id="about"
+    class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200/80 dark:border-white/[0.08] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
+
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
+        <span
+          class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
           ABOUT OUR COMPANY
         </span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
-          A Purpose-Driven Technology Company
+          Where Craft Meets Technology
         </h2>
         <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
-          We are a four-member company founded on a clear conviction: that the modern digital world should celebrate, preserve, and expand opportunities for authentic human craftsmanship.
+          Our company driven by a simple belief: traditional craftsmanship deserves a place
+          in the digital future.
         </p>
       </div>
 
       <!-- Narrative Grid: Who We Are & Why We Exist -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-16">
-        
+
         <div class="lg:col-span-6 space-y-5 text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
           <h3 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
             Why We Chose This Path
           </h3>
           <p>
-            In today's fast-moving digital economy, attention is increasingly dominated by industrial mass-production and disposable goods. Behind this noise, master creators, cultural craftsmen, and independent makers continue to preserve traditions that take years to master and reflect genuine cultural heritage.
+            Behind every handmade creation is a person, a skill, and a story worth preserving. Yet many talented
+            artisans and independent makers struggle to reach wider audiences and find opportunities in today's digital
+            world.
           </p>
           <p>
-            Yet traditional creators face steep obstacles. They often lack the digital reach, technical tools, or global visibility needed to connect directly with people who truly cherish their artistry.
+            We want to change that.
           </p>
           <p>
-            We exist to change that balance. We believe technology should not replace the human touch; it should honor it. By creating thoughtful digital opportunities, we help traditional creators build sustainable livelihoods while making authentic creations accessible worldwide.
+            By combining thoughtful technology with a deep appreciation for human creativity, we aim to help traditional
+            creators share their work, connect with new audiences, and build meaningful opportunities without losing the
+            authenticity of their craft.
           </p>
         </div>
 
         <!-- Visual Core Values Card -->
         <div class="lg:col-span-6">
-          <div class="glass-card rounded-2xl p-7 sm:p-9 border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-[#121824] space-y-6">
+          <div
+            class="glass-card rounded-2xl p-7 sm:p-9 border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-[#121824] space-y-6">
             <h4 class="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF] dark:text-blue-400">
               OUR GUIDING BELIEFS
             </h4>
 
             <div class="space-y-4">
               <div class="flex items-start gap-4">
-                <div class="w-9 h-9 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-[#0066FF] dark:text-blue-400 flex items-center justify-center font-bold text-sm flex-shrink-0">
+                <div
+                  class="w-9 h-9 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-[#0066FF] dark:text-blue-400 flex items-center justify-center font-bold text-sm flex-shrink-0">
                   1
                 </div>
                 <div>
-                  <h5 class="text-sm font-bold text-slate-900 dark:text-white">Creativity Has Lasting Cultural Value</h5>
+                  <h5 class="text-sm font-bold text-slate-900 dark:text-white">Creativity Deserves Recognition
+                  </h5>
                   <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-normal">
-                    Traditional craft is not merely decorative; it is living history and human expression that deserves respect and continuity.
+                    Every traditional craft carries unique skills, cultural value, and stories worth celebrating.
                   </p>
                 </div>
               </div>
 
               <div class="flex items-start gap-4">
-                <div class="w-9 h-9 rounded-xl bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm flex-shrink-0">
+                <div
+                  class="w-9 h-9 rounded-xl bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm flex-shrink-0">
                   2
                 </div>
                 <div>
-                  <h5 class="text-sm font-bold text-slate-900 dark:text-white">Access Should Not Require Compromise</h5>
+                  <h5 class="text-sm font-bold text-slate-900 dark:text-white">Digital Opportunities for Everyone</h5>
                   <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-normal">
-                    Makers should not have to sacrifice their techniques, become marketing experts, or surrender their independence to reach patrons.
+                    Every creator deserves the opportunity to showcase their work and reach people who appreciate it.
                   </p>
                 </div>
               </div>
 
               <div class="flex items-start gap-4">
-                <div class="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm flex-shrink-0">
+                <div
+                  class="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm flex-shrink-0">
                   3
                 </div>
                 <div>
-                  <h5 class="text-sm font-bold text-slate-900 dark:text-white">Technology with a Human Scale</h5>
+                  <h5 class="text-sm font-bold text-slate-900 dark:text-white">Technology Should Empower People</h5>
                   <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-normal">
-                    We build digital experiences designed around empathy, clarity, and genuine human needs rather than cold metrics.
+                    We believe technology should support human creativity, preserve authenticity, and make meaningful
+                    connections possible.
                   </p>
                 </div>
               </div>
@@ -533,34 +629,53 @@
 
       <!-- 3-Column Pillars: The Impact We Aim to Create -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
-        
-        <div class="glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-blue-400/60 transition-all">
-          <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/40 text-[#0066FF] dark:text-blue-400 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+
+        <div
+          class="glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-blue-400/60 transition-all">
+          <div
+            class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/40 text-[#0066FF] dark:text-blue-400 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
           </div>
           <h4 class="text-base font-bold text-slate-900 dark:text-white">Elevating Visibility</h4>
           <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-            Giving traditional creators a distinguished stage where their stories, techniques, and authenticity are presented with dignity.
+            Giving traditional creators a platform to showcase their work, share their stories, and celebrate the
+            uniqueness of their craft.
           </p>
         </div>
 
-        <div class="glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-amber-400/60 transition-all">
-          <div class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        <div
+          class="glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-amber-400/60 transition-all">
+          <div
+            class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
           </div>
           <h4 class="text-base font-bold text-slate-900 dark:text-white">Connecting Communities</h4>
           <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-            Fostering direct bonds between conscious customers who appreciate handmade heritage and the artisans who bring it to life.
+            Bringing artisans closer to people who value handmade creations, authentic stories, and cultural heritage.
           </p>
         </div>
 
-        <div class="glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-emerald-400/60 transition-all">
-          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <div
+          class="glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-emerald-400/60 transition-all">
+          <div
+            class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
           </div>
           <h4 class="text-base font-bold text-slate-900 dark:text-white">Sustainable Opportunity</h4>
           <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-            Helping cultural craftsmanship remain economically viable for future generations through thoughtful digital accessibility.
+            Creating meaningful digital opportunities that help traditional craftsmanship thrive for generations to
+            come.
           </p>
         </div>
 
@@ -570,34 +685,447 @@
   </section>
 
   <!-- ==========================================================================
-       SECTION C: OUR PURPOSE / WHAT DRIVES US
+       SECTION C: CRAFT TRADITIONS & DIGITAL HORIZONS
+       Interactive Display View Options (3D Fanned Deck vs Grid View + Filter Tabs)
+       Interactive 3D Flippable Playing Cards with Draw-to-Center Animation
+       ========================================================================== -->
+  <section id="craft"
+    class="py-20 md:py-28 bg-[#FAFAFA] dark:bg-[#0A0D14] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span
+          class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
+          CRAFT TRADITIONS &amp; HORIZONS
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
+          Discover Traditional Crafts
+        </h2>
+        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
+          Explore different creative disciplines. Select a card, flip it in 3D, and discover the digital opportunities
+          we're creating for each craft.
+        </p>
+      </div>
+
+      <!-- ====================================================================
+           INTERACTIVE DISPLAY VIEW OPTIONS TOOLBAR
+           ==================================================================== -->
+      <div
+        class="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-slate-200/80 dark:border-slate-800">
+
+        <!-- View Mode Switcher -->
+        <div
+          class="inline-flex p-1 bg-slate-200/70 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+          <button id="view-mode-deck" type="button"
+            class="view-mode-btn active px-3.5 py-1.5 text-xs font-bold rounded-lg transition-all bg-white dark:bg-[#121824] text-[#0066FF] dark:text-blue-400 shadow-2xs flex items-center gap-1.5 cursor-pointer">
+            <span>3D Deck View</span>
+          </button>
+          <button id="view-mode-grid" type="button"
+            class="view-mode-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 cursor-pointer">
+            <span>Grid View</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- ====================================================================
+           INTERACTIVE 3D FANNED CARD HAND CONTAINER
+           (Interactive Play, Center-Draw & 3D Flip)
+           ==================================================================== -->
+      <div id="craft-cards-container"
+        class="card-hand-container relative max-w-5xl mx-auto h-[480px] flex items-center justify-center pt-4 pb-8 mb-6">
+
+        <!-- Card 1: Ceramics & Clay Artistry -->
+        <div class="card-wrapper card-1" data-card="1" data-category="ceramics">
+          <div
+            class="use-case-card w-full h-full relative transform-style-3d transition-transform duration-500 cursor-pointer shadow-xl rounded-2xl group">
+
+            <!-- Front Face -->
+            <div
+              class="card-face card-front p-6 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-md hover:border-blue-400 transition-all backface-hidden relative overflow-hidden">
+              <div class="flex flex-col items-start gap-4">
+                <div class="flex items-center justify-between w-full">
+                  <div
+                    class="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 flex items-center justify-center text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-all shadow-2xs">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                  </div>
+                  <span
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                    <span>Clay &amp; Fire</span>
+                  </span>
+                </div>
+                <div>
+                  <div
+                    class="text-[10px] font-mono text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider mb-1">
+                    Tradition 01 | Ceramics</div>
+                  <h3
+                    class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#0066FF] dark:group-hover:text-blue-400 transition-colors leading-tight">
+                    Ceramic &amp; Pottery Arts</h3>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                    From hand-thrown clay and traditional kilns to unique mineral glazes, every creation carries
+                    generations of skill, patience, and artistry.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-[#0066FF] dark:text-blue-400">
+                <span>Click to Draw &amp; Flip</span>
+                <span class="text-sm">➔</span>
+              </div>
+            </div>
+
+            <!-- Back Face (Revealed on Click/Flip) -->
+            <div
+              class="card-face card-back p-5 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-xl text-slate-900 dark:text-slate-200 backface-hidden rotate-y-180 absolute inset-0 overflow-hidden">
+              <div class="space-y-3.5">
+                <div class="flex items-center justify-between">
+                  <span
+                    class="text-[10px] font-mono font-bold tracking-wider text-amber-600 dark:text-amber-400 uppercase">Tradition
+                    01 | Digital Horizon</span>
+                  <button
+                    class="put-back-btn w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                    title="Put Back Card">
+                    ✕
+                  </button>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900 dark:text-white leading-snug">A New Horizon for Ceramics
+                  </h3>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                    Connecting independent ceramic artists with mindful collectors through
+                    digital storytelling, craft documentation, and authentic product histories
+                  </p>
+                </div>
+                <div
+                  class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+                  <div class="flex items-center gap-2">
+                    <span class="text-amber-500 font-bold">✓</span>
+                    <span>Preserving craft techniques and origins</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-amber-500 font-bold">✓</span>
+                    <span>Connecting makers with mindful buyers</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-3 border-t border-slate-100 dark:border-slate-800">
+                <button
+                  class="open-contact-modal w-full py-2 px-3 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] rounded-lg transition-colors cursor-pointer">
+                  Be Part of This Initiative ➔
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Card 2: Heritage Textiles & Loom Weaving -->
+        <div class="card-wrapper card-2" data-card="2" data-category="textiles">
+          <div
+            class="use-case-card w-full h-full relative transform-style-3d transition-transform duration-500 cursor-pointer shadow-xl rounded-2xl group">
+
+            <!-- Front Face -->
+            <div
+              class="card-face card-front p-6 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-md hover:border-blue-400 transition-all backface-hidden relative overflow-hidden">
+              <div class="flex flex-col items-start gap-4">
+                <div class="flex items-center justify-between w-full">
+                  <div
+                    class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 flex items-center justify-center text-[#0066FF] dark:text-blue-400 group-hover:scale-110 transition-all shadow-2xs">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                  </div>
+                  <span
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                    <span>Fiber &amp; Loom</span>
+                  </span>
+                </div>
+                <div>
+                  <div
+                    class="text-[10px] font-mono text-blue-600 dark:text-blue-400 font-bold uppercase tracking-wider mb-1">
+                    Tradition 02 | Textiles</div>
+                  <h3
+                    class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#0066FF] dark:group-hover:text-blue-400 transition-colors leading-tight">
+                    Loom Weaving &amp; Fiber Arts</h3>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                    Hand-spun threads, natural dyes, and intricate cultural patterns woven by skilled hands on
+                    traditional looms.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-[#0066FF] dark:text-blue-400">
+                <span>Click to Draw &amp; Flip</span>
+                <span class="text-sm">➔</span>
+              </div>
+            </div>
+
+            <!-- Back Face -->
+            <div
+              class="card-face card-back p-5 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-xl text-slate-900 dark:text-slate-200 backface-hidden rotate-y-180 absolute inset-0 overflow-hidden">
+              <div class="space-y-3.5">
+                <div class="flex items-center justify-between">
+                  <span
+                    class="text-[10px] font-mono font-bold tracking-wider text-blue-600 dark:text-blue-400 uppercase">Tradition
+                    02 | Digital Horizon</span>
+                  <button
+                    class="put-back-btn w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                    title="Put Back Card">
+                    ✕
+                  </button>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900 dark:text-white leading-snug">A New Horizon for Textiles
+                  </h3>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                    Connecting independent weavers with global audiences through fair digital marketplaces and authentic
+                    craft storytelling.
+                  </p>
+                </div>
+                <div
+                  class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+                  <div class="flex items-center gap-2">
+                    <span class="text-blue-500 font-bold">✓</span>
+                    <span>Verifying cultural patterns and fair pricing</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-blue-500 font-bold">✓</span>
+                    <span> Bringing rural weavers to global markets</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-3 border-t border-slate-100 dark:border-slate-800">
+                <button
+                  class="open-contact-modal w-full py-2 px-3 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] rounded-lg transition-colors cursor-pointer">
+                  Be Part of This Initiative ➔
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Card 3: Fine Woodcraft & Joinery -->
+        <div class="card-wrapper card-3" data-card="3" data-category="woodcraft">
+          <div
+            class="use-case-card w-full h-full relative transform-style-3d transition-transform duration-500 cursor-pointer shadow-xl rounded-2xl group">
+
+            <!-- Front Face -->
+            <div
+              class="card-face card-front p-6 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-md hover:border-blue-400 transition-all backface-hidden relative overflow-hidden">
+              <div class="flex flex-col items-start gap-4">
+                <div class="flex items-center justify-between w-full">
+                  <div
+                    class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-all shadow-2xs">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                    </svg>
+                  </div>
+                  <span
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                    <span>Timber &amp; Chisel</span>
+                  </span>
+                </div>
+                <div>
+                  <div
+                    class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider mb-1">
+                    Tradition 03 | Woodcraft</div>
+                  <h3
+                    class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#0066FF] dark:group-hover:text-blue-400 transition-colors leading-tight">
+                    Fine Woodcraft &amp; Joinery</h3>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                    Sustainably sourced timber transformed through skilled carving, traditional joinery, and timeless
+                    craftsmanship.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-[#0066FF] dark:text-blue-400">
+                <span>Click to Draw &amp; Flip</span>
+                <span class="text-sm">➔</span>
+              </div>
+            </div>
+
+            <!-- Back Face -->
+            <div
+              class="card-face card-back p-5 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-xl text-slate-900 dark:text-slate-200 backface-hidden rotate-y-180 absolute inset-0 overflow-hidden">
+              <div class="space-y-3.5">
+                <div class="flex items-center justify-between">
+                  <span
+                    class="text-[10px] font-mono font-bold tracking-wider text-emerald-600 dark:text-emerald-400 uppercase">Tradition
+                    03 | Digital Horizon</span>
+                  <button
+                    class="put-back-btn w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                    title="Put Back Card">
+                    ✕
+                  </button>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900 dark:text-white leading-snug">A New Horizon for
+                    Woodcraft</h3>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                    Connecting skilled woodworkers with architects and clients seeking unique, handcrafted furniture and
+                    designs.
+                  </p>
+                </div>
+                <div
+                  class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+                  <div class="flex items-center gap-2">
+                    <span class="text-emerald-500 font-bold">✓</span>
+                    <span>Highlighting ethical timber origins</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-emerald-500 font-bold">✓</span>
+                    <span>Connecting makers with custom clients</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-3 border-t border-slate-100 dark:border-slate-800">
+                <button
+                  class="open-contact-modal w-full py-2 px-3 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] rounded-lg transition-colors cursor-pointer">
+                  Be Part of This Initiative ➔
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Card 4: Artisanal Metal & Ornamentation -->
+        <div class="card-wrapper card-4" data-card="4" data-category="metal">
+          <div
+            class="use-case-card w-full h-full relative transform-style-3d transition-transform duration-500 cursor-pointer shadow-xl rounded-2xl group">
+
+            <!-- Front Face -->
+            <div
+              class="card-face card-front p-6 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-md hover:border-blue-400 transition-all backface-hidden relative overflow-hidden">
+              <div class="flex flex-col items-start gap-4">
+                <div class="flex items-center justify-between w-full">
+                  <div
+                    class="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800 flex items-center justify-center text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-all shadow-2xs">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M11.42 15.17L17.25 21A2.67 2.67 0 0021 17.25l-5.87-5.83m-3.71 3.75l-7.39-7.4a2.67 2.67 0 010-3.77l1.88-1.88a2.67 2.67 0 013.78 0l7.39 7.4m-5.66 5.65l5.66-5.65" />
+                    </svg>
+                  </div>
+                  <span
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                    <span>Anvil &amp; Filigree</span>
+                  </span>
+                </div>
+                <div>
+                  <div
+                    class="text-[10px] font-mono text-purple-600 dark:text-purple-400 font-bold uppercase tracking-wider mb-1">
+                    Tradition 04 |Metalcraft</div>
+                  <h3
+                    class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#0066FF] dark:group-hover:text-blue-400 transition-colors leading-tight">
+                    Artisanal Metal &amp; Jewelry</h3>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                    Hand-hammered brass, sculpted copper, and delicate filigree transformed into meaningful works of
+                    cultural artistry.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-[#0066FF] dark:text-blue-400">
+                <span>Click to Draw &amp; Flip</span>
+                <span class="text-sm">➔</span>
+              </div>
+            </div>
+
+            <!-- Back Face -->
+            <div
+              class="card-face card-back p-5 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-xl text-slate-900 dark:text-slate-200 backface-hidden rotate-y-180 absolute inset-0 overflow-hidden">
+              <div class="space-y-3.5">
+                <div class="flex items-center justify-between">
+                  <span
+                    class="text-[10px] font-mono font-bold tracking-wider text-purple-600 dark:text-purple-400 uppercase">Tradition
+                    04 | Digital Horizon</span>
+                  <button
+                    class="put-back-btn w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                    title="Put Back Card">
+                    ✕
+                  </button>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900 dark:text-white leading-snug">A New Horizon for
+                    Metalcraft</h3>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                    Preserving the authenticity of traditional metalwork while connecting skilled artisans with
+                    collectors worldwide.
+                  </p>
+                </div>
+                <div
+                  class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+                  <div class="flex items-center gap-2">
+                    <span class="text-purple-500 font-bold">✓</span>
+                    <span>Verifying artisan signatures and metal origins</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-purple-500 font-bold">✓</span>
+                    <span>Connecting makers with global collectors</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-3 border-t border-slate-100 dark:border-slate-800">
+                <button
+                  class="open-contact-modal w-full py-2 px-3 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] rounded-lg transition-colors cursor-pointer">
+                  Be Part of This Initiative ➔
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION D: OUR PURPOSE / WHAT DRIVES US
        Deep dive into our ambitions, supporting traditional creativity
        ========================================================================== -->
-  <section id="purpose" class="py-20 md:py-28 bg-[#FAFAFA] dark:bg-[#0A0D14] relative">
+  <section id="purpose"
+    class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200/80 dark:border-white/[0.08] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
+
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
+        <span
+          class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
           WHAT DRIVES OUR WORK
         </span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
           Our Driving Purpose
         </h2>
         <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
-          We are guided by the ambition to make meaningful creations accessible, sustainable, and celebrated in an increasingly digital world.
+          We believe traditional creativity deserves to be seen, valued, and sustained in a world shaped by digital
+          innovation.
         </p>
       </div>
 
       <!-- 4 Strategic Purpose Pillars Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
+
         <!-- Purpose Card 1 -->
-        <div class="glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-blue-400 transition-all flex flex-col justify-between">
+        <div
+          class="glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-blue-400 transition-all flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-5">
-              <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/30 text-[#0066FF] dark:text-blue-400 flex items-center justify-center">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              <div
+                class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/30 text-[#0066FF] dark:text-blue-400 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
               </div>
               <span class="text-xs font-mono font-bold text-slate-400 dark:text-slate-500">PILLAR 01</span>
             </div>
@@ -605,41 +1133,55 @@
               Supporting Traditional Creativity
             </h3>
             <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-              Traditional craft requires immense patience, tactile mastery, and intimate knowledge of natural materials. We believe this form of human creativity is irreplaceable. Our purpose is to stand behind creators, ensuring their work is valued not as antiquities, but as vital living art.
+              Traditional craftsmanship reflects generations of skill, patience, and creativity. We aim to support the
+              people behind these crafts and help their work receive the recognition it deserves.
             </p>
           </div>
-          <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-[#0066FF] dark:text-blue-400 flex items-center gap-1.5">
+          <div
+            class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-[#0066FF] dark:text-blue-400 flex items-center gap-1.5">
             <span>Preserving Generational Heritage</span> ➔
           </div>
         </div>
 
         <!-- Purpose Card 2 -->
-        <div class="glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-amber-400 transition-all flex flex-col justify-between">
+        <div
+          class="glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-amber-400 transition-all flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-5">
-              <div class="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 flex items-center justify-center">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+              <div
+                class="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
               </div>
               <span class="text-xs font-mono font-bold text-slate-400 dark:text-slate-500">PILLAR 02</span>
             </div>
             <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
-              Giving Meaningful Creations Greater Visibility
+              Giving Creations Greater Visibility
             </h3>
             <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-              Most independent creators remain hidden behind physical distance or fragmented local markets. We focus on elevating visibility—creating digital discovery spaces that tell the real stories behind every piece, highlighting authenticity and human origin.
+              Many talented creators struggle to reach audiences beyond their local communities. We want to bring their
+              work into the digital spotlight, sharing the stories and authenticity behind every creation.
             </p>
           </div>
-          <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
-            <span>Expanding Beyond Geographic Borders</span> ➔
+          <div
+            class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
+            <span>Reaching Beyond Borders</span> ➔
           </div>
         </div>
 
         <!-- Purpose Card 3 -->
-        <div class="glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-emerald-400 transition-all flex flex-col justify-between">
+        <div
+          class="glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-emerald-400 transition-all flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-5">
-              <div class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+              <div
+                class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
               </div>
               <span class="text-xs font-mono font-bold text-slate-400 dark:text-slate-500">PILLAR 03</span>
             </div>
@@ -647,20 +1189,27 @@
               Connecting Creators with Wider Audiences
             </h3>
             <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-              There is a growing global community of people who look for depth, durability, and cultural meaning in the items they bring into their lives. We aim to build the bridges that bring conscious patrons directly to genuine independent makers.
+              We believe meaningful creations deserve to reach people who appreciate their uniqueness. Our goal is to
+              bring independent makers closer to conscious customers who value authentic craftsmanship.
             </p>
           </div>
-          <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
-            <span>Fostering Meaningful Patronage</span> ➔
+          <div
+            class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+            <span>Building Meaningful Connections</span> ➔
           </div>
         </div>
 
         <!-- Purpose Card 4 -->
-        <div class="glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-purple-400 transition-all flex flex-col justify-between">
+        <div
+          class="glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-purple-400 transition-all flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-5">
-              <div class="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>
+              <div
+                class="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                </svg>
               </div>
               <span class="text-xs font-mono font-bold text-slate-400 dark:text-slate-500">PILLAR 04</span>
             </div>
@@ -668,20 +1217,24 @@
               Bringing Heritage &amp; Modern Innovation Together
             </h3>
             <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-              We reject the premise that heritage and modern innovation are in conflict. By carefully applying modern technology, we can enhance how stories are shared, how provenance is understood, and how cultural artistry finds a sustainable future.
+              Tradition and technology can grow together. By embracing thoughtful digital solutions, we aim to preserve
+              cultural stories, highlight authenticity, and create new opportunities for traditional creators.
             </p>
           </div>
-          <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-purple-600 dark:text-purple-400 flex items-center gap-1.5">
-            <span>Harmonizing Past &amp; Present</span> ➔
+          <div
+            class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-purple-600 dark:text-purple-400 flex items-center gap-1.5">
+            <span>Bridging Past & Present</span> ➔
           </div>
         </div>
 
       </div>
 
       <!-- Selective Disclosure Callout -->
-      <div class="mt-12 p-6 rounded-2xl bg-slate-100/70 dark:bg-[#121824] border border-slate-200 dark:border-slate-800 text-center max-w-2xl mx-auto">
-        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">
-          "We are exploring ways to connect traditional creativity with modern digital opportunities, helping creators reach wider audiences and making meaningful creations more accessible."
+      <div
+        class="mt-12 p-6 rounded-2xl bg-slate-100/70 dark:bg-[#121824] border border-slate-200 dark:border-slate-800 text-center max-w-2xl mx-auto">
+        <p class="text-xs text-slate-600 dark:text-slate-400 font-medium italic">
+          "We bring traditional creativity closer to the digital world, helping creators share their stories, reach
+          wider audiences, and build meaningful opportunities for the future."
         </p>
       </div>
 
@@ -689,78 +1242,335 @@
   </section>
 
   <!-- ==========================================================================
-       SECTION D: OUR VISION AND MISSION
-       Clear, authentic, separate Vision and Mission sections
+       SECTION E: VALUE & COMMITMENT TELEMETRY
+       Interactive Rolling Stat Counters Matrix
        ========================================================================== -->
-  <section id="vision-mission" class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+  <section id="metrics"
+    class="py-16 bg-[#FAFAFA] dark:bg-[#0A0D14] border-t border-slate-200/80 dark:border-white/[0.08] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
+
+      <div
+        class="telemetry-cockpit max-w-5xl mx-auto rounded-3xl bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 shadow-sm p-6 sm:p-8">
+        <div
+          class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center divide-y lg:divide-y-0 lg:divide-x divide-slate-100 dark:divide-slate-800">
+
+          <div class="pt-4 lg:pt-0">
+            <div class="text-3xl sm:text-4xl font-extrabold text-[#0066FF] dark:text-blue-400 font-mono">
+              <span class="counter-val" data-target="4" data-decimals="0">0</span>
+            </div>
+            <p class="text-xs font-bold text-slate-800 dark:text-slate-200 mt-1">Founding Members</p>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400">Multidisciplinary Team</p>
+          </div>
+
+          <div class="pt-4 lg:pt-0">
+            <div class="text-3xl sm:text-4xl font-extrabold text-emerald-600 dark:text-emerald-400 font-mono">
+              <span class="counter-val" data-target="100" data-suffix="%" data-decimals="0">0%</span>
+            </div>
+            <p class="text-xs font-bold text-slate-800 dark:text-slate-200 mt-1">Creator Focused</p>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400">Human Craft Centered</p>
+          </div>
+
+          <div class="pt-4 lg:pt-0">
+            <div class="text-3xl sm:text-4xl font-extrabold text-amber-600 dark:text-amber-400 font-mono">
+              <span class="counter-val" data-target="0" data-prefix="< " data-decimals="0">&lt; 0</span>
+            </div>
+            <p class="text-xs font-bold text-slate-800 dark:text-slate-200 mt-1">Technical Barriers</p>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400">Making Creativity Easier</p>
+          </div>
+
+          <div class="pt-4 lg:pt-0">
+            <div class="text-3xl sm:text-4xl font-extrabold text-purple-600 dark:text-purple-400 font-mono">
+              <span class="counter-val" data-target="24" data-suffix="/7" data-decimals="0">24/7</span>
+            </div>
+            <p class="text-xs font-bold text-slate-800 dark:text-slate-200 mt-1">Global Discovery</p>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400">Connecting Creators Worldwide</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION F: WHY CHOOSE US — THE INTERACTIVE PRINCIPLE RAIL
+       Laser Beam Guide + Mouse Spotlight Glow + 4 Expanding Fluid Stages
+       ========================================================================== -->
+  <section id="why-us"
+    class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span
+          class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
+          OUR CORE PRINCIPLES
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
+          What Guides CAPI
+        </h2>
+        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
+          Our principles shape how we build, innovate, and collaborate with creators. Explore the values behind every
+          decision we make and every experience we create.
+        </p>
+      </div>
+
+      <!-- The Interactive Reliability Rail Console (Full-width, Seamless Fit) -->
+      <div
+        class="reliability-console relative max-w-7xl mx-auto rounded-3xl bg-slate-50/70 dark:bg-[#121824]/90 border border-slate-200/90 dark:border-white/[0.08] shadow-xs overflow-hidden p-3.5 sm:p-4 lg:p-4.5">
+
+        <!-- Animated Top Laser Guide Beam -->
+        <div
+          class="reliability-laser-track absolute top-0 left-0 right-0 h-[2px] bg-slate-200/60 dark:bg-slate-800/80 overflow-hidden">
+          <div
+            class="reliability-laser-beam h-full bg-gradient-to-r from-transparent via-[#0066FF] to-transparent w-36 transition-all duration-300">
+          </div>
+        </div>
+
+        <!-- Ambient Cursor Spotlight Overlay -->
+        <div
+          class="reliability-spotlight-glow pointer-events-none absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+        </div>
+
+        <!-- Fluid Horizontal Multi-Step Rail -->
+        <div class="reliability-rail flex flex-col lg:flex-row items-stretch gap-3 lg:gap-3.5 relative z-10">
+
+          <!-- Stage 01: Purpose-Led Innovation -->
+          <div
+            class="reliability-stage group rounded-2xl p-5 sm:p-6 bg-white dark:bg-[#162030] border border-slate-200/80 dark:border-white/[0.06] shadow-2xs cursor-pointer flex flex-col justify-between"
+            data-stage="1">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span
+                  class="stage-icon-box w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/40 border border-blue-200/80 dark:border-blue-800/60 flex items-center justify-center text-[#0066FF] dark:text-blue-400 group-hover:scale-105 transition-transform">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </span>
+                <span
+                  class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border border-blue-200/60 dark:border-blue-800 font-bold">
+                  PILLAR 01
+                </span>
+              </div>
+              <div>
+                <h4
+                  class="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#0066FF] dark:group-hover:text-blue-400 transition-colors">
+                  Purpose-Driven Innovation
+                </h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+                  We use technology with intention, creating digital experiences that support real creators and
+                  meaningful craftsmanship.
+                </p>
+              </div>
+            </div>
+            <div
+              class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-blue-600 dark:text-blue-400 font-semibold">
+              <span>Human Value First</span>
+              <span>➔</span>
+            </div>
+          </div>
+
+          <!-- Stage 02: Respect for Living Craft -->
+          <div
+            class="reliability-stage group rounded-2xl p-5 sm:p-6 bg-white dark:bg-[#162030] border border-slate-200/80 dark:border-white/[0.06] shadow-2xs cursor-pointer flex flex-col justify-between"
+            data-stage="2">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span
+                  class="stage-icon-box w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-900/40 border border-amber-200/80 dark:border-amber-800/60 flex items-center justify-center text-amber-600 dark:text-amber-400 group-hover:scale-105 transition-transform">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </span>
+                <span
+                  class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 border border-amber-200/60 dark:border-amber-800 font-bold">
+                  PILLAR 02
+                </span>
+              </div>
+              <div>
+                <h4
+                  class="text-base font-bold text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  Respect for Traditional Craft
+                </h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+                  We value generations of knowledge, unique techniques, and the human stories behind every handmade
+                  creation.
+                </p>
+              </div>
+            </div>
+            <div
+              class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-amber-600 dark:text-amber-400 font-semibold">
+              <span>Preserving Authenticity</span>
+              <span>➔</span>
+            </div>
+          </div>
+
+          <!-- Stage 03: Accessible Digital Bridges -->
+          <div
+            class="reliability-stage group rounded-2xl p-5 sm:p-6 bg-white dark:bg-[#162030] border border-slate-200/80 dark:border-white/[0.06] shadow-2xs cursor-pointer flex flex-col justify-between"
+            data-stage="3">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span
+                  class="stage-icon-box w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-900/40 border border-emerald-200/80 dark:border-emerald-800/60 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:scale-105 transition-transform">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+                <span
+                  class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800 font-bold">
+                  PILLAR 03
+                </span>
+              </div>
+              <div>
+                <h4
+                  class="text-base font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  Accessible Digital Experiences
+                </h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+                  We make technology simple and intuitive, allowing creators to showcase their work without needing
+                  technical expertise.
+                </p>
+              </div>
+            </div>
+            <div
+              class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
+              <span>Technology Made Simple</span>
+              <span>➔</span>
+            </div>
+          </div>
+
+          <!-- Stage 04: Sustainable Creator Growth -->
+          <div
+            class="reliability-stage group rounded-2xl p-5 sm:p-6 bg-white dark:bg-[#162030] border border-slate-200/80 dark:border-white/[0.06] shadow-2xs cursor-pointer flex flex-col justify-between"
+            data-stage="4">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span
+                  class="stage-icon-box w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-900/40 border border-purple-200/80 dark:border-purple-800/60 flex items-center justify-center text-purple-600 dark:text-purple-400 group-hover:scale-105 transition-transform">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+                <span
+                  class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 border border-purple-200/60 dark:border-purple-800 font-bold">
+                  PILLAR 04
+                </span>
+              </div>
+              <div>
+                <h4
+                  class="text-base font-bold text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                  Sustainable Growth
+                </h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+                  We aim to create lasting opportunities for artisans through meaningful connections, wider reach, and
+                  direct customer relationships.
+                </p>
+              </div>
+            </div>
+            <div
+              class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-purple-600 dark:text-purple-400 font-semibold">
+              <span>Building a Lasting Future</span>
+              <span>➔</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION G: VISION & MISSION
+       Side-by-side balanced cards with compass & star emblems
+       ========================================================================== -->
+  <section id="vision-mission"
+    class="py-20 md:py-28 bg-[#FAFAFA] dark:bg-[#0A0D14] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
+        <span
+          class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
           GUIDING PRINCIPLES
         </span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
           Our Vision &amp; Mission
         </h2>
         <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
-          The principles that orient our decisions, anchor our ambitions, and guide how we build.
+          The direction we aspire to follow and the purpose behind everything we build.
         </p>
       </div>
 
       <!-- Side-by-Side Vision & Mission Cards -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-        
+
         <!-- Card 1: Our Vision -->
-        <div class="glass-card rounded-2xl p-8 sm:p-10 border border-slate-200/90 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50/50 to-blue-50/30 dark:from-[#121824] dark:via-[#141C2B] dark:to-[#0E131D] relative overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
+        <div
+          class="glass-card rounded-2xl p-8 sm:p-10 border border-slate-200/90 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50/50 to-blue-50/30 dark:from-[#121824] dark:via-[#141C2B] dark:to-[#0E131D] relative overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
           <div class="relative z-10 space-y-5">
-            <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-lg bg-blue-50 dark:bg-blue-900/40 border border-blue-200/70 dark:border-blue-800 text-[#0066FF] dark:text-blue-400 text-xs font-mono font-bold">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <div
+              class="inline-flex items-center gap-2.5 px-3 py-1 rounded-lg bg-blue-50 dark:bg-blue-900/40 border border-blue-200/70 dark:border-blue-800 text-[#0066FF] dark:text-blue-400 text-xs font-mono font-bold">
               WHERE WE ARE HEADING
             </div>
-            
+
             <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               Our Vision
             </h3>
-            
-            <blockquote class="text-lg sm:text-xl font-medium text-slate-800 dark:text-slate-200 italic border-l-4 border-[#0066FF] pl-4 py-1 leading-snug">
-              "To create an enduring digital bridge between traditional creativity and modern global audiences—where every craftsman's heritage is celebrated and meaningful creations find the appreciation they deserve."
+
+            <blockquote
+              class="text-lg sm:text-xl font-medium text-slate-800 dark:text-slate-200 italic border-l-4 border-[#0066FF] pl-4 py-1 leading-snug">
+              "A world where traditional craftsmanship is celebrated, independent creators are recognized, and
+              meaningful creations reach people who truly value them."
             </blockquote>
 
             <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-normal pt-2">
-              We envision a future where independent makers are not marginalized by algorithmic mass consumption, but recognized as the heartbeat of conscious material culture. We want to see a world where traditional craftsmanship thrives economically and culturally for generations to come.
+              We envision a future where traditional creativity thrives alongside digital innovation, allowing cultural
+              heritage and skilled craftsmanship to flourish for generations to come.
             </p>
           </div>
 
-          <div class="pt-6 mt-6 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono">
+          <div
+            class="pt-6 mt-6 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono">
             <span>Long-Term Horizon</span>
             <span class="text-[#0066FF] dark:text-blue-400 font-semibold">CAPI Technologies</span>
           </div>
         </div>
 
         <!-- Card 2: Our Mission -->
-        <div class="glass-card rounded-2xl p-8 sm:p-10 border border-slate-200/90 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50/50 to-amber-50/30 dark:from-[#121824] dark:via-[#141C2B] dark:to-[#0E131D] relative overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
+        <div
+          class="glass-card rounded-2xl p-8 sm:p-10 border border-slate-200/90 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50/50 to-amber-50/30 dark:from-[#121824] dark:via-[#141C2B] dark:to-[#0E131D] relative overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
           <div class="relative z-10 space-y-5">
-            <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-lg bg-amber-50 dark:bg-amber-900/40 border border-amber-200/70 dark:border-amber-800 text-amber-600 dark:text-amber-400 text-xs font-mono font-bold">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              HOW WE DELIVER VALUE
+            <div
+              class="inline-flex items-center gap-2.5 px-3 py-1 rounded-lg bg-amber-50 dark:bg-amber-900/40 border border-amber-200/70 dark:border-amber-800 text-amber-600 dark:text-amber-400 text-xs font-mono font-bold">
+              HOW WE CREATE IMPACT
             </div>
-            
+
             <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               Our Mission
             </h3>
-            
-            <blockquote class="text-lg sm:text-xl font-medium text-slate-800 dark:text-slate-200 italic border-l-4 border-amber-500 pl-4 py-1 leading-snug">
-              "To design thoughtful, human-centered digital experiences and technology solutions that empower traditional creators, dismantle barriers to digital reach, and make culturally meaningful craftsmanship accessible to everyone."
+
+            <blockquote
+              class="text-lg sm:text-xl font-medium text-slate-800 dark:text-slate-200 italic border-l-4 border-amber-500 pl-4 py-1 leading-snug">
+              "To empower traditional creators through thoughtful digital experiences that showcase their work, connect
+              them with wider audiences, and create meaningful opportunities."
             </blockquote>
 
             <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-normal pt-2">
-              Every day, we channel our engineering and design capabilities into understanding the tangible realities of independent creators. We design intuitive digital pathways that respect their time, protect their creative integrity, and introduce their mastery to people who care.
+              We combine technology, creativity, and human-centered design to make digital opportunities more accessible
+              while preserving the authenticity and identity of every creator.
             </p>
           </div>
 
-          <div class="pt-6 mt-6 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono">
-            <span>Daily Commitment</span>
+          <div
+            class="pt-6 mt-6 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono">
+            <span>Everyday Commitment</span>
             <span class="text-amber-600 dark:text-amber-400 font-semibold">CAPI Technologies</span>
           </div>
         </div>
@@ -771,265 +1581,202 @@
   </section>
 
   <!-- ==========================================================================
-       SECTION E: WHY CHOOSE US?
-       Pillars explaining why creators, collaborators & partners should connect
-       ========================================================================== -->
-  <section id="why-us" class="py-20 md:py-28 bg-[#FAFAFA] dark:bg-[#0A0D14] relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
-          WHY WORK WITH US
-        </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
-          A Purpose-Led Approach to Technology
-        </h2>
-        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
-          We are not a generalist development shop or a marketing agency. Here is what defines our focus, our philosophy, and why people choose to collaborate with us.
-        </p>
-      </div>
-
-      <!-- 6 Balanced Strategic Pillars Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- Pillar 1 -->
-        <div class="glass-card rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800 hover:border-blue-400/80 transition-all space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/40 text-[#0066FF] dark:text-blue-400 flex items-center justify-center font-bold">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h3 class="text-base font-bold text-slate-900 dark:text-white">
-            Purpose-Driven Innovation
-          </h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
-            We build technology with explicit purpose. Every decision is measured by whether it genuinely creates value for creators and communities, rather than pursuing tech trends for their own sake.
-          </p>
-        </div>
-
-        <!-- Pillar 2 -->
-        <div class="glass-card rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800 hover:border-amber-400/80 transition-all space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-          </div>
-          <h3 class="text-base font-bold text-slate-900 dark:text-white">
-            Deep Respect for Real Craft
-          </h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
-            We take the time to understand the patience, materials, and nuances of physical making. We ensure our digital initiatives honor the maker's voice and the authenticity of their tradition.
-          </p>
-        </div>
-
-        <!-- Pillar 3 -->
-        <div class="glass-card rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800 hover:border-emerald-400/80 transition-all space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h3 class="text-base font-bold text-slate-900 dark:text-white">
-            People-Centered Thinking
-          </h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
-            Technology should adapt to human beings, not the other way around. We design intuitive, accessible experiences that reduce friction for makers who may have minimal technical background.
-          </p>
-        </div>
-
-        <!-- Pillar 4 -->
-        <div class="glass-card rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800 hover:border-purple-400/80 transition-all space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
-          </div>
-          <h3 class="text-base font-bold text-slate-900 dark:text-white">
-            Bridging Heritage &amp; Technology
-          </h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
-            Our company brings together contemporary engineering discipline with genuine reverence for cultural heritage, allowing us to build solutions that feel both modern and timeless.
-          </p>
-        </div>
-
-        <!-- Pillar 5 -->
-        <div class="glass-card rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800 hover:border-blue-400/80 transition-all space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/40 text-[#0066FF] dark:text-blue-400 flex items-center justify-center font-bold">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-          </div>
-          <h3 class="text-base font-bold text-slate-900 dark:text-white">
-            Practical &amp; Meaningful Solutions
-          </h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
-            We focus on dependable, practical digital experiences that solve real workflow bottlenecks and expand audience connections, avoiding unnecessary technological overhead.
-          </p>
-        </div>
-
-        <!-- Pillar 6 -->
-        <div class="glass-card rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800 hover:border-amber-400/80 transition-all space-y-3">
-          <div class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-          </div>
-          <h3 class="text-base font-bold text-slate-900 dark:text-white">
-            Continuous Improvement
-          </h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
-            We operate with genuine humility and curiosity—listening closely to creator feedback, testing assumptions in the real world, and refining our initiatives collaboratively over time.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       SECTION F: MEET OUR TEAM
+       SECTION H: MEET OUR TEAM
        Clean, approachable 4-member team presentation (equal desktop layout)
        ========================================================================== -->
-  <section id="team" class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+  <section id="team"
+    class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200/80 dark:border-white/[0.08] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
+
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
+        <span
+          class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
           THE PEOPLE BEHIND CAPI
         </span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
           Meet Our Team
         </h2>
         <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
-          We are a four-member company united by a shared passion for meaningful digital experiences, human creativity, and cultural craftsmanship.
+          Four co-founders, one shared vision. We bring together technology, creativity, and community to create
+          meaningful digital opportunities for traditional creators.
         </p>
       </div>
 
       <!-- Balanced 4-Member Grid (4 columns on lg, 2 columns on sm/md, 1 column on mobile) -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
-        
+
         <!-- Team Member 1 -->
-        <div class="team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
+        <div
+          class="team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
           <div>
-            <!-- Member Photo / Professional Portrait Frame -->
-            <div class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-blue-600 to-indigo-500 p-0.5 shadow-sm">
-              <div class="w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
-                <!-- Editable Portrait Image Placeholder -->
-                <svg class="w-14 h-14 text-slate-400 dark:text-slate-500 group-hover:scale-105 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <div
+              class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-blue-600 to-indigo-500 p-0.5 shadow-sm">
+              <div
+                class="w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+                <svg class="w-14 h-14 text-slate-400 dark:text-slate-500 group-hover:scale-105 transition-transform"
+                  fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
               </div>
             </div>
 
-            <!-- Member Info -->
             <div class="text-center">
-              <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#0066FF] dark:group-hover:text-blue-400 transition-colors">
-                Nisal Bandara
+              <h3
+                class="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#0066FF] dark:group-hover:text-blue-400 transition-colors">
+                Adipa Udayanga
               </h3>
               <p class="text-xs font-semibold text-[#0066FF] dark:text-blue-400 mt-1 font-mono">
                 Co-founder &amp; Product Strategy
               </p>
               <p class="text-xs text-slate-500 dark:text-slate-400 mt-3 leading-relaxed font-normal">
-                Guides product direction, creator research, and ensuring our digital initiatives directly align with the practical realities of independent makers.
+                Leads product direction and creator research, ensuring our solutions address real needs and create
+                meaningful value for independent makers.
               </p>
             </div>
           </div>
 
-          <!-- Social / LinkedIn Link (Editable placeholder) -->
           <div class="pt-5 mt-5 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-center">
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#0066FF] dark:text-slate-400 dark:hover:text-blue-400 font-medium transition-colors" title="Connect on LinkedIn">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#0066FF] dark:text-slate-400 dark:hover:text-blue-400 font-medium transition-colors"
+              title="Connect on LinkedIn">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
               <span>LinkedIn</span>
             </a>
           </div>
         </div>
 
         <!-- Team Member 2 -->
-        <div class="team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
+        <div
+          class="team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
           <div>
-            <!-- Member Photo / Professional Portrait Frame -->
-            <div class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-indigo-600 to-purple-500 p-0.5 shadow-sm">
-              <div class="w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
-                <!-- Editable Portrait Image Placeholder -->
-                <svg class="w-14 h-14 text-slate-400 dark:text-slate-500 group-hover:scale-105 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <div
+              class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-indigo-600 to-purple-500 p-0.5 shadow-sm">
+              <div
+                class="w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+                <svg class="w-14 h-14 text-slate-400 dark:text-slate-500 group-hover:scale-105 transition-transform"
+                  fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
               </div>
             </div>
 
-            <!-- Member Info -->
             <div class="text-center">
-              <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#0066FF] dark:group-hover:text-blue-400 transition-colors">
-                Kavinda Perera
+              <h3
+                class="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#0066FF] dark:group-hover:text-blue-400 transition-colors">
+                Chathuka Pehesara
               </h3>
               <p class="text-xs font-semibold text-[#0066FF] dark:text-blue-400 mt-1 font-mono">
                 Co-founder &amp; Technology Architecture
               </p>
               <p class="text-xs text-slate-500 dark:text-slate-400 mt-3 leading-relaxed font-normal">
-                Directs technical foundations, ensuring accessible, dependable, and lightweight digital experiences that require zero technical complexity from creators.
+                Shapes our technical foundations, building reliable, accessible, and intuitive digital experiences that
+                make technology easier for creators.
               </p>
             </div>
           </div>
 
-          <!-- Social / LinkedIn Link (Editable placeholder) -->
           <div class="pt-5 mt-5 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-center">
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#0066FF] dark:text-slate-400 dark:hover:text-blue-400 font-medium transition-colors" title="Connect on LinkedIn">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#0066FF] dark:text-slate-400 dark:hover:text-blue-400 font-medium transition-colors"
+              title="Connect on LinkedIn">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
               <span>LinkedIn</span>
             </a>
           </div>
         </div>
 
         <!-- Team Member 3 -->
-        <div class="team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
+        <div
+          class="team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
           <div>
-            <!-- Member Photo / Professional Portrait Frame -->
-            <div class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-amber-500 to-orange-500 p-0.5 shadow-sm">
-              <div class="w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
-                <!-- Editable Portrait Image Placeholder -->
-                <svg class="w-14 h-14 text-slate-400 dark:text-slate-500 group-hover:scale-105 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <div
+              class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-amber-500 to-orange-500 p-0.5 shadow-sm">
+              <div
+                class="w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+                <svg class="w-14 h-14 text-slate-400 dark:text-slate-500 group-hover:scale-105 transition-transform"
+                  fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
               </div>
             </div>
 
-            <!-- Member Info -->
             <div class="text-center">
-              <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#0066FF] dark:group-hover:text-blue-400 transition-colors">
-                Sachintha Silva
+              <h3
+                class="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#0066FF] dark:group-hover:text-blue-400 transition-colors">
+                Uwan Isurujith
               </h3>
               <p class="text-xs font-semibold text-[#0066FF] dark:text-blue-400 mt-1 font-mono">
                 Co-founder &amp; Brand Experience
               </p>
               <p class="text-xs text-slate-500 dark:text-slate-400 mt-3 leading-relaxed font-normal">
-                Shapes visual storytelling, brand identity, and the aesthetic dialogue between cultural craft traditions and contemporary digital design.
+                Shapes CAPI's visual identity and digital storytelling, bringing together traditional craftsmanship and
+                modern design.
               </p>
             </div>
           </div>
 
-          <!-- Social / LinkedIn Link (Editable placeholder) -->
           <div class="pt-5 mt-5 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-center">
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#0066FF] dark:text-slate-400 dark:hover:text-blue-400 font-medium transition-colors" title="Connect on LinkedIn">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#0066FF] dark:text-slate-400 dark:hover:text-blue-400 font-medium transition-colors"
+              title="Connect on LinkedIn">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
               <span>LinkedIn</span>
             </a>
           </div>
         </div>
 
         <!-- Team Member 4 -->
-        <div class="team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
+        <div
+          class="team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
           <div>
-            <!-- Member Photo / Professional Portrait Frame -->
-            <div class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-emerald-500 to-teal-500 p-0.5 shadow-sm">
-              <div class="w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
-                <!-- Editable Portrait Image Placeholder -->
-                <svg class="w-14 h-14 text-slate-400 dark:text-slate-500 group-hover:scale-105 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <div
+              class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-emerald-500 to-teal-500 p-0.5 shadow-sm">
+              <div
+                class="w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+                <svg class="w-14 h-14 text-slate-400 dark:text-slate-500 group-hover:scale-105 transition-transform"
+                  fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
               </div>
             </div>
 
-            <!-- Member Info -->
             <div class="text-center">
-              <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#0066FF] dark:group-hover:text-blue-400 transition-colors">
-                Tharindu Senanayake
+              <h3
+                class="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#0066FF] dark:group-hover:text-blue-400 transition-colors">
+                Archana Panchali
               </h3>
               <p class="text-xs font-semibold text-[#0066FF] dark:text-blue-400 mt-1 font-mono">
                 Co-founder &amp; Community Partnerships
               </p>
               <p class="text-xs text-slate-500 dark:text-slate-400 mt-3 leading-relaxed font-normal">
-                Cultivates artisan relationships, maker community engagement, and strategic collaborations that expand opportunities for craft traditions.
+                Builds relationships with artisans, creative communities, and potential partners to create new
+                opportunities for traditional craftsmanship.
               </p>
             </div>
           </div>
 
-          <!-- Social / LinkedIn Link (Editable placeholder) -->
           <div class="pt-5 mt-5 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-center">
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#0066FF] dark:text-slate-400 dark:hover:text-blue-400 font-medium transition-colors" title="Connect on LinkedIn">
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#0066FF] dark:text-slate-400 dark:hover:text-blue-400 font-medium transition-colors"
+              title="Connect on LinkedIn">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
               <span>LinkedIn</span>
             </a>
           </div>
@@ -1041,129 +1788,229 @@
   </section>
 
   <!-- ==========================================================================
-       SECTION G: OUR FUTURE DIRECTION
-       Secondary, honest exploration into AI-powered SaaS and digital solutions
+       SECTION I: OUR FUTURE DIRECTION & HORIZONS
+       Interactive Filter Tabs & Display View Options
        ========================================================================== -->
-  <section id="future" class="py-20 md:py-28 bg-[#FAFAFA] dark:bg-[#0A0D14] relative">
+  <section id="future"
+    class="py-20 md:py-28 bg-[#FAFAFA] dark:bg-[#0A0D14] border-t border-slate-200/80 dark:border-white/[0.08] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Section Container Card -->
-      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-200/90 dark:border-slate-800 bg-white/80 dark:bg-[#121824]/80 shadow-sm relative overflow-hidden">
-        
-        <div class="max-w-3xl">
-          <span class="text-xs font-mono font-bold tracking-widest text-slate-500 dark:text-slate-400 uppercase bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1 rounded-full">
-            SECONDARY EXPLORATION · FORWARD HORIZONS
-          </span>
-          
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
-            Our Future Direction: Exploring Thoughtful Digital Solutions
-          </h2>
-          
-          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-3 leading-relaxed font-normal">
-            While our immediate focus and primary business direction are dedicated to traditional creators and craftsmanship, we maintain an active curiosity toward future digital possibilities. Over time, we are interested in exploring how AI-assisted software and specialized digital solutions can further simplify workflows for independent creators and creative businesses.
-          </p>
+
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span
+          class="text-xs font-mono font-bold tracking-widest text-slate-500 dark:text-slate-400 uppercase bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1 rounded-full">
+          FORWARD HORIZONS | SECONDARY EXPLORATION
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
+          Milestones &amp; Thoughtful Explorations
+        </h2>
+        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
+          Our primary focus remains on empowering traditional creators. Alongside this commitment, we continue exploring
+          thoughtful technologies and future opportunities that could further support creative communities.
+        </p>
+      </div>
+
+      <!-- Milestone Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Milestone 1 -->
+        <div
+          class="future-card glass-card rounded-2xl p-7 border-2 border-blue-500/80 dark:border-blue-500/60 bg-white dark:bg-[#121824] shadow-md flex flex-col justify-between"
+          data-category="current">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span
+                class="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/40 text-[#0066FF] dark:text-blue-400 border border-blue-200 dark:border-blue-800 uppercase">
+                Active Horizon | Current Focus
+              </span>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Traditional Creator Discovery</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                Exploring digital opportunities that help traditional artisans showcase their work, share their stories,
+                and connect with people who value authentic craftsmanship.
+              </p>
+            </div>
+            <div
+              class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+              <div class="flex items-center gap-2">
+                <span class="text-blue-500 font-bold">✓</span>
+                <span>Understanding artisan needs and workflows</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-blue-500 font-bold">✓</span>
+                <span>Exploring craft provenance and material origins</span>
+              </div>
+            </div>
+          </div>
+          <div class="pt-5 mt-5 border-t border-slate-100 dark:border-slate-800">
+            <button
+              class="open-contact-modal w-full py-2 px-3 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] rounded-xl transition-colors cursor-pointer">
+              Collaborate With Us ➔
+            </button>
+          </div>
         </div>
 
-        <!-- 3 Secondary Themes Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 pt-8 border-t border-slate-100 dark:border-slate-800/80">
-          
-          <div class="space-y-2">
-            <h3 class="text-sm font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-              Assistive Creator Workflows
-            </h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              Researching respectful, non-invasive digital tools that assist independent makers with cataloging, multilingual storytelling, and administrative overhead.
-            </p>
+        <!-- Milestone 2 -->
+        <div
+          class="future-card glass-card rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-[#121824] shadow-sm flex flex-col justify-between"
+          data-category="design">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span
+                class="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800 uppercase">
+                In Active Design
+              </span>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Intelligent Provenance &amp; Discovery</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                Developing intuitive digital experiences that help preserve craft authenticity, improve product
+                discovery, and connect independent makers with wider audiences.
+              </p>
+            </div>
+            <div
+              class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+              <div class="flex items-center gap-2">
+                <span class="text-amber-500 font-bold">✓</span>
+                <span>Simple and accessible creator experiences</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-amber-500 font-bold">✓</span>
+                <span>Curated discovery for conscious customers</span>
+              </div>
+            </div>
           </div>
-
-          <div class="space-y-2">
-            <h3 class="text-sm font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-              Provenance &amp; Discovery
-            </h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              Exploring intelligent discovery systems that help patrons discover artifacts through material origin, cultural heritage, and verified artisan technique.
-            </p>
+          <div class="pt-5 mt-5 border-t border-slate-100 dark:border-slate-800">
+            <button
+              class="open-contact-modal w-full py-2 px-3 text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors cursor-pointer">
+              Explore Collaboration ➔
+            </button>
           </div>
-
-          <div class="space-y-2">
-            <h3 class="text-sm font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-              Accessible SaaS Tools
-            </h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              Investigating lightweight software models that empower micro-enterprises and artisan cooperatives to operate with enterprise-grade stability.
-            </p>
-          </div>
-
         </div>
 
-        <!-- Disclaimer Guardrail -->
-        <div class="mt-8 pt-4 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-400 dark:text-slate-500 font-mono">
-          * Note: These explorations represent our forward-looking research interests and are developed in service of our core commitment to human craftsmanship.
+        <!-- Milestone 3 -->
+        <div
+          class="future-card glass-card rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-[#121824] shadow-sm flex flex-col justify-between"
+          data-category="future">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span
+                class="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 uppercase">
+                Secondary Research | Future
+              </span>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Assistive AI &amp; Creative SaaS</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
+                Exploring how responsible AI and lightweight digital tools could simplify storytelling, product
+                cataloging, and everyday tasks for independent creators.
+              </p>
+            </div>
+            <div
+              class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+              <div class="flex items-center gap-2">
+                <span class="text-slate-400 font-bold">○</span>
+                <span>Multilingual craft storytelling tools</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-slate-400 font-bold">○</span>
+                <span>Simple creative and business utilities</span>
+              </div>
+            </div>
+          </div>
+          <div class="pt-5 mt-5 border-t border-slate-100 dark:border-slate-800">
+            <button
+              class="open-contact-modal w-full py-2 px-3 text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors cursor-pointer">
+              Partner With Us ➔
+            </button>
+          </div>
         </div>
 
+      </div>
+
+      <div class="mt-8 text-center text-[11px] text-slate-400 dark:text-slate-500 font-mono">
+        Our future explorations remain secondary to our core commitment: using thoughtful technology to create
+        meaningful opportunities for traditional creators.
       </div>
 
     </div>
   </section>
 
   <!-- ==========================================================================
-       SECTION H: CONTACT AND CONNECT
+       SECTION J: CONTACT AND CONNECT
        Professional closing section welcoming creators, collaborators & partners
        ========================================================================== -->
-  <section id="contact" class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+  <section id="contact"
+    class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200/80 dark:border-white/[0.08] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
+
       <!-- Main Contact Glass Card -->
-      <div class="glass-card p-8 md:p-14 max-w-4xl mx-auto text-center rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-md relative overflow-hidden bg-gradient-to-br from-blue-50/40 via-white to-slate-50/60 dark:from-[#121824] dark:via-[#162030] dark:to-[#0E131D]">
-        
+      <div
+        class="glass-card p-8 md:p-14 max-w-4xl mx-auto text-center rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-md relative overflow-hidden bg-gradient-to-br from-blue-50/40 via-white to-slate-50/60 dark:from-[#121824] dark:via-[#162030] dark:to-[#0E131D]">
+
         <!-- Brand Icon -->
-        <div class="w-14 h-14 rounded-2xl bg-[#050B17] border border-blue-500/30 flex items-center justify-center mx-auto mb-6 shadow-sm overflow-hidden">
+        <div
+          class="w-14 h-14 rounded-2xl bg-[#050B17] border border-blue-500/30 flex items-center justify-center mx-auto mb-6 shadow-sm overflow-hidden">
           <img src="Logo.png" alt="CAPI Logo" class="w-8 h-8 object-contain" />
         </div>
 
-        <span class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/60 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
+        <span
+          class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/60 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
           START A CONVERSATION
         </span>
 
         <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
-          Let's Connect &amp; Collaborate
+          Let's Connect &amp; Create Together
         </h2>
 
         <p class="text-base text-slate-600 dark:text-slate-300 mt-3 max-w-xl mx-auto font-normal leading-relaxed">
-          Whether you are a traditional creator, an artisan collective, a cultural organization, or someone who appreciates authentic craftsmanship, we would love to hear from you.
+          Have an idea or want to collaborate? Whether you're a creator, artisan, or craft enthusiast, we'd love to
+          connect.
         </p>
+        <p><b>Every meaningful connection starts with a conversation</p>
 
         <!-- Action CTAs -->
         <div class="flex flex-wrap items-center justify-center gap-4 mt-8">
-          <button id="copy-email-btn" type="button" class="inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] active:scale-98 rounded-xl shadow-sm transition-all cursor-pointer">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          <button id="copy-email-btn" type="button"
+            class="inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] active:scale-98 rounded-xl shadow-sm transition-all cursor-pointer">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
             <span id="copy-email-text">Copy Company Email</span>
           </button>
 
-          <button class="open-contact-modal inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#1A2538] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xs transition-all cursor-pointer">
-            <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <button
+            class="open-contact-modal inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#1A2538] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xs transition-all cursor-pointer">
+            <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
             <span>Send Direct Message</span>
           </button>
         </div>
 
         <!-- Editable Social & Organization Links -->
-        <div class="pt-10 mt-10 border-t border-slate-200/80 dark:border-slate-800 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500 dark:text-slate-400">
-          <a href="mailto:contact@capi-techno.com" class="hover:text-[#0066FF] dark:hover:text-blue-400 font-mono transition-colors">
+        <div
+          class="pt-10 mt-10 border-t border-slate-200/80 dark:border-slate-800 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500 dark:text-slate-400">
+          <a href="mailto:contact@capi-techno.com"
+            class="hover:text-[#0066FF] dark:hover:text-blue-400 font-mono transition-colors">
             contact@capi-techno.com
           </a>
           <span class="text-slate-300 dark:text-slate-700">·</span>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#0066FF] dark:hover:text-blue-400 font-medium transition-colors">
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+            class="hover:text-[#0066FF] dark:hover:text-blue-400 font-medium transition-colors">
             LinkedIn
           </a>
           <span class="text-slate-300 dark:text-slate-700">·</span>
-          <a href="https://github.com/capi-techno" target="_blank" rel="noopener noreferrer" class="hover:text-[#0066FF] dark:hover:text-blue-400 font-medium transition-colors">
+          <a href="https://github.com/capi-techno" target="_blank" rel="noopener noreferrer"
+            class="hover:text-[#0066FF] dark:hover:text-blue-400 font-medium transition-colors">
             GitHub Org
           </a>
           <span class="text-slate-300 dark:text-slate-700">·</span>
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#0066FF] dark:hover:text-blue-400 font-medium transition-colors">
+          <a href="https://x.com" target="_blank" rel="noopener noreferrer"
+            class="hover:text-[#0066FF] dark:hover:text-blue-400 font-medium transition-colors">
             X (Twitter)
           </a>
         </div>
@@ -1175,15 +2022,16 @@
 
   <!-- ==========================================================================
        FOOTER
-       Clean, modern, brand-aligned footer
        ========================================================================== -->
-  <footer class="py-12 bg-white dark:bg-[#070A0F] border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400">
+  <footer
+    class="py-12 bg-white dark:bg-[#070A0F] border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        
+
         <!-- Logo & Brand Line -->
         <div class="flex items-center gap-3">
-          <div class="w-7 h-7 rounded-lg bg-[#050B17] border border-blue-500/40 flex items-center justify-center overflow-hidden">
+          <div
+            class="w-7 h-7 rounded-lg bg-[#050B17] border border-blue-500/40 flex items-center justify-center overflow-hidden">
             <img src="Logo.png" alt="CAPI Logo" class="w-4 h-4 object-contain" />
           </div>
           <div>
@@ -1195,17 +2043,21 @@
         <!-- Quick Section Links -->
         <div class="flex flex-wrap items-center justify-center gap-6 font-medium">
           <a href="#about" class="hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors">About</a>
+          <a href="#craft" class="hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors">Craft &amp;
+            Horizons</a>
           <a href="#purpose" class="hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors">Our Purpose</a>
-          <a href="#vision-mission" class="hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors">Vision &amp; Mission</a>
           <a href="#why-us" class="hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors">Why Us</a>
+          <a href="#vision-mission" class="hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors">Vision &amp;
+            Mission</a>
           <a href="#team" class="hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors">Team</a>
           <a href="#future" class="hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors">Future</a>
           <a href="#contact" class="hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors">Contact</a>
         </div>
 
       </div>
-      
-      <div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800/60 text-center text-[11px] text-slate-400 dark:text-slate-500">
+
+      <div
+        class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800/60 text-center text-[11px] text-slate-400 dark:text-slate-500">
         Dedicated to connecting traditional creativity with modern digital opportunities.
       </div>
     </div>
@@ -1214,16 +2066,22 @@
   <!-- ==========================================================================
        INTERACTIVE CONTACT MODAL
        ========================================================================== -->
-  <div id="contact-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="modal-card bg-white dark:bg-[#121824] rounded-2xl max-w-lg w-full p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xl relative scale-95 transition-transform duration-300">
-      
-      <!-- Close Button -->
-      <button id="close-modal-btn" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 dark:hover:text-white transition-colors cursor-pointer" aria-label="Close modal">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+  <div id="contact-modal"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+    <div
+      class="modal-card bg-white dark:bg-[#121824] rounded-2xl max-w-lg w-full p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xl relative scale-95 transition-transform duration-300">
+
+      <button id="close-modal-btn"
+        class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 dark:hover:text-white transition-colors cursor-pointer"
+        aria-label="Close modal">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
       </button>
 
       <div class="mb-5">
-        <span class="text-[11px] font-mono font-bold text-[#0066FF] dark:text-blue-400 uppercase">CAPI TECHNOLOGIES</span>
+        <span class="text-[11px] font-mono font-bold text-[#0066FF] dark:text-blue-400 uppercase">CAPI
+          TECHNOLOGIES</span>
         <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">Connect with Our Team</h3>
         <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
           Share your inquiry, creative background, or partnership thoughts below.
@@ -1232,18 +2090,24 @@
 
       <form id="contact-form" class="space-y-4">
         <div>
-          <label for="contact-name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
-          <input type="text" id="contact-name" required placeholder="e.g. Elena Rostova" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-[#0A0D14] text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <label for="contact-name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your
+            Name</label>
+          <input type="text" id="contact-name" required placeholder="e.g. Elena Rostova"
+            class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-[#0A0D14] text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
         </div>
 
         <div>
-          <label for="contact-email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Email Address</label>
-          <input type="email" id="contact-email" required placeholder="e.g. elena@example.com" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-[#0A0D14] text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <label for="contact-email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Email
+            Address</label>
+          <input type="email" id="contact-email" required placeholder="e.g. elena@example.com"
+            class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-[#0A0D14] text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
         </div>
 
         <div>
-          <label for="contact-topic" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">How can we help?</label>
-          <select id="contact-topic" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-[#0A0D14] text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <label for="contact-topic" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">How can
+            we help?</label>
+          <select id="contact-topic"
+            class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-[#0A0D14] text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option value="creator">I am an artisan / independent creator</option>
             <option value="partner">Partnership or collaboration inquiry</option>
             <option value="patron">Customer / patron interest</option>
@@ -1252,11 +2116,15 @@
         </div>
 
         <div>
-          <label for="contact-msg" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Message</label>
-          <textarea id="contact-msg" rows="3" required placeholder="Tell us about your work or how you'd like to collaborate..." class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-[#0A0D14] text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+          <label for="contact-msg" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your
+            Message</label>
+          <textarea id="contact-msg" rows="3" required
+            placeholder="Tell us about your work or how you'd like to collaborate..."
+            class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-[#0A0D14] text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
         </div>
 
-        <button type="submit" class="w-full py-3 px-4 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] active:scale-98 rounded-xl shadow-sm transition-all cursor-pointer">
+        <button type="submit"
+          class="w-full py-3 px-4 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] active:scale-98 rounded-xl shadow-sm transition-all cursor-pointer">
           Send Message ➔
         </button>
       </form>
@@ -1264,7 +2132,8 @@
   </div>
 
   <!-- Toast Notification Feedback -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 max-w-sm px-4 py-3 rounded-xl bg-slate-900 text-white text-xs font-semibold shadow-lg opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
+  <div id="toast"
+    class="fixed bottom-6 right-6 z-50 max-w-sm px-4 py-3 rounded-xl bg-slate-900 text-white text-xs font-semibold shadow-lg opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
     <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
     <span id="toast-text">Message sent successfully!</span>
   </div>
@@ -1272,4 +2141,5 @@
   <!-- Scripts -->
   <script src="script.js"></script>
 </body>
+
 </html>

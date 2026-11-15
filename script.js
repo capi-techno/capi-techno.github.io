@@ -1,6 +1,14 @@
 /**
- * CAPI Technologies - Official Company Website
- * High-End Corporate Scripts, Brand Experience & Interactive Theme Controller
+ * CAPI Technologies - Main Application Controller
+ * Handles interactive experiences:
+ * - Animated Hero Particle Canvas
+ * - Light & Dark Theme Switcher (Navbar Companion Toggle)
+ * - 3D Fanned Card Deck Layout & Grid View Mode Switcher
+ * - Craft Tradition Filtering & 3D Flippable Cards
+ * - Reliability Principle Rail Laser & Spotlight Tracking
+ * - Smooth Telemetry Rolling Number Counters
+ * - Future Direction Milestone Filtering
+ * - Contact Modal & Email Clipboard Helpers
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,101 +16,19 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbarScroll();
   initMobileNav();
   initActiveNavHighlight();
+  initHeroCanvas();
+  initThemeController();
+  initCraftViewAndDeck();
+  initPrincipleRailInteractive();
+  initStatCounters();
+  initFutureFilters();
+  initRetroTelevision();
   initContactModal();
   initEmailCopy();
-  initThemeController();
 });
 
 /* ==========================================================================
-   1. REFINED BRAND SPLASH SCREEN & LOADER
-   ========================================================================== */
-function initSplashScreen() {
-  const splash = document.getElementById('splash-screen');
-  const skipBtn = document.getElementById('skip-splash');
-
-  if (!splash) return;
-
-  document.body.style.overflow = 'hidden';
-  initChevronLoader();
-
-  let finished = false;
-  const finishSplash = () => {
-    if (finished) return;
-    finished = true;
-    splash.classList.add('fade-out');
-    document.body.style.overflow = '';
-    setTimeout(() => {
-      splash.style.display = 'none';
-    }, 600);
-  };
-
-  if (skipBtn) {
-    skipBtn.addEventListener('click', finishSplash);
-  }
-
-  // Auto finish splash after completion (~2.2s)
-  setTimeout(() => {
-    finishSplash();
-  }, 2300);
-}
-
-function initChevronLoader() {
-  const container = document.getElementById('chevron-bar');
-  const msgEl = document.getElementById('splash-status-msg');
-  const detailEl = document.getElementById('splash-status-detail');
-
-  if (!container) return;
-
-  const totalChevrons = 36;
-  container.innerHTML = '';
-  const chevronEls = [];
-
-  for (let i = 0; i < totalChevrons; i++) {
-    const span = document.createElement('span');
-    span.className = 'chevron';
-    span.textContent = '❯';
-    container.appendChild(span);
-    chevronEls.push(span);
-  }
-
-  const stages = [
-    { targetRatio: 0.28, msg: "Honoring Traditional Craft", detail: "Preserving Living Heritage" },
-    { targetRatio: 0.58, msg: "Connecting Cultural Heritage", detail: "Opening Global Horizons" },
-    { targetRatio: 0.88, msg: "Empowering Independent Creators", detail: "Human-Centered Digital Bridges" },
-    { targetRatio: 1.00, msg: "Welcome to CAPI Technologies", detail: "Meaningful Digital Opportunities" }
-  ];
-
-  let currentStep = 0;
-  const timer = setInterval(() => {
-    currentStep++;
-    const ratio = currentStep / totalChevrons;
-
-    chevronEls.forEach((el, idx) => {
-      if (idx < currentStep - 1) {
-        el.className = 'chevron active';
-      } else if (idx === currentStep - 1) {
-        el.className = 'chevron lead';
-      } else {
-        el.className = 'chevron';
-      }
-    });
-
-    for (let st of stages) {
-      if (ratio <= st.targetRatio || st.targetRatio === 1.0) {
-        if (msgEl) msgEl.textContent = st.msg;
-        if (detailEl) detailEl.textContent = st.detail;
-        break;
-      }
-    }
-
-    if (currentStep >= totalChevrons) {
-      clearInterval(timer);
-    }
-  }, 50);
-}
-
-/* ==========================================================================
-   2. NAVBAR SCROLL DYNAMICS & ACTIVE LINK HIGHLIGHTING
+   1. NAVBAR SCROLL & MOBILE MENU CONTROLLERS
    ========================================================================== */
 function initNavbarScroll() {
   const navbar = document.querySelector('header.navbar');
@@ -121,191 +47,169 @@ function initNavbarScroll() {
 }
 
 function initMobileNav() {
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-nav');
-  if (!btn || !menu) return;
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (!toggleBtn || !mobileMenu) return;
 
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
+  toggleBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
   });
 
-  // Close mobile nav when clicking any link inside it
-  const links = menu.querySelectorAll('a');
-  links.forEach(link => {
+  // Close on nav link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      menu.classList.add('hidden');
+      mobileMenu.classList.add('hidden');
     });
   });
 }
 
 function initActiveNavHighlight() {
-  const navLinks = document.querySelectorAll('header.navbar nav a.nav-link');
   const sections = document.querySelectorAll('section[id]');
-  if (!navLinks.length || !sections.length) return;
+  const navLinks = document.querySelectorAll('.nav-link');
+  if (!sections.length || !navLinks.length) return;
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');
         navLinks.forEach(link => {
-          const href = link.getAttribute('href');
-          if (href === '#' + id) {
+          if (link.getAttribute('href') === `#${id}`) {
             link.classList.add('active');
+            link.classList.add('text-[#0066FF]', 'dark:text-blue-400');
           } else {
             link.classList.remove('active');
+            link.classList.remove('text-[#0066FF]', 'dark:text-blue-400');
           }
         });
       }
     });
-  }, {
-    rootMargin: '-20% 0px -70% 0px'
-  });
+  }, { rootMargin: '-30% 0px -60% 0px' });
 
   sections.forEach(section => observer.observe(section));
 }
 
 /* ==========================================================================
-   3. CONTACT MODAL & INTERACTIVE INQUIRIES
+   2. HERO INTERACTIVE PARTICLE CANVAS
    ========================================================================== */
-function initContactModal() {
-  const modal = document.getElementById('contact-modal');
-  const closeBtn = document.getElementById('close-modal-btn');
-  const openButtons = document.querySelectorAll('.open-contact-modal');
-  const form = document.getElementById('contact-form');
+function initHeroCanvas() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
 
-  if (!modal) return;
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const openModal = () => {
-    modal.classList.remove('opacity-0', 'pointer-events-none');
-    modal.querySelector('.modal-card')?.classList.remove('scale-95');
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeModal = () => {
-    modal.classList.add('opacity-0', 'pointer-events-none');
-    modal.querySelector('.modal-card')?.classList.add('scale-95');
-    document.body.style.overflow = '';
-  };
-
-  openButtons.forEach(btn => btn.addEventListener('click', openModal));
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-  // Close modal when clicking on backdrop
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  // Escape key closes modal
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !modal.classList.contains('pointer-events-none')) {
-      closeModal();
-    }
-  });
-
-  // Handle Form Submission
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('contact-name')?.value || 'Friend';
-      closeModal();
-      showToast(`Thank you, ${name}! We have received your inquiry and will connect soon.`);
-      form.reset();
-    });
+  function resize() {
+    const parent = canvas.parentElement || document.getElementById('overview');
+    if (!parent) return;
+    width = canvas.width = parent.offsetWidth;
+    height = canvas.height = parent.offsetHeight;
   }
-}
 
-/* ==========================================================================
-   4. EMAIL COPY BUTTON & TOAST FEEDBACK
-   ========================================================================== */
-function initEmailCopy() {
-  const btn = document.getElementById('copy-email-btn');
-  const textEl = document.getElementById('copy-email-text');
-  if (!btn) return;
+  window.addEventListener('resize', resize, { passive: true });
+  resize();
 
-  const email = 'contact@capi-techno.com';
-
-  btn.addEventListener('click', async () => {
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        await navigator.clipboard.writeText(email);
-      } else {
-        const input = document.createElement('input');
-        input.value = email;
-        document.body.appendChild(input);
-        input.select();
-        document.execCommand('copy');
-        document.body.removeChild(input);
-      }
-
-      if (textEl) textEl.textContent = 'Email Copied!';
-      showToast('Copied contact@capi-techno.com to clipboard');
-
-      setTimeout(() => {
-        if (textEl) textEl.textContent = 'Copy Company Email';
-      }, 2500);
-    } catch (err) {
-      showToast('Company Email: contact@capi-techno.com');
+  class Particle {
+    constructor() {
+      this.reset();
     }
-  });
-}
+    reset() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.7;
+      this.vy = (Math.random() - 0.5) * 0.7;
+      this.radius = Math.random() * 2 + 1.2;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > width) this.vx *= -1;
+      if (this.y < 0 || this.y > height) this.vy *= -1;
+    }
+    draw() {
+      const isDark = document.documentElement.classList.contains('dark');
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = isDark ? 'rgba(56, 189, 248, 0.45)' : 'rgba(0, 102, 255, 0.35)';
+      ctx.fill();
+    }
+  }
 
-function showToast(message) {
-  const toast = document.getElementById('toast');
-  const textEl = document.getElementById('toast-text');
-  if (!toast || !textEl) return;
+  const particleCount = Math.min(38, Math.max(16, Math.floor(width / 35)));
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
 
-  textEl.textContent = message;
-  toast.classList.remove('opacity-0', 'pointer-events-none');
+  function animate() {
+    if (prefersReducedMotion) return;
+    ctx.clearRect(0, 0, width, height);
 
-  setTimeout(() => {
-    toast.classList.add('opacity-0', 'pointer-events-none');
-  }, 3500);
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 125) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          const isDark = document.documentElement.classList.contains('dark');
+          const alpha = 0.2 * (1 - dist / 125);
+          ctx.strokeStyle = isDark ? `rgba(56, 189, 248, ${alpha})` : `rgba(0, 102, 255, ${alpha})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
 }
 
 /* ==========================================================================
-   5. HANGING LIGHT BULB & DUAL THEME CONTROLLER
-   - Real-world bulb pulling cord & mechanical switch audio
-   - Default: Light Theme, Toggle: Dark Theme
-   - Dynamically aligned with navbar theme toggle icon
+   3. THEME CONTROLLER (Light & Dark Theme Switcher)
    ========================================================================== */
 function initThemeController() {
-  const pullCord = document.getElementById('lamp-pull-cord');
-  const bulbEnvelope = document.getElementById('bulb-glass-envelope');
-  const bulbFilament = document.getElementById('bulb-filament');
-  const lampSvg = document.getElementById('lamp-svg');
   const navToggle = document.getElementById('nav-theme-toggle');
 
   // Realistic mechanical toggle switch sound via Web Audio API
   function playSwitchClick() {
     try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContext) return;
-      const ctx = new AudioContext();
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
       
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.type = 'triangle';
-      osc.frequency.setValueAtTime(180, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(30, ctx.currentTime + 0.035);
+      osc.frequency.setValueAtTime(220, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(36, ctx.currentTime + 0.04);
       
-      gain.gain.setValueAtTime(0.25, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.035);
+      gain.gain.setValueAtTime(0.2, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
       
       osc.connect(gain);
       gain.connect(ctx.destination);
       
       osc.start();
-      osc.stop(ctx.currentTime + 0.035);
+      osc.stop(ctx.currentTime + 0.04);
     } catch (e) {}
   }
 
   function updateTooltip(isDark) {
-    if (lampSvg) {
-      lampSvg.setAttribute('title', isDark ? 'Click bulb or pull cord to switch to Light Theme' : 'Click bulb or pull cord to switch to Dark Theme');
+    if (navToggle) {
+      navToggle.setAttribute('title', isDark ? 'Switch to Light Theme' : 'Switch to Dark Theme');
     }
   }
 
-  function applyTheme(theme, animateCord = false) {
+  function applyTheme(theme, playSound = false) {
     const isDark = theme === 'dark';
     
     if (isDark) {
@@ -318,136 +222,598 @@ function initThemeController() {
 
     updateTooltip(isDark);
 
-    if (animateCord && pullCord) {
+    if (playSound) {
       playSwitchClick();
-      pullCord.classList.remove('spring-back');
-      pullCord.classList.add('is-pulled');
-      
-      setTimeout(() => {
-        pullCord.classList.remove('is-pulled');
-        pullCord.classList.add('spring-back');
-      }, 140);
-
-      setTimeout(() => {
-        pullCord.classList.remove('spring-back');
-      }, 550);
     }
   }
 
-  function toggleTheme(animate = true) {
-    const isCurrentlyDark = document.documentElement.classList.contains('dark');
-    applyTheme(isCurrentlyDark ? 'light' : 'dark', animate);
+  function toggleTheme() {
+    const isDark = document.documentElement.classList.contains('dark');
+    applyTheme(isDark ? 'light' : 'dark', true);
   }
 
   // Load saved preference (defaults to light mode)
   try {
-    const saved = localStorage.getItem('capi-theme');
-    if (saved === 'dark') {
-      applyTheme('dark', false);
+    const savedTheme = localStorage.getItem('capi-theme');
+    if (savedTheme) {
+      applyTheme(savedTheme, false);
     } else {
       applyTheme('light', false);
     }
-  } catch (e) {
+  } catch(e) {
     applyTheme('light', false);
   }
 
-  // Event Listeners for Pull Cord
-  if (pullCord) {
-    pullCord.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleTheme(true);
-    });
-
-    // Touch / Drag pull cord support
-    let startY = 0;
-    let isDragging = false;
-
-    pullCord.addEventListener('pointerdown', (e) => {
-      startY = e.clientY;
-      isDragging = true;
-      try { pullCord.setPointerCapture(e.pointerId); } catch(err) {}
-    });
-
-    pullCord.addEventListener('pointermove', (e) => {
-      if (!isDragging) return;
-      const deltaY = e.clientY - startY;
-      if (deltaY > 3) {
-        pullCord.style.transform = `translateY(${Math.min(deltaY, 14)}px)`;
-      }
-    });
-
-    const finishDrag = (e) => {
-      if (!isDragging) return;
-      isDragging = false;
-      const deltaY = e.clientY - startY;
-      pullCord.style.transform = '';
-      if (deltaY > 5) {
-        toggleTheme(true);
-      }
-    };
-
-    pullCord.addEventListener('pointerup', finishDrag);
-    pullCord.addEventListener('pointercancel', finishDrag);
-  }
-
-  // Click on Bulb envelope or filament toggles theme with pull animation
-  if (bulbEnvelope) {
-    bulbEnvelope.addEventListener('click', () => toggleTheme(true));
-  }
-  if (bulbFilament) {
-    bulbFilament.addEventListener('click', () => toggleTheme(true));
-  }
-
-  // Click on any part of the exposed lower bulb to toggle theme
-  if (lampSvg) {
-    lampSvg.addEventListener('click', (e) => {
-      if (!e.target.closest('#lamp-pull-cord')) {
-        toggleTheme(true);
-      }
-    });
-  }
-
-  // Click on Navbar companion toggle button
+  // Click on Navbar theme toggle button
   if (navToggle) {
-    navToggle.addEventListener('click', () => toggleTheme(true));
+    navToggle.addEventListener('click', toggleTheme);
   }
+}
 
-  // Dynamic pixel-perfect alignment of the hanging light bulb under navbar theme toggle icon
-  function alignLampWithNavToggle() {
-    const toggleBtn = document.getElementById('nav-theme-toggle');
-    const lampContainer = document.getElementById('hanging-lamp-container');
-    const lampSvg = document.getElementById('lamp-svg');
-    const navbar = document.querySelector('header.navbar');
-    const overview = document.getElementById('overview');
-    if (!toggleBtn || !lampContainer || !lampSvg || !navbar || !overview) return;
+/* ==========================================================================
+   4. CRAFT DISPLAY VIEW OPTIONS & 3D FANNED DECK INTERACTION
+   ========================================================================== */
+function initCraftViewAndDeck() {
+  const container = document.querySelector('.card-hand-container');
+  const cardWrappers = document.querySelectorAll('.card-wrapper');
+  const viewDeckBtn = document.getElementById('view-mode-deck');
+  const viewGridBtn = document.getElementById('view-mode-grid');
+  const craftFilterBtns = document.querySelectorAll('.craft-filter-btn');
 
-    const toggleRect = toggleBtn.getBoundingClientRect();
-    const overviewRect = overview.getBoundingClientRect();
-    const navRect = navbar.getBoundingClientRect();
-    const svgRect = lampSvg.getBoundingClientRect();
+  if (!container || !cardWrappers.length) return;
 
-    // The horizontal center of toggleBtn relative to overview's left edge
-    const centerX = (toggleRect.left + toggleRect.width / 2) - overviewRect.left;
-    lampContainer.style.left = `${centerX}px`;
-    lampContainer.style.right = 'auto';
-    // Center the bulb body (located at x=24 of 54 in viewBox, approx 44.4%)
-    lampContainer.style.transform = 'translateX(-44.4%)';
+  // ─── A. View Mode Switcher (Deck vs Grid) ─────────────────────────────
+  function setViewMode(mode) {
+    // Reset any flipped/active card when switching modes
+    cardWrappers.forEach(w => {
+      w.classList.remove('is-active');
+      const c = w.querySelector('.use-case-card');
+      if (c) c.classList.remove('is-flipped');
+    });
+    container.classList.remove('has-active');
 
-    // Position vertically so the navbar bottom border bisects the upper bulb neck (approx 52% down SVG)
-    // Only update idealTop when near top of page to prevent displacement during scrolling
-    if (window.scrollY < 20) {
-      const svgHeight = svgRect.height || (window.innerWidth >= 640 ? 128 : 112);
-      const idealTop = Math.max(0, Math.round(navRect.height - svgHeight * 0.52));
-      lampContainer.style.top = `${idealTop}px`;
+    if (mode === 'grid') {
+      container.classList.add('grid-mode');
+      if (viewGridBtn) viewGridBtn.classList.add('active');
+      if (viewDeckBtn) viewDeckBtn.classList.remove('active');
+    } else {
+      container.classList.remove('grid-mode');
+      if (viewDeckBtn) viewDeckBtn.classList.add('active');
+      if (viewGridBtn) viewGridBtn.classList.remove('active');
     }
   }
 
-  // Run alignment immediately on load, resize, and font ready
-  alignLampWithNavToggle();
-  window.addEventListener('resize', alignLampWithNavToggle);
-  window.addEventListener('orientationchange', alignLampWithNavToggle);
-  window.addEventListener('load', alignLampWithNavToggle);
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(alignLampWithNavToggle);
+  if (viewDeckBtn) {
+    viewDeckBtn.addEventListener('click', () => setViewMode('deck'));
+  }
+  if (viewGridBtn) {
+    viewGridBtn.addEventListener('click', () => setViewMode('grid'));
+  }
+
+  // ─── B. Category Filter Buttons ────────────────────────────────────────
+  craftFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      craftFilterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-craft-filter') || 'all';
+
+      cardWrappers.forEach(wrapper => {
+        const cat = wrapper.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          wrapper.classList.remove('filtered-out');
+        } else {
+          wrapper.classList.add('filtered-out');
+        }
+      });
+
+      // If user filters to 1 card in deck mode, switch to grid mode cleanly
+      const visibleCount = Array.from(cardWrappers).filter(w => !w.classList.contains('filtered-out')).length;
+      if (visibleCount <= 2 && !container.classList.contains('grid-mode')) {
+        // keep fanned or centered
+      }
+    });
+  });
+
+  // ─── C. 3D Card Draw & Flip Events ────────────────────────────────────
+  cardWrappers.forEach(wrapper => {
+    const card = wrapper.querySelector('.use-case-card');
+    const putBackBtn = wrapper.querySelector('.put-back-btn');
+
+    // Click card to draw into center & flip in 3D
+    wrapper.addEventListener('click', (e) => {
+      // Don't draw if user clicks put-back button or a modal trigger
+      if (e.target.closest('.put-back-btn') || e.target.closest('a') || e.target.closest('button')) {
+        return;
+      }
+
+      const isActive = wrapper.classList.contains('is-active');
+
+      // Reset all other cards
+      cardWrappers.forEach(w => {
+        w.classList.remove('is-active');
+        const c = w.querySelector('.use-case-card');
+        if (c) c.classList.remove('is-flipped');
+      });
+
+      if (!isActive) {
+        wrapper.classList.add('is-active');
+        if (card) card.classList.add('is-flipped');
+        container.classList.add('has-active');
+      } else {
+        container.classList.remove('has-active');
+      }
+    });
+
+    // Put Back button returns card to deck
+    if (putBackBtn) {
+      putBackBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        wrapper.classList.remove('is-active');
+        if (card) card.classList.remove('is-flipped');
+        container.classList.remove('has-active');
+      });
+    }
+  });
+
+  // Click outside craft section returns active card
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#craft') && !e.target.closest('#contact-modal')) {
+      cardWrappers.forEach(w => {
+        w.classList.remove('is-active');
+        const c = w.querySelector('.use-case-card');
+        if (c) c.classList.remove('is-flipped');
+      });
+      container.classList.remove('has-active');
+    }
+  });
+}
+
+/* ==========================================================================
+   5. RELIABILITY PRINCIPLE RAIL LASER & SPOTLIGHT CONSOLE
+   ========================================================================== */
+function initPrincipleRailInteractive() {
+  const consoleEl = document.querySelector('.reliability-console');
+  if (!consoleEl) return;
+
+  const laserBeam = consoleEl.querySelector('.reliability-laser-beam');
+  const stages = consoleEl.querySelectorAll('.reliability-stage');
+
+  // Spotlight mousemove tracking inside the console
+  consoleEl.addEventListener('mousemove', (e) => {
+    const rect = consoleEl.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    consoleEl.style.setProperty('--mouse-x', `${x}px`);
+    consoleEl.style.setProperty('--mouse-y', `${y}px`);
+
+    if (laserBeam) {
+      const beamX = Math.max(0, Math.min(rect.width - 140, x - 70));
+      laserBeam.style.left = `${beamX}px`;
+      laserBeam.style.opacity = '1';
+    }
+  });
+
+  consoleEl.addEventListener('mouseleave', () => {
+    if (laserBeam) {
+      laserBeam.style.opacity = '0.4';
+    }
+  });
+
+  // Reveal stages sequentially on scroll into view
+  if (stages.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          stages.forEach((stage, idx) => {
+            setTimeout(() => {
+              stage.classList.add('is-revealed');
+            }, idx * 90);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(consoleEl);
   }
 }
+
+/* ==========================================================================
+   6. ROLLING TELEMETRY STATS COUNTER ANIMATION
+   ========================================================================== */
+function initStatCounters() {
+  const counterEls = document.querySelectorAll('.counter-val');
+  if (!counterEls.length) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const animateCounter = (el) => {
+    const target = parseFloat(el.getAttribute('data-target')) || 0;
+    const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+    const prefix = el.getAttribute('data-prefix') || '';
+    const suffix = el.getAttribute('data-suffix') || '';
+
+    if (prefersReducedMotion) {
+      el.textContent = `${prefix}${target.toFixed(decimals)}${suffix}`;
+      return;
+    }
+
+    const duration = 1400; // ms
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      const easeProgress = 1 - Math.pow(1 - progress, 3);
+      const current = target * easeProgress;
+
+      el.textContent = `${prefix}${current.toFixed(decimals)}${suffix}`;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = `${prefix}${target.toFixed(decimals)}${suffix}`;
+      }
+    }
+
+    requestAnimationFrame(update);
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        counterEls.forEach((counter) => animateCounter(counter));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  const metricsSection = document.getElementById('metrics');
+  if (metricsSection) {
+    observer.observe(metricsSection);
+  }
+}
+
+/* ==========================================================================
+   7. FUTURE DIRECTION MILESTONE FILTERING
+   ========================================================================== */
+function initFutureFilters() {
+  const filterBtns = document.querySelectorAll('.future-filter-btn');
+  const futureCards = document.querySelectorAll('.future-card');
+  if (!filterBtns.length || !futureCards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-future-filter') || 'all';
+
+      futureCards.forEach(card => {
+        const phase = card.getAttribute('data-phase');
+        if (filter === 'all' || phase === filter) {
+          card.classList.remove('filtered-out');
+        } else {
+          card.classList.add('filtered-out');
+        }
+      });
+    });
+  });
+}
+
+/* ==========================================================================
+   8. CONTACT MODAL & CLIPBOARD HELPERS
+   ========================================================================== */
+function initContactModal() {
+  const modal = document.getElementById('contact-modal');
+  const openBtns = document.querySelectorAll('.open-contact-modal');
+  const closeBtns = document.querySelectorAll('.close-contact-modal');
+  const form = document.getElementById('contact-form');
+
+  if (!modal) return;
+
+  openBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  const closeModal = () => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  };
+
+  closeBtns.forEach(btn => btn.addEventListener('click', closeModal));
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      closeModal();
+      showToast('Thank you! Your inquiry has been sent to the CAPI team.');
+      form.reset();
+    });
+  }
+}
+
+function initEmailCopy() {
+  const copyBtn = document.getElementById('copy-email-btn');
+  if (!copyBtn) return;
+
+  copyBtn.addEventListener('click', () => {
+    const email = 'contact@capi-techno.com';
+    navigator.clipboard.writeText(email).then(() => {
+      showToast(`Copied team email: ${email}`);
+    }).catch(() => {
+      showToast(`Team email: ${email}`);
+    });
+  });
+}
+
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  const toastText = document.getElementById('toast-text');
+  if (!toast || !toastText) return;
+
+  toastText.textContent = message;
+  toast.classList.remove('opacity-0', 'pointer-events-none');
+  toast.classList.add('opacity-100');
+
+  setTimeout(() => {
+    toast.classList.remove('opacity-100');
+    toast.classList.add('opacity-0', 'pointer-events-none');
+  }, 3500);
+}
+
+
+/* ==========================================================================
+   9. VINTAGE RETRO CRT TELEVISION 4-CHANNEL CONTROLLER
+   ========================================================================== */
+function initRetroTelevision() {
+  const channelKnob = document.getElementById('tv-channel-knob');
+  const tuneKnob = document.getElementById('tv-tune-knob');
+  const tvGif = document.getElementById('tv-screen-gif');
+  const channelLabel = document.getElementById('tv-channel-label');
+  const tickerText = document.getElementById('tv-ticker-text');
+  const crtStatic = document.getElementById('crt-static');
+  const presetBtns = document.querySelectorAll('.tv-channel-preset');
+
+  if (!tvGif) return;
+
+  const tvChannels = [
+    {
+      id: 1,
+      title: 'CH 01  CERAMICS',
+      gif: 'assests/Blue Husky’s Pottery.gif',
+      alt: 'CAPI Craft Mascot - Ceramics & Pottery Artistry',
+      ticker: '✦ THE ART OF THE MAKER ✦ CERAMICS & CLAY ARTISTRY ✦ AUTHENTIC PROVENANCE ✦ TRADITIONAL CREATORS ✦'
+    },
+    {
+      id: 2,
+      title: 'CH 02  TEXTILES',
+      gif: 'assests/Blue Husky Tailor.gif',
+      alt: 'CAPI Craft Mascot - Heritage Textiles & Tailoring',
+      ticker: '✦ THE ART OF THE MAKER ✦ HERITAGE TEXTILES & TAILORING ✦ GLOBAL DISCOVERY ✦ MASTER WEAVERS ✦'
+    },
+    {
+      id: 3,
+      title: 'CH 03  WOODCRAFT',
+      gif: 'assests/Blue Foxy Woodworking.gif',
+      alt: 'CAPI Craft Mascot - Fine Woodcraft & Joinery',
+      ticker: '✦ THE ART OF THE MAKER ✦ FINE WOODCRAFT & JOINERY ✦ ENDURING HERITAGE ✦ MINDFUL CREATION ✦'
+    },
+    {
+      id: 4,
+      title: 'CH 04  PAINTING',
+      gif: 'assests/Blue Husky’s Painting.gif',
+      alt: 'CAPI Craft Mascot - Traditional Art & Painting',
+      ticker: '✦ THE ART OF THE MAKER ✦ TRADITIONAL ART & PAINTING ✦ CULTURAL HERITAGE ✦ DIGITAL PATHWAYS ✦'
+    }
+  ];
+
+  let currentChannel = 1;
+  let knobRotation = 0;
+  let tuneAngle = 0;
+
+  // Mechanical switch audio click via Web Audio API
+  function playKnobClick(freq = 240) {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + 0.035);
+      
+      gain.gain.setValueAtTime(0.18, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.035);
+      
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      
+      osc.start();
+      osc.stop(ctx.currentTime + 0.035);
+    } catch (e) {}
+  }
+
+  function setChannel(channelId) {
+    const channel = tvChannels.find(c => c.id === channelId) || tvChannels[0];
+    currentChannel = channel.id;
+
+    // Rotate knob to correspond to 4 channel positions (0°, 90°, 180°, 270°)
+    knobRotation = (channel.id - 1) * 90;
+    if (channelKnob) {
+      channelKnob.style.transform = `rotate(${knobRotation}deg)`;
+    }
+
+    playKnobClick(240 + channel.id * 30);
+
+    // Momentary CRT Static Noise Flash on channel switch
+    if (crtStatic) {
+      crtStatic.classList.add('active');
+      setTimeout(() => {
+        crtStatic.classList.remove('active');
+      }, 140);
+    }
+
+    // Update Mascot GIF
+    tvGif.src = channel.gif;
+    tvGif.alt = channel.alt;
+
+    // Update Realistic Green Phosphor OSD Label (No green dot)
+    if (channelLabel) {
+      channelLabel.textContent = channel.title;
+    }
+
+    // Update Bottom Marquee Chyron
+    if (tickerText) {
+      tickerText.innerHTML = `<span>${channel.ticker}</span>`;
+    }
+
+    // Update Preset Buttons Active State
+    presetBtns.forEach(btn => {
+      const btnCh = parseInt(btn.getAttribute('data-tv-channel'), 10);
+      if (btnCh === currentChannel) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
+
+  // Rotary Knob Click: cycle to next channel
+  if (channelKnob) {
+    channelKnob.addEventListener('click', () => {
+      const nextChannel = (currentChannel % 4) + 1;
+      setChannel(nextChannel);
+    });
+  }
+
+  // Preset Buttons: direct channel jump
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const ch = parseInt(btn.getAttribute('data-tv-channel'), 10);
+      if (ch && ch !== currentChannel) {
+        setChannel(ch);
+      }
+    });
+  });
+
+  // Fine Tuning Knob Click
+  if (tuneKnob) {
+    tuneKnob.addEventListener('click', () => {
+      tuneAngle += 45;
+      tuneKnob.style.transform = `rotate(${tuneAngle}deg)`;
+      playKnobClick(400);
+
+      if (crtStatic) {
+        crtStatic.classList.add('active');
+        setTimeout(() => crtStatic.classList.remove('active'), 80);
+      }
+    });
+  }
+}
+
+/* ==========================================================================
+   10. REFINED INTRO / SPLASH SCREEN CONTROLLER
+   Features Blue Husky intro GIF as the central loading character (No CAPI logo)
+   ========================================================================== */
+function initSplashScreen() {
+  const splash = document.getElementById('splash-screen');
+  const progressBar = document.getElementById('splash-progress-bar');
+  const percentEl = document.getElementById('splash-percent');
+  const skipBtn = document.getElementById('splash-skip-btn');
+
+  if (!splash) return;
+
+  // Lock scroll during splash
+  document.body.classList.add('splash-active');
+  document.body.style.overflow = 'hidden';
+
+  let isDismissed = false;
+
+  function dismissSplash() {
+    if (isDismissed) return;
+    isDismissed = true;
+
+    // Smooth fade out & unlock scroll
+    splash.classList.add('splash-hidden');
+    document.body.classList.remove('splash-active');
+    document.body.style.overflow = '';
+
+    // Remove from layout after fade animation completes
+    setTimeout(() => {
+      splash.style.display = 'none';
+    }, 600);
+  }
+
+  // Smooth simulated progress from 0% to 100% over ~1.8 seconds
+  const totalDuration = 1800; // ms
+  const startTime = performance.now();
+
+  function updateProgress(currentTime) {
+    if (isDismissed) return;
+
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / totalDuration, 1);
+
+    // Ease-out curve for natural deceleration towards 100%
+    const eased = 1 - Math.pow(1 - progress, 2);
+    const percent = Math.round(eased * 100);
+
+    if (progressBar) {
+      progressBar.style.width = `${percent}%`;
+    }
+    if (percentEl) {
+      percentEl.textContent = `${percent}%`;
+    }
+
+    if (progress < 1) {
+      requestAnimationFrame(updateProgress);
+    } else {
+      // Hold 100% state for 140ms then smoothly dismiss
+      setTimeout(dismissSplash, 140);
+    }
+  }
+
+  requestAnimationFrame(updateProgress);
+
+  // Skip button click
+  if (skipBtn) {
+    skipBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dismissSplash();
+    });
+  }
+
+  // Allow clicking anywhere on splash to enter immediately
+  splash.addEventListener('click', () => {
+    dismissSplash();
+  });
+
+  // Keyboard shortcuts (Escape, Enter, Space) to skip
+  window.addEventListener('keydown', (e) => {
+    if (!isDismissed && (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ')) {
+      dismissSplash();
+    }
+  }, { once: true });
+}
+
