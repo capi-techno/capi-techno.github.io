@@ -11,7 +11,7 @@
   --color-bg-light: #FAFAFA;
   --color-surface-light: #FFFFFF;
   --color-border-light: rgba(226, 232, 240, 0.85);
-  
+
   --color-bg-dark: #0A0D14;
   --color-surface-dark: #121824;
   --color-border-dark: rgba(255, 255, 255, 0.08);
@@ -44,13 +44,16 @@ body {
   width: 8px;
   height: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: rgba(148, 163, 184, 0.4);
   border-radius: 9999px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(100, 116, 139, 0.6);
 }
@@ -150,7 +153,7 @@ html.dark .view-mode-btn.active {
   perspective: 1200px;
   -webkit-perspective: 1200px;
   position: relative;
-  height: 500px;
+  height: 540px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -159,33 +162,33 @@ html.dark .view-mode-btn.active {
 
 .card-wrapper {
   position: absolute;
-  width: 295px;
-  height: 420px;
+  width: 300px;
+  height: 460px;
   transform-origin: 50% 120%;
-  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-              z-index 0.3s ease, 
-              opacity 0.4s ease, 
-              filter 0.4s ease;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    z-index 0.3s ease,
+    opacity 0.4s ease,
+    filter 0.4s ease;
 }
 
 /* Fanned Playing Card Positions */
 .card-wrapper.card-1 {
-  transform: translateX(-285px) rotate(-15deg);
+  transform: translateX(-290px) rotate(-14deg);
   z-index: 1;
 }
 
 .card-wrapper.card-2 {
-  transform: translateX(-95px) rotate(-5deg);
+  transform: translateX(-98px) rotate(-4.5deg);
   z-index: 2;
 }
 
 .card-wrapper.card-3 {
-  transform: translateX(95px) rotate(5deg);
+  transform: translateX(98px) rotate(4.5deg);
   z-index: 3;
 }
 
 .card-wrapper.card-4 {
-  transform: translateX(285px) rotate(15deg);
+  transform: translateX(290px) rotate(14deg);
   z-index: 4;
 }
 
@@ -206,7 +209,7 @@ html.dark .card-wrapper:not(.is-active):hover .card-front {
 
 /* Card Active / Drawn State */
 .card-wrapper.is-active {
-  transform: translateX(0) translateY(-30px) scale(1.08) rotate(0deg) !important;
+  transform: translateX(0) translateY(-25px) scale(1.05) rotate(0deg) !important;
   z-index: 100 !important;
 }
 
@@ -245,7 +248,10 @@ html.dark .card-wrapper:not(.is-active):hover .card-front {
 .card-back {
   z-index: 1;
   transform: rotateY(180deg);
-  overflow: hidden !important;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .rotate-y-180 {
@@ -279,7 +285,7 @@ html.dark .card-wrapper:not(.is-active):hover .card-front {
 .card-hand-container.grid-mode .card-wrapper {
   position: relative !important;
   width: 100% !important;
-  height: 430px !important;
+  height: 460px !important;
   transform: none !important;
   transform-origin: center center !important;
 }
@@ -308,18 +314,22 @@ html.dark .card-wrapper:not(.is-active):hover .card-front {
     gap: 1.5rem !important;
     padding-top: 0;
   }
+
   .card-wrapper {
     position: relative !important;
     width: 100% !important;
-    height: 420px !important;
+    height: 460px !important;
     transform: none !important;
   }
+
   .card-wrapper:not(.is-active):hover {
     transform: none !important;
   }
+
   .card-wrapper.is-active {
     transform: none !important;
   }
+
   .card-hand-container.has-active .card-wrapper:not(.is-active) {
     opacity: 1 !important;
     filter: none !important;
@@ -374,10 +384,10 @@ html.dark .reliability-spotlight-glow {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.3s ease,
-              border-color 0.3s ease,
-              box-shadow 0.3s ease;
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .reliability-stage.is-revealed {
@@ -390,11 +400,11 @@ html.dark .reliability-spotlight-glow {
   .reliability-rail .reliability-stage {
     flex: 1;
     transition: flex 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.3s ease,
-                background-color 0.3s ease,
-                border-color 0.3s ease,
-                box-shadow 0.3s ease,
-                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity 0.3s ease,
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reliability-rail:hover .reliability-stage {
@@ -437,9 +447,9 @@ html.dark .reliability-spotlight-glow {
 
 /* ─── Meet Our Team Section ────────────────────────────────────────────── */
 .team-card {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-              box-shadow 0.35s ease, 
-              border-color 0.35s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
 
 .team-card:hover {
@@ -532,8 +542,15 @@ html.dark header.navbar.scrolled {
 }
 
 @keyframes modalFadeIn {
-  from { opacity: 0; transform: scale(0.97); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -542,6 +559,7 @@ html.dark header.navbar.scrolled {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
   .card-wrapper,
   .reliability-stage,
   .use-case-card {
@@ -601,27 +619,21 @@ html.dark .retro-crt-bezel {
 
 /* CRT Horizontal Scanline Texture */
 .crt-scanlines {
-  background: linear-gradient(
-    rgba(18, 16, 16, 0) 50%, 
-    rgba(0, 0, 0, 0.35) 50%
-  ), 
-  linear-gradient(
-    90deg,
-    rgba(255, 0, 0, 0.03),
-    rgba(0, 255, 0, 0.01),
-    rgba(0, 0, 255, 0.03)
-  );
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.35) 50%),
+    linear-gradient(90deg,
+      rgba(255, 0, 0, 0.03),
+      rgba(0, 255, 0, 0.01),
+      rgba(0, 0, 255, 0.03));
   background-size: 100% 3px, 6px 100%;
 }
 
 /* CRT Glass Spherical Specular Glare */
 .crt-reflection {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(255, 255, 255, 0.03) 28%,
-    transparent 55%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.03) 28%,
+      transparent 55%);
 }
 
 /* CRT Outer Tube Vignette Curvature */
@@ -633,17 +645,31 @@ html.dark .retro-crt-bezel {
 .crt-static.active {
   opacity: 0.88 !important;
   background: repeating-radial-gradient(#fff 0 0.0001%, #000 0 0.0002%) 50% 0/2500px 2500px,
-              repeating-conic-gradient(#fff 0 0.0001%, #000 0 0.0002%) 50% 50%/2500px 2500px;
+    repeating-conic-gradient(#fff 0 0.0001%, #000 0 0.0002%) 50% 50%/2500px 2500px;
   background-blend-mode: difference;
   animation: crtNoise 0.12s steps(2) infinite;
 }
 
 @keyframes crtNoise {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(-1%, 1%); }
-  50% { transform: translate(1%, -1%); }
-  75% { transform: translate(-1%, -1%); }
-  100% { transform: translate(0, 0); }
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-1%, 1%);
+  }
+
+  50% {
+    transform: translate(1%, -1%);
+  }
+
+  75% {
+    transform: translate(-1%, -1%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 /* CRT Marquee Ticker */
@@ -663,8 +689,13 @@ html.dark .retro-crt-bezel {
 }
 
 @keyframes crtMarqueeScroll {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 /* Realistic Chrome Antenna SVG */
@@ -746,8 +777,8 @@ body.splash-active {
   background-color: #FAFAFA;
   background-image: radial-gradient(circle at 50% 45%, rgba(0, 102, 255, 0.05) 0%, transparent 70%);
   transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    visibility 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -805,6 +836,7 @@ html.dark .splash-aura {
     transform: scale(0.9);
     opacity: 0.65;
   }
+
   100% {
     transform: scale(1.15);
     opacity: 1;
@@ -827,6 +859,7 @@ html.dark .splash-aura {
   0% {
     transform: translateY(0px);
   }
+
   100% {
     transform: translateY(-6px);
   }
