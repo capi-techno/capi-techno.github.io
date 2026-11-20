@@ -522,26 +522,25 @@ function initFutureFilters() {
 function initContactModal() {
   const modal = document.getElementById('contact-modal');
   const openBtns = document.querySelectorAll('.open-contact-modal');
-  const closeBtns = document.querySelectorAll('.close-contact-modal');
+  const closeBtns = document.querySelectorAll('.close-contact-modal, #close-modal-btn');
   const form = document.getElementById('contact-form');
 
   if (!modal) return;
 
-  openBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    });
-  });
+  const openModal = (e) => {
+    if (e) e.preventDefault();
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    const firstInput = modal.querySelector('input');
+    if (firstInput) setTimeout(() => firstInput.focus(), 60);
+  };
 
   const closeModal = () => {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
+    modal.classList.remove('active');
     document.body.style.overflow = '';
   };
 
+  openBtns.forEach(btn => btn.addEventListener('click', openModal));
   closeBtns.forEach(btn => btn.addEventListener('click', closeModal));
 
   modal.addEventListener('click', (e) => {
@@ -549,7 +548,7 @@ function initContactModal() {
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
       closeModal();
     }
   });
@@ -557,9 +556,30 @@ function initContactModal() {
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      closeModal();
-      showToast('Thank you! Your inquiry has been sent to the CAPI team.');
-      form.reset();
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.innerHTML : 'Send Message ➔';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+          <span class="inline-flex items-center gap-2">
+            <svg class="animate-spin w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span>Sending...</span>
+          </span>`;
+      }
+
+      // Fast, responsive submission feedback with zero lag
+      setTimeout(() => {
+        closeModal();
+        showToast('Thank you! Your message has been sent to the CAPI team.');
+        form.reset();
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        }
+      }, 350);
     });
   }
 }
