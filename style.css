@@ -119,10 +119,16 @@ header.navbar.scrolled {
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.view-mode-btn:not(.active) {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
 .view-mode-btn.active {
   background-color: #FFFFFF !important;
   color: #0066FF !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-weight: 700 !important;
 }
 
 html.dark .view-mode-btn.active {

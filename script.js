@@ -275,12 +275,24 @@ function initCraftViewAndDeck() {
 
     if (mode === 'grid') {
       container.classList.add('grid-mode');
-      if (viewGridBtn) viewGridBtn.classList.add('active');
-      if (viewDeckBtn) viewDeckBtn.classList.remove('active');
+      if (viewGridBtn) {
+        viewGridBtn.classList.add('active');
+        viewGridBtn.setAttribute('aria-pressed', 'true');
+      }
+      if (viewDeckBtn) {
+        viewDeckBtn.classList.remove('active');
+        viewDeckBtn.setAttribute('aria-pressed', 'false');
+      }
     } else {
       container.classList.remove('grid-mode');
-      if (viewDeckBtn) viewDeckBtn.classList.add('active');
-      if (viewGridBtn) viewGridBtn.classList.remove('active');
+      if (viewDeckBtn) {
+        viewDeckBtn.classList.add('active');
+        viewDeckBtn.setAttribute('aria-pressed', 'true');
+      }
+      if (viewGridBtn) {
+        viewGridBtn.classList.remove('active');
+        viewGridBtn.setAttribute('aria-pressed', 'false');
+      }
     }
   }
 
