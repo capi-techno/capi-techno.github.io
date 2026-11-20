@@ -112,7 +112,7 @@
        HEADER & NAVIGATION BAR
        ========================================================================== -->
   <header class="navbar">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
       <div class="flex items-center justify-between">
 
         <!-- Logo & Brand Name -->
@@ -213,36 +213,37 @@
        SECTION A: HERO SECTION
        Living Interactive Node Canvas + Vintage CRT Television + Craft Vision
        ========================================================================== -->
-  <section id="overview" class="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+  <section id="overview" class="relative min-h-screen min-h-[100dvh] pt-24 pb-12 sm:pb-16 flex flex-col justify-center overflow-hidden">
 
     <!-- Interactive Particle Node Network Canvas (Living Creative Backdrop) -->
     <canvas id="hero-canvas"></canvas>
 
     <!-- Main Container -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 relative z-10 w-full my-auto py-6 sm:py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 xl:gap-20 items-center">
 
         <!-- Left Column: Core Brand Narrative -->
-        <div class="lg:col-span-7 space-y-6 text-left">
+        <div class="lg:col-span-7 space-y-7 lg:space-y-8 text-left">
 
           <!-- Brand Badge -->
           <div
-            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 shadow-2xs">
-            <span class="text-xs font-semibold tracking-wider text-[#0066FF] dark:text-blue-400 uppercase font-mono">
+            class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-50/90 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 shadow-2xs">
+            <span class="w-2 h-2 rounded-full bg-[#0066FF] animate-pulse"></span>
+            <span class="text-xs sm:text-[13px] font-semibold tracking-wider text-[#0066FF] dark:text-blue-400 uppercase font-mono">
               Empowering Creators Through Digital Innovation
             </span>
           </div>
 
           <!-- Main Hero Headline -->
           <h1
-            class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+            class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.35rem] xl:text-[3.75rem] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.12]">
             Bringing Traditional Craftsmanship into the<span
               class="bg-gradient-to-r from-[#0066FF] via-blue-600 to-indigo-600 bg-clip-text text-transparent"> Digital
               World.</span>
           </h1>
 
           <!-- Supporting Description -->
-          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl font-normal">
+          <p class="text-base sm:text-lg lg:text-[1.125rem] text-slate-600 dark:text-slate-300 leading-[1.75] max-w-2xl font-normal">
             We bring traditional artisans and independent creators closer to the digital world through thoughtful
             technology and meaningful digital experiences. Helping handmade creations reach wider audiences, share their
             stories, and receive the appreciation they deserve. Every creation has a story. Let's bring it to the world.
@@ -251,14 +252,14 @@
           <!-- Action CTAs -->
           <div class="flex flex-wrap items-center gap-4 pt-2">
             <a href="#craft"
-              class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-sm font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] rounded-xl shadow-sm hover:shadow-md transition-all active:scale-98">
+              class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:py-4 text-[15px] font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] rounded-xl shadow-sm hover:shadow-md transition-all active:scale-98">
               <span>Explore Our Vision</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
             </a>
             <button
-              class="open-contact-modal inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#121824] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xs transition-all cursor-pointer">
+              class="open-contact-modal inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:py-4 text-[15px] font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#121824] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xs transition-all cursor-pointer">
               <span>Get in Touch</span>
               <span class="text-xs text-slate-400">➔</span>
             </button>
@@ -267,8 +268,8 @@
         </div>
 
         <!-- Right Column: Vintage Retro CRT Television with 4 Craft Channels -->
-        <div class="lg:col-span-5 relative">
-          <div class="relative mx-auto max-w-md lg:max-w-none">
+        <div class="lg:col-span-5 relative flex items-center justify-center">
+          <div class="relative w-full max-w-md lg:max-w-lg xl:max-w-[520px] mx-auto">
 
             <!-- Vintage Television Assembly -->
             <div class="retro-tv-container relative flex flex-col items-center">
