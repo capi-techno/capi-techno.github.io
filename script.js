@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRetroTelevision();
   initContactModal();
   initEmailCopy();
+  initScrollReveal();
 });
 
 /* ==========================================================================
@@ -274,12 +275,24 @@ function initCraftViewAndDeck() {
 
     if (mode === 'grid') {
       container.classList.add('grid-mode');
-      if (viewGridBtn) viewGridBtn.classList.add('active');
-      if (viewDeckBtn) viewDeckBtn.classList.remove('active');
+      if (viewGridBtn) {
+        viewGridBtn.classList.add('active');
+        viewGridBtn.setAttribute('aria-pressed', 'true');
+      }
+      if (viewDeckBtn) {
+        viewDeckBtn.classList.remove('active');
+        viewDeckBtn.setAttribute('aria-pressed', 'false');
+      }
     } else {
       container.classList.remove('grid-mode');
-      if (viewDeckBtn) viewDeckBtn.classList.add('active');
-      if (viewGridBtn) viewGridBtn.classList.remove('active');
+      if (viewDeckBtn) {
+        viewDeckBtn.classList.add('active');
+        viewDeckBtn.setAttribute('aria-pressed', 'true');
+      }
+      if (viewGridBtn) {
+        viewGridBtn.classList.remove('active');
+        viewGridBtn.setAttribute('aria-pressed', 'false');
+      }
     }
   }
 
@@ -816,4 +829,52 @@ function initSplashScreen() {
     }
   }, { once: true });
 }
+
+/* ==========================================================================
+   14. SCROLL REVEAL CONTROLLER
+   - Lightweight IntersectionObserver for viewport entry
+   - Staggered reveals (heading -> paragraph -> cards)
+   - Triggers once per page load and maintains visibility
+   - Respects prefers-reduced-motion and provides focus-within / JS-free fallback
+   ========================================================================== */
+function initScrollReveal() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealElements = document.querySelectorAll('.reveal-item');
+
+  if (!revealElements.length) return;
+
+  // If user prefers reduced motion or browser does not support IntersectionObserver, reveal immediately
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    revealElements.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  // Enable animation mode on root element
+  document.documentElement.classList.add('js-reveal');
+
+  // Early trigger threshold: rootMargin triggers when element enters lower 10% of viewport
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '0px 0px -40px 0px',
+    threshold: 0.08
+  });
+
+  revealElements.forEach(el => {
+    observer.observe(el);
+
+    // Ensure keyboard focus immediately reveals content
+    el.addEventListener('focusin', () => {
+      el.classList.add('is-visible');
+      observer.unobserve(el);
+    }, { passive: true });
+  });
+}
+
 

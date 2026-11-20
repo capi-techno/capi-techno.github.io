@@ -121,10 +121,16 @@ header.navbar.scrolled {
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.view-mode-btn:not(.active) {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
 .view-mode-btn.active {
   background-color: #FFFFFF !important;
   color: #0066FF !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-weight: 700 !important;
 }
 
 html.dark .view-mode-btn.active {
@@ -970,4 +976,48 @@ html.dark .splash-skip-btn:hover {
   color: #38BDF8;
   background: rgba(56, 189, 248, 0.1);
   border-color: rgba(56, 189, 248, 0.35);
+}
+
+/* ==========================================================================
+   SCROLL REVEAL UTILITY SYSTEM
+   - Hardware-accelerated opacity & 20px upward translation
+   - Smooth 500ms ease-out curve (cubic-bezier(0.16, 1, 0.3, 1))
+   - Staggered cadence (0ms, 80ms, 160ms, capped at 240ms)
+   - JavaScript-independent fallback: default visible, .js-reveal enables hidden base
+   ========================================================================== */
+html.js-reveal .reveal-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+html.js-reveal .reveal-item.is-visible,
+html.js-reveal .reveal-item:focus-within {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Stagger Delays (80ms increments, capped at 240ms) */
+html.js-reveal .reveal-delay-1 {
+  transition-delay: 80ms;
+}
+
+html.js-reveal .reveal-delay-2 {
+  transition-delay: 160ms;
+}
+
+html.js-reveal .reveal-delay-3 {
+  transition-delay: 240ms;
+}
+
+/* Respect Accessibility Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  html.js-reveal .reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    transition-delay: 0ms !important;
+  }
 }

@@ -134,7 +134,8 @@
         </a>
 
         <!-- Desktop Navigation Links -->
-        <nav class="hidden lg:flex items-center gap-2.5 lg:gap-3 xl:gap-5 2xl:gap-7 text-xs xl:text-sm font-semibold whitespace-nowrap">
+        <nav
+          class="hidden lg:flex items-center gap-2.5 lg:gap-3 xl:gap-5 2xl:gap-7 text-xs xl:text-sm font-semibold whitespace-nowrap">
           <a href="#about" class="nav-link whitespace-nowrap">About</a>
           <a href="#craft" class="nav-link whitespace-nowrap">Craft &amp; Horizons</a>
           <a href="#purpose" class="nav-link whitespace-nowrap">Our Purpose</a>
@@ -213,36 +214,39 @@
        SECTION A: HERO SECTION
        Living Interactive Node Canvas + Vintage CRT Television + Craft Vision
        ========================================================================== -->
-  <section id="overview" class="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+  <section id="overview"
+    class="relative min-h-screen min-h-[100dvh] pt-24 pb-12 sm:pb-16 flex flex-col justify-center overflow-hidden">
 
     <!-- Interactive Particle Node Network Canvas (Living Creative Backdrop) -->
     <canvas id="hero-canvas"></canvas>
 
     <!-- Main Container -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 relative z-10 w-full my-auto py-6 sm:py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 xl:gap-20 items-center">
 
         <!-- Left Column: Core Brand Narrative -->
-        <div class="lg:col-span-7 space-y-6 text-left">
+        <div class="lg:col-span-7 space-y-7 lg:space-y-8 text-left">
 
           <!-- Brand Badge -->
           <div
-            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/90 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 shadow-2xs">
-            <span class="text-xs font-semibold tracking-wider text-[#0066FF] dark:text-blue-400 uppercase font-mono">
+            class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-50/90 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 shadow-2xs">
+            <span
+              class="text-xs sm:text-[13px] font-semibold tracking-wider text-[#0066FF] dark:text-blue-400 uppercase font-mono">
               Empowering Creators Through Digital Innovation
             </span>
           </div>
 
           <!-- Main Hero Headline -->
           <h1
-            class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+            class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.35rem] xl:text-[3.75rem] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.12]">
             Bringing Traditional Craftsmanship into the<span
               class="bg-gradient-to-r from-[#0066FF] via-blue-600 to-indigo-600 bg-clip-text text-transparent"> Digital
               World.</span>
           </h1>
 
           <!-- Supporting Description -->
-          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl font-normal">
+          <p
+            class="text-base sm:text-lg lg:text-[1.125rem] text-slate-600 dark:text-slate-300 leading-[1.75] max-w-2xl font-normal">
             We bring traditional artisans and independent creators closer to the digital world through thoughtful
             technology and meaningful digital experiences. Helping handmade creations reach wider audiences, share their
             stories, and receive the appreciation they deserve. Every creation has a story. Let's bring it to the world.
@@ -251,14 +255,14 @@
           <!-- Action CTAs -->
           <div class="flex flex-wrap items-center gap-4 pt-2">
             <a href="#craft"
-              class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-sm font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] rounded-xl shadow-sm hover:shadow-md transition-all active:scale-98">
+              class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:py-4 text-[15px] font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] rounded-xl shadow-sm hover:shadow-md transition-all active:scale-98">
               <span>Explore Our Vision</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
             </a>
             <button
-              class="open-contact-modal inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#121824] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xs transition-all cursor-pointer">
+              class="open-contact-modal inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:py-4 text-[15px] font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#121824] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xs transition-all cursor-pointer">
               <span>Get in Touch</span>
               <span class="text-xs text-slate-400">➔</span>
             </button>
@@ -267,8 +271,8 @@
         </div>
 
         <!-- Right Column: Vintage Retro CRT Television with 4 Craft Channels -->
-        <div class="lg:col-span-5 relative">
-          <div class="relative mx-auto max-w-md lg:max-w-none">
+        <div class="lg:col-span-5 relative flex items-center justify-center">
+          <div class="relative w-full max-w-md lg:max-w-lg xl:max-w-[520px] mx-auto">
 
             <!-- Vintage Television Assembly -->
             <div class="retro-tv-container relative flex flex-col items-center">
@@ -537,13 +541,15 @@
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16">
         <span
-          class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
+          class="reveal-item inline-block text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
           ABOUT OUR COMPANY
         </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
+        <h2
+          class="reveal-item reveal-delay-1 text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
           Where Craft Meets Technology
         </h2>
-        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
+        <p
+          class="reveal-item reveal-delay-2 text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
           Our company driven by a simple belief: traditional craftsmanship deserves a place
           in the digital future.
         </p>
@@ -552,7 +558,8 @@
       <!-- Narrative Grid: Who We Are & Why We Exist -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-16">
 
-        <div class="lg:col-span-6 space-y-5 text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
+        <div
+          class="reveal-item lg:col-span-6 space-y-5 text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
           <h3 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
             Why We Chose This Path
           </h3>
@@ -572,7 +579,7 @@
         </div>
 
         <!-- Visual Core Values Card -->
-        <div class="lg:col-span-6">
+        <div class="reveal-item reveal-delay-1 lg:col-span-6">
           <div
             class="glass-card rounded-2xl p-7 sm:p-9 border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-[#121824] space-y-6">
             <h4 class="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF] dark:text-blue-400">
@@ -631,7 +638,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
 
         <div
-          class="glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-blue-400/60 transition-all">
+          class="reveal-item glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-blue-400/60 transition-all">
           <div
             class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/40 text-[#0066FF] dark:text-blue-400 flex items-center justify-center mb-4">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -649,7 +656,7 @@
         </div>
 
         <div
-          class="glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-amber-400/60 transition-all">
+          class="reveal-item reveal-delay-1 glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-amber-400/60 transition-all">
           <div
             class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-4">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -664,7 +671,7 @@
         </div>
 
         <div
-          class="glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-emerald-400/60 transition-all">
+          class="reveal-item reveal-delay-2 glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-emerald-400/60 transition-all">
           <div
             class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -696,13 +703,15 @@
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-10">
         <span
-          class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
+          class="reveal-item inline-block text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
           CRAFT TRADITIONS &amp; HORIZONS
         </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
+        <h2
+          class="reveal-item reveal-delay-1 text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
           Discover Traditional Crafts
         </h2>
-        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
+        <p
+          class="reveal-item reveal-delay-2 text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
           Explore different creative disciplines. Select a card, flip it in 3D, and discover the digital opportunities
           we're creating for each craft.
         </p>
@@ -712,16 +721,16 @@
            INTERACTIVE DISPLAY VIEW OPTIONS TOOLBAR
            ==================================================================== -->
       <div
-        class="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-slate-200/80 dark:border-slate-800">
+        class="reveal-item reveal-delay-2 flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-slate-200/80 dark:border-slate-800">
 
         <!-- View Mode Switcher -->
-        <div
+        <div role="group" aria-label="Crafts display view options"
           class="inline-flex p-1 bg-slate-200/70 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
-          <button id="view-mode-deck" type="button"
-            class="view-mode-btn active px-3.5 py-1.5 text-xs font-bold rounded-lg transition-all bg-white dark:bg-[#121824] text-[#0066FF] dark:text-blue-400 shadow-2xs flex items-center gap-1.5 cursor-pointer">
+          <button id="view-mode-deck" type="button" aria-pressed="true"
+            class="view-mode-btn active px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 cursor-pointer">
             <span>3D Deck View</span>
           </button>
-          <button id="view-mode-grid" type="button"
+          <button id="view-mode-grid" type="button" aria-pressed="false"
             class="view-mode-btn px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 cursor-pointer">
             <span>Grid View</span>
           </button>
@@ -734,7 +743,7 @@
            (Interactive Play, Center-Draw & 3D Flip)
            ==================================================================== -->
       <div id="craft-cards-container"
-        class="card-hand-container relative max-w-5xl mx-auto h-[540px] flex items-center justify-center pt-4 pb-8 mb-6">
+        class="reveal-item reveal-delay-3 card-hand-container relative max-w-5xl mx-auto h-[540px] flex items-center justify-center pt-4 pb-8 mb-6">
 
         <!-- Card 1: Ceramics & Clay Artistry -->
         <div class="card-wrapper card-1" data-card="1" data-category="ceramics">
@@ -1100,13 +1109,15 @@
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16">
         <span
-          class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
+          class="reveal-item inline-block text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
           WHAT DRIVES OUR WORK
         </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
+        <h2
+          class="reveal-item reveal-delay-1 text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
           Our Driving Purpose
         </h2>
-        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
+        <p
+          class="reveal-item reveal-delay-2 text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
           We believe traditional creativity deserves to be seen, valued, and sustained in a world shaped by digital
           innovation.
         </p>
@@ -1117,7 +1128,7 @@
 
         <!-- Purpose Card 1 -->
         <div
-          class="glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-blue-400 transition-all flex flex-col justify-between">
+          class="reveal-item glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-blue-400 transition-all flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-5">
               <div
@@ -1145,7 +1156,7 @@
 
         <!-- Purpose Card 2 -->
         <div
-          class="glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-amber-400 transition-all flex flex-col justify-between">
+          class="reveal-item reveal-delay-1 glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-amber-400 transition-all flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-5">
               <div
@@ -1173,7 +1184,7 @@
 
         <!-- Purpose Card 3 -->
         <div
-          class="glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-emerald-400 transition-all flex flex-col justify-between">
+          class="reveal-item reveal-delay-2 glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-emerald-400 transition-all flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-5">
               <div
@@ -1201,7 +1212,7 @@
 
         <!-- Purpose Card 4 -->
         <div
-          class="glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-purple-400 transition-all flex flex-col justify-between">
+          class="reveal-item reveal-delay-3 glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-purple-400 transition-all flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-5">
               <div
@@ -1231,7 +1242,7 @@
 
       <!-- Selective Disclosure Callout -->
       <div
-        class="mt-12 p-6 rounded-2xl bg-slate-100/70 dark:bg-[#121824] border border-slate-200 dark:border-slate-800 text-center max-w-2xl mx-auto">
+        class="reveal-item reveal-delay-2 mt-12 p-6 rounded-2xl bg-slate-100/70 dark:bg-[#121824] border border-slate-200 dark:border-slate-800 text-center max-w-2xl mx-auto">
         <p class="text-xs text-slate-600 dark:text-slate-400 font-medium italic">
           "We bring traditional creativity closer to the digital world, helping creators share their stories, reach
           wider audiences, and build meaningful opportunities for the future."
@@ -1250,7 +1261,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <div
-        class="telemetry-cockpit max-w-5xl mx-auto rounded-3xl bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 shadow-sm p-6 sm:p-8">
+        class="reveal-item telemetry-cockpit max-w-5xl mx-auto rounded-3xl bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 shadow-sm p-6 sm:p-8">
         <div
           class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center divide-y lg:divide-y-0 lg:divide-x divide-slate-100 dark:divide-slate-800">
 
@@ -1303,13 +1314,15 @@
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-14">
         <span
-          class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
+          class="reveal-item inline-block text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
           OUR CORE PRINCIPLES
         </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
+        <h2
+          class="reveal-item reveal-delay-1 text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
           What Guides CAPI
         </h2>
-        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
+        <p
+          class="reveal-item reveal-delay-2 text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
           Our principles shape how we build, innovate, and collaborate with creators. Explore the values behind every
           decision we make and every experience we create.
         </p>
@@ -1317,7 +1330,7 @@
 
       <!-- The Interactive Reliability Rail Console (Full-width, Seamless Fit) -->
       <div
-        class="reliability-console relative max-w-7xl mx-auto rounded-3xl bg-slate-50/70 dark:bg-[#121824]/90 border border-slate-200/90 dark:border-white/[0.08] shadow-xs overflow-hidden p-3.5 sm:p-4 lg:p-4.5">
+        class="reveal-item reveal-delay-3 reliability-console relative max-w-7xl mx-auto rounded-3xl bg-slate-50/70 dark:bg-[#121824]/90 border border-slate-200/90 dark:border-white/[0.08] shadow-xs overflow-hidden p-3.5 sm:p-4 lg:p-4.5">
 
         <!-- Animated Top Laser Guide Beam -->
         <div
@@ -1497,13 +1510,15 @@
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16">
         <span
-          class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
+          class="reveal-item inline-block text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
           GUIDING PRINCIPLES
         </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
+        <h2
+          class="reveal-item reveal-delay-1 text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
           Our Vision &amp; Mission
         </h2>
-        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
+        <p
+          class="reveal-item reveal-delay-2 text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
           The direction we aspire to follow and the purpose behind everything we build.
         </p>
       </div>
@@ -1513,7 +1528,7 @@
 
         <!-- Card 1: Our Vision -->
         <div
-          class="glass-card rounded-2xl p-8 sm:p-10 border border-slate-200/90 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50/50 to-blue-50/30 dark:from-[#121824] dark:via-[#141C2B] dark:to-[#0E131D] relative overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
+          class="reveal-item glass-card rounded-2xl p-8 sm:p-10 border border-slate-200/90 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50/50 to-blue-50/30 dark:from-[#121824] dark:via-[#141C2B] dark:to-[#0E131D] relative overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
           <div class="relative z-10 space-y-5">
             <div
               class="inline-flex items-center gap-2.5 px-3 py-1 rounded-lg bg-blue-50 dark:bg-blue-900/40 border border-blue-200/70 dark:border-blue-800 text-[#0066FF] dark:text-blue-400 text-xs font-mono font-bold">
@@ -1545,7 +1560,7 @@
 
         <!-- Card 2: Our Mission -->
         <div
-          class="glass-card rounded-2xl p-8 sm:p-10 border border-slate-200/90 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50/50 to-amber-50/30 dark:from-[#121824] dark:via-[#141C2B] dark:to-[#0E131D] relative overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
+          class="reveal-item reveal-delay-1 glass-card rounded-2xl p-8 sm:p-10 border border-slate-200/90 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50/50 to-amber-50/30 dark:from-[#121824] dark:via-[#141C2B] dark:to-[#0E131D] relative overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
           <div class="relative z-10 space-y-5">
             <div
               class="inline-flex items-center gap-2.5 px-3 py-1 rounded-lg bg-amber-50 dark:bg-amber-900/40 border border-amber-200/70 dark:border-amber-800 text-amber-600 dark:text-amber-400 text-xs font-mono font-bold">
@@ -1591,13 +1606,15 @@
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-16">
         <span
-          class="text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
+          class="reveal-item inline-block text-xs font-mono font-bold tracking-widest text-[#0066FF] dark:text-blue-400 uppercase bg-blue-50 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-800/60 px-3.5 py-1 rounded-full shadow-2xs">
           THE PEOPLE BEHIND CAPI
         </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
+        <h2
+          class="reveal-item reveal-delay-1 text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
           Meet Our Team
         </h2>
-        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
+        <p
+          class="reveal-item reveal-delay-2 text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
           Four co-founders, one shared vision. We bring together technology, creativity, and community to create
           meaningful digital opportunities for traditional creators.
         </p>
@@ -1608,17 +1625,21 @@
 
         <!-- Team Member 1 -->
         <div
-          class="team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
+          class="reveal-item team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
           <div>
             <div
-              class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-blue-600 to-indigo-500 p-0.5 shadow-sm">
+              class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-blue-600 to-indigo-500 p-0.5 shadow-sm select-none"
+              oncontextmenu="return false;">
               <div
-                class="w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
-                <svg class="w-14 h-14 text-slate-400 dark:text-slate-500 group-hover:scale-105 transition-transform"
-                  fill="currentColor" viewBox="0 0 24 24">
+                class="relative w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+                <svg
+                  class="w-14 h-14 text-slate-400 dark:text-slate-500 group-hover:scale-105 transition-transform pointer-events-none select-none"
+                  draggable="false" oncontextmenu="return false;" fill="currentColor" viewBox="0 0 24 24">
                   <path
                     d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                 </svg>
+                <!-- Transparent shield preventing direct interaction / drag-and-drop / saving -->
+                <div class="absolute inset-0 z-10 bg-transparent select-none" oncontextmenu="return false;"></div>
               </div>
             </div>
 
@@ -1652,17 +1673,21 @@
 
         <!-- Team Member 2 -->
         <div
-          class="team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
+          class="reveal-item reveal-delay-1 team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
           <div>
             <div
-              class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-indigo-600 to-purple-500 p-0.5 shadow-sm">
+              class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-indigo-600 to-purple-500 p-0.5 shadow-sm select-none"
+              oncontextmenu="return false;">
               <div
-                class="w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
-                <svg class="w-14 h-14 text-slate-400 dark:text-slate-500 group-hover:scale-105 transition-transform"
-                  fill="currentColor" viewBox="0 0 24 24">
+                class="relative w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+                <svg
+                  class="w-14 h-14 text-slate-400 dark:text-slate-500 group-hover:scale-105 transition-transform pointer-events-none select-none"
+                  draggable="false" oncontextmenu="return false;" fill="currentColor" viewBox="0 0 24 24">
                   <path
                     d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                 </svg>
+                <!-- Transparent shield preventing direct interaction / drag-and-drop / saving -->
+                <div class="absolute inset-0 z-10 bg-transparent select-none" oncontextmenu="return false;"></div>
               </div>
             </div>
 
@@ -1696,17 +1721,18 @@
 
         <!-- Team Member 3 -->
         <div
-          class="team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
+          class="reveal-item reveal-delay-2 team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
           <div>
             <div
-              class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-amber-500 to-orange-500 p-0.5 shadow-sm">
+              class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-amber-500 to-orange-500 p-0.5 shadow-sm select-none"
+              oncontextmenu="return false;">
               <div
-                class="w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
-                <svg class="w-14 h-14 text-slate-400 dark:text-slate-500 group-hover:scale-105 transition-transform"
-                  fill="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                </svg>
+                class="relative w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+                <img src="assests/uwan.png" alt="Uwan Isurujith"
+                  class="w-full h-full object-cover rounded-[14px] group-hover:scale-105 transition-transform duration-300 pointer-events-none select-none"
+                  draggable="false" oncontextmenu="return false;" loading="lazy" />
+                <!-- Transparent shield preventing direct interaction / drag-and-drop / saving -->
+                <div class="absolute inset-0 z-10 bg-transparent select-none" oncontextmenu="return false;"></div>
               </div>
             </div>
 
@@ -1726,7 +1752,7 @@
           </div>
 
           <div class="pt-5 mt-5 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-center">
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.linkedin.com/in/isu-craz/" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#0066FF] dark:text-slate-400 dark:hover:text-blue-400 font-medium transition-colors"
               title="Connect on LinkedIn">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -1740,17 +1766,18 @@
 
         <!-- Team Member 4 -->
         <div
-          class="team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
+          class="reveal-item reveal-delay-3 team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
           <div>
             <div
-              class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-emerald-500 to-teal-500 p-0.5 shadow-sm">
+              class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-emerald-500 to-teal-500 p-0.5 shadow-sm select-none"
+              oncontextmenu="return false;">
               <div
-                class="w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
-                <svg class="w-14 h-14 text-slate-400 dark:text-slate-500 group-hover:scale-105 transition-transform"
-                  fill="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                </svg>
+                class="relative w-full h-full rounded-[14px] bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+                <img src="assests/panchali.png" alt="Archana Panchali"
+                  class="w-full h-full object-cover object-top rounded-[14px] group-hover:scale-105 transition-transform duration-300 pointer-events-none select-none"
+                  draggable="false" oncontextmenu="return false;" loading="lazy" />
+                <!-- Transparent shield preventing direct interaction / drag-and-drop / saving -->
+                <div class="absolute inset-0 z-10 bg-transparent select-none" oncontextmenu="return false;"></div>
               </div>
             </div>
 
@@ -1770,7 +1797,7 @@
           </div>
 
           <div class="pt-5 mt-5 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-center">
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.linkedin.com/in/archana-panchali-59b834367/" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#0066FF] dark:text-slate-400 dark:hover:text-blue-400 font-medium transition-colors"
               title="Connect on LinkedIn">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -1798,13 +1825,15 @@
       <!-- Section Header -->
       <div class="text-center max-w-3xl mx-auto mb-10">
         <span
-          class="text-xs font-mono font-bold tracking-widest text-slate-500 dark:text-slate-400 uppercase bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1 rounded-full">
+          class="reveal-item inline-block text-xs font-mono font-bold tracking-widest text-slate-500 dark:text-slate-400 uppercase bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1 rounded-full">
           FORWARD HORIZONS | SECONDARY EXPLORATION
         </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
+        <h2
+          class="reveal-item reveal-delay-1 text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
           Milestones &amp; Thoughtful Explorations
         </h2>
-        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
+        <p
+          class="reveal-item reveal-delay-2 text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 font-normal leading-relaxed">
           Our primary focus remains on empowering traditional creators. Alongside this commitment, we continue exploring
           thoughtful technologies and future opportunities that could further support creative communities.
         </p>
@@ -1815,7 +1844,7 @@
 
         <!-- Milestone 1 -->
         <div
-          class="future-card glass-card rounded-2xl p-7 border-2 border-blue-500/80 dark:border-blue-500/60 bg-white dark:bg-[#121824] shadow-md flex flex-col justify-between"
+          class="reveal-item future-card glass-card rounded-2xl p-7 border-2 border-blue-500/80 dark:border-blue-500/60 bg-white dark:bg-[#121824] shadow-md flex flex-col justify-between"
           data-category="current">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
@@ -1853,7 +1882,7 @@
 
         <!-- Milestone 2 -->
         <div
-          class="future-card glass-card rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-[#121824] shadow-sm flex flex-col justify-between"
+          class="reveal-item reveal-delay-1 future-card glass-card rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-[#121824] shadow-sm flex flex-col justify-between"
           data-category="design">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
@@ -1891,7 +1920,7 @@
 
         <!-- Milestone 3 -->
         <div
-          class="future-card glass-card rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-[#121824] shadow-sm flex flex-col justify-between"
+          class="reveal-item reveal-delay-2 future-card glass-card rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-[#121824] shadow-sm flex flex-col justify-between"
           data-category="future">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
@@ -1947,7 +1976,7 @@
 
       <!-- Main Contact Glass Card -->
       <div
-        class="glass-card p-8 md:p-14 max-w-4xl mx-auto text-center rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-md relative overflow-hidden bg-gradient-to-br from-blue-50/40 via-white to-slate-50/60 dark:from-[#121824] dark:via-[#162030] dark:to-[#0E131D]">
+        class="reveal-item glass-card p-8 md:p-14 max-w-4xl mx-auto text-center rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-md relative overflow-hidden bg-gradient-to-br from-blue-50/40 via-white to-slate-50/60 dark:from-[#121824] dark:via-[#162030] dark:to-[#0E131D]">
 
         <!-- Brand Icon -->
         <div
