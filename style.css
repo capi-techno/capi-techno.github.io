@@ -82,6 +82,11 @@ header.navbar {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+  box-sizing: border-box;
+}
+
+header.navbar nav {
+  min-width: 0;
 }
 
 header.navbar.scrolled {
@@ -1058,339 +1063,169 @@ html.js-reveal .reveal-delay-3 {
    - Minimalist, humanized, high-impact craft copy
    ========================================================================== */
 
-/* Fox Paw Card Wrapper */
+/* ==========================================================================
+   FOX PAW SURVEY PORTAL (Authentic Vulpine Anatomy & Interactivity)
+   ========================================================================== */
+
+/* Fox Paw Card Artboard Container */
 .fox-paw-card {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
-/* 4 Fox Toe Pads Row (Arched Footprint Silhouette) */
-.fox-toes-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 0.55rem;
-  margin-bottom: 0.65rem;
-  position: relative;
-  z-index: 2;
-}
-
-.fox-toe {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-  position: relative;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  user-select: none;
-}
-
-/* Toe Claw Accent */
-.fox-toe::before {
-  content: '';
-  position: absolute;
-  top: -5px;
-  width: 5px;
-  height: 7px;
-  border-radius: 3px 3px 1px 1px;
-  opacity: 0.75;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* Toe Sizes & Natural Fox Paw Angles */
-.fox-toe-1 {
-  width: 48px;
-  height: 52px;
-  transform: rotate(-12deg) translateY(5px);
-}
-.fox-toe-1::before {
-  transform: rotate(-10deg);
-}
-
-.fox-toe-2 {
-  width: 54px;
-  height: 62px;
-  transform: rotate(-4deg) translateY(-2px);
-}
-.fox-toe-2::before {
-  transform: rotate(-3deg);
-}
-
-.fox-toe-3 {
-  width: 54px;
-  height: 62px;
-  transform: rotate(4deg) translateY(-2px);
-}
-.fox-toe-3::before {
-  transform: rotate(3deg);
-}
-
-.fox-toe-4 {
-  width: 48px;
-  height: 52px;
-  transform: rotate(12deg) translateY(5px);
-}
-.fox-toe-4::before {
-  transform: rotate(10deg);
-}
-
-/* Main Fox Palm Pad (The Card Core) */
-.fox-palm-pad {
+.fox-paw-container {
   position: relative;
   width: 100%;
-  border-radius: 42px 42px 52px 52px;
-  padding: 1.75rem 1.6rem 1.6rem 1.6rem;
+  max-width: 420px;
+  margin: 0 auto;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fox-paw-card:hover .fox-paw-container {
+  transform: translateY(-8px);
+}
+
+/* SVG Paw Layer - Clean architectural drop-shadow (Zero color halo / gradient) */
+.paw-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+  transition: filter 0.4s ease;
+}
+
+/* Light Mode: Subtle neutral slate shadow */
+html:not(.dark) .paw-svg {
+  filter: drop-shadow(0 8px 20px rgba(15, 23, 42, 0.07));
+}
+html:not(.dark) .fox-paw-card:hover .paw-svg {
+  filter: drop-shadow(0 14px 28px rgba(15, 23, 42, 0.12));
+}
+
+/* Dark Mode: Deep neutral shadow */
+html.dark .paw-svg {
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.55));
+}
+html.dark .fox-paw-card:hover .paw-svg {
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.75));
+}
+
+/* Dark Mode Theme Fills & Borders */
+.dark .buyer-paw .paw-pad-shape {
+  fill: #111726;
+  stroke: rgba(59, 130, 246, 0.42);
+  stroke-width: 1.75;
+  transition: stroke 0.3s ease;
+}
+.dark .buyer-paw .paw-toe-shape {
+  fill: #111726;
+  stroke: rgba(59, 130, 246, 0.42);
+  stroke-width: 1.75;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dark .buyer-paw .paw-claw {
+  fill: #3B82F6;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .seller-paw .paw-pad-shape {
+  fill: #131722;
+  stroke: rgba(245, 158, 11, 0.42);
+  stroke-width: 1.75;
+  transition: stroke 0.3s ease;
+}
+.dark .seller-paw .paw-toe-shape {
+  fill: #131722;
+  stroke: rgba(245, 158, 11, 0.42);
+  stroke-width: 1.75;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dark .seller-paw .paw-claw {
+  fill: #F59E0B;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Light Mode Theme Fills & Borders */
+html:not(.dark) .buyer-paw .paw-pad-shape {
+  fill: #ffffff;
+  stroke: rgba(0, 102, 255, 0.32);
+  stroke-width: 1.75;
+  transition: stroke 0.3s ease;
+}
+html:not(.dark) .buyer-paw .paw-toe-shape {
+  fill: #ffffff;
+  stroke: rgba(0, 102, 255, 0.32);
+  stroke-width: 1.75;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+html:not(.dark) .buyer-paw .paw-claw {
+  fill: #0066FF;
+}
+
+html:not(.dark) .seller-paw .paw-pad-shape {
+  fill: #ffffff;
+  stroke: rgba(217, 119, 6, 0.32);
+  stroke-width: 1.75;
+  transition: stroke 0.3s ease;
+}
+html:not(.dark) .seller-paw .paw-toe-shape {
+  fill: #ffffff;
+  stroke: rgba(217, 119, 6, 0.32);
+  stroke-width: 1.75;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+html:not(.dark) .seller-paw .paw-claw {
+  fill: #D97706;
+}
+
+/* Hover Accent Borders - Crisp Solid Tones */
+.buyer-paw:hover .paw-pad-shape,
+.buyer-paw:hover .paw-toe-shape {
+  stroke: #0066FF;
+}
+
+.seller-paw:hover .paw-pad-shape,
+.seller-paw:hover .paw-toe-shape {
+  stroke: #D97706;
+}
+
+/* Natural Fox Paw Digital Pad Flex on Hover */
+.fox-paw-card:hover .toe-group-1 {
+  transform: translate(-3px, 2px) rotate(-3deg);
+  transform-origin: 85px 110px;
+}
+.fox-paw-card:hover .toe-group-2 {
+  transform: translateY(-4px);
+  transform-origin: 170px 80px;
+}
+.fox-paw-card:hover .toe-group-3 {
+  transform: translateY(-4px);
+  transform-origin: 250px 80px;
+}
+.fox-paw-card:hover .toe-group-4 {
+  transform: translate(3px, 2px) rotate(3deg);
+  transform-origin: 335px 110px;
+}
+
+/* HTML Overlay Content - Situated Inside the Spacious Metacarpal Palm Pad */
+.paw-card-body {
+  position: absolute;
+  top: 34%;
+  bottom: 5%;
+  left: 10%;
+  right: 10%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s ease;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-/* Buyer Paw Theme (Cobalt & Cyan) */
-html:not(.dark) .buyer-paw .fox-toe {
-  background: #ffffff;
-  border: 1.5px solid rgba(0, 102, 255, 0.25);
-  box-shadow: 0 4px 14px -2px rgba(0, 102, 255, 0.08);
-}
-html:not(.dark) .buyer-paw .fox-toe::before {
-  background: #0066FF;
-}
-html:not(.dark) .buyer-paw .fox-palm-pad {
-  background: #ffffff;
-  border: 1.5px solid rgba(0, 102, 255, 0.25);
-  box-shadow: 0 10px 30px -8px rgba(0, 102, 255, 0.08);
-}
-
-html.dark .buyer-paw .fox-toe {
-  background: #111726;
-  border: 1.5px solid rgba(59, 130, 246, 0.35);
-  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.5);
-}
-html.dark .buyer-paw .fox-toe::before {
-  background: #3B82F6;
-}
-html.dark .buyer-paw .fox-palm-pad {
-  background: #111726;
-  border: 1.5px solid rgba(59, 130, 246, 0.35);
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7);
-}
-
-/* Seller / Artisan Paw Theme (Warm Amber & Terracotta) */
-html:not(.dark) .seller-paw .fox-toe {
-  background: #ffffff;
-  border: 1.5px solid rgba(217, 119, 6, 0.3);
-  box-shadow: 0 4px 14px -2px rgba(217, 119, 6, 0.08);
-}
-html:not(.dark) .seller-paw .fox-toe::before {
-  background: #D97706;
-}
-html:not(.dark) .seller-paw .fox-palm-pad {
-  background: #ffffff;
-  border: 1.5px solid rgba(217, 119, 6, 0.3);
-  box-shadow: 0 10px 30px -8px rgba(217, 119, 6, 0.08);
-}
-
-html.dark .seller-paw .fox-toe {
-  background: #111726;
-  border: 1.5px solid rgba(245, 158, 11, 0.35);
-  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.5);
-}
-html.dark .seller-paw .fox-toe::before {
-  background: #F59E0B;
-}
-html.dark .seller-paw .fox-palm-pad {
-  background: #111726;
-  border: 1.5px solid rgba(245, 158, 11, 0.35);
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7);
-}
-
-/* Hover Reactions (Gentle Paw Flex & Elevation) */
-.fox-paw-card:hover .fox-palm-pad {
-  transform: translateY(-3px);
-}
-html:not(.dark) .buyer-paw:hover .fox-palm-pad {
-  border-color: #0066FF;
-  box-shadow: 0 20px 40px -10px rgba(0, 102, 255, 0.16);
-}
-html.dark .buyer-paw:hover .fox-palm-pad {
-  border-color: #60A5FA;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 24px -2px rgba(59, 130, 246, 0.2);
-}
-
-html:not(.dark) .seller-paw:hover .fox-palm-pad {
-  border-color: #D97706;
-  box-shadow: 0 20px 40px -10px rgba(217, 119, 6, 0.16);
-}
-html.dark .seller-paw:hover .fox-palm-pad {
-  border-color: #FBBF24;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 24px -2px rgba(245, 158, 11, 0.2);
-}
-
-.fox-paw-card:hover .fox-toe-1 {
-  transform: rotate(-15deg) translateY(3px);
-}
-.fox-paw-card:hover .fox-toe-2 {
-  transform: rotate(-5deg) translateY(-5px);
-}
-.fox-paw-card:hover .fox-toe-3 {
-  transform: rotate(5deg) translateY(-5px);
-}
-.fox-paw-card:hover .fox-toe-4 {
-  transform: rotate(15deg) translateY(3px);
-}
-
-/* Center Mascot Frame ("Fox Box") */
-.survey-mascot-box {
-  position: relative;
-  border-radius: 1.75rem;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease;
-}
-
-html:not(.dark) .survey-mascot-box {
-  background: #ffffff;
-  border: 1px solid rgba(226, 232, 240, 0.95);
-  box-shadow: 0 10px 30px -8px rgba(15, 23, 42, 0.06);
-}
-
-html.dark .survey-mascot-box {
-  background: #111726;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6);
-}
-
-/* Fox Mascot Gentle Lifelike Floating */
-.survey-fox-img {
-  animation: surveyFoxFloat 5s ease-in-out infinite;
-  will-change: transform;
-}
-
-@keyframes surveyFoxFloat {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-6px) rotate(-1deg);
-  }
-}
-
-/* Connecting Conduits / Lines between Fox Box and Paw Cards */
-.survey-conduit {
-  position: relative;
-  height: 2px;
-  background: rgba(203, 213, 225, 0.7);
-  overflow: visible;
-}
-
-html.dark .survey-conduit {
-  background: rgba(255, 255, 255, 0.12);
-}
-
-/* Data Pulse Signal Bead (Left Conduit) */
-.survey-pulse-dot-left {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  width: 32px;
-  height: 4px;
-  margin-top: -2px;
-  border-radius: 9999px;
-  background: linear-gradient(90deg, #0066FF, transparent);
-  animation: pulseConduitLeft 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-/* Data Pulse Signal Bead (Right Conduit) */
-.survey-pulse-dot-right {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 32px;
-  height: 4px;
-  margin-top: -2px;
-  border-radius: 9999px;
-  background: linear-gradient(90deg, transparent, #D97706);
-  animation: pulseConduitRight 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-@keyframes pulseConduitLeft {
-  0% {
-    right: 0%;
-    opacity: 0;
-    transform: scaleX(0.5);
-  }
-  20% {
-    opacity: 1;
-    transform: scaleX(1);
-  }
-  80% {
-    opacity: 1;
-    transform: scaleX(1);
-  }
-  100% {
-    right: calc(100% - 32px);
-    opacity: 0;
-    transform: scaleX(0.5);
-  }
-}
-
-@keyframes pulseConduitRight {
-  0% {
-    left: 0%;
-    opacity: 0;
-    transform: scaleX(0.5);
-  }
-  20% {
-    opacity: 1;
-    transform: scaleX(1);
-  }
-  80% {
-    opacity: 1;
-    transform: scaleX(1);
-  }
-  100% {
-    left: calc(100% - 32px);
-    opacity: 0;
-    transform: scaleX(0.5);
-  }
-}
-
-/* Terminal Node Circles at Connection Points */
-.conduit-node {
-  position: absolute;
-  top: 50%;
-  width: 8px;
-  height: 8px;
-  margin-top: -4px;
-  border-radius: 9999px;
-  background: #ffffff;
-  border: 2px solid #94A3B8;
-  z-index: 2;
-}
-
-html.dark .conduit-node {
-  background: #0F172A;
-  border-color: #64748B;
-}
-
-.conduit-node-left {
-  border-color: #0066FF !important;
-}
-
-.conduit-node-right {
-  border-color: #D97706 !important;
+  pointer-events: auto;
+  z-index: 5;
 }
 
 /* Professional Card Action Button */
@@ -1399,8 +1234,10 @@ html.dark .conduit-node {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  width: 100%;
-  padding: 0.85rem 1.25rem;
+  width: auto;
+  min-width: 190px;
+  max-width: 230px;
+  padding: 0.75rem 1.25rem;
   font-size: 0.8125rem;
   font-weight: 700;
   border-radius: 9999px;
@@ -1418,19 +1255,15 @@ html.dark .conduit-node {
 }
 
 .survey-btn-arrow {
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+  transition: transform 0.2s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .survey-fox-img,
-  .survey-pulse-dot-left,
-  .survey-pulse-dot-right {
-    animation: none !important;
-  }
   .fox-paw-card,
-  .fox-toe,
-  .fox-palm-pad,
-  .survey-mascot-box,
+  .fox-paw-container,
+  .paw-svg,
+  .toe-group,
   .survey-action-btn {
     transition: none !important;
   }

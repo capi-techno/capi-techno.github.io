@@ -112,12 +112,12 @@
        HEADER & NAVIGATION BAR
        ========================================================================== -->
   <header class="navbar">
-    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-      <div class="flex items-center justify-between gap-4">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between gap-3 lg:gap-4 w-full">
 
         <!-- Logo & Brand Name -->
         <a href="#overview"
-          class="flex items-center gap-3 flex-shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-xl">
+          class="flex items-center gap-2.5 sm:gap-3 flex-shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-xl">
           <div
             class="relative w-10 h-10 flex items-center justify-center rounded-xl bg-[#050B17] border border-blue-500/40 group-hover:border-blue-400 transition-all shadow-sm overflow-hidden">
             <video autoplay muted loop playsinline class="w-full h-full object-cover mix-blend-screen">
@@ -133,9 +133,9 @@
           </div>
         </a>
 
-        <!-- Desktop Navigation Links -->
+        <!-- Desktop Navigation Links (Centered & Perfectly Balanced) -->
         <nav
-          class="hidden lg:flex items-center gap-2.5 lg:gap-3 xl:gap-5 2xl:gap-7 text-xs xl:text-sm font-semibold whitespace-nowrap">
+          class="hidden lg:flex items-center justify-center flex-1 mx-2 lg:mx-3 xl:mx-6 gap-2 lg:gap-2.5 xl:gap-3.5 2xl:gap-5 text-xs xl:text-[13px] 2xl:text-sm font-semibold whitespace-nowrap">
           <a href="#about" class="nav-link whitespace-nowrap">About</a>
           <a href="#craft" class="nav-link whitespace-nowrap">Craft &amp; Horizons</a>
           <a href="#purpose" class="nav-link whitespace-nowrap">Our Purpose</a>
@@ -148,7 +148,7 @@
         </nav>
 
         <!-- Header Action Buttons -->
-        <div class="flex items-center gap-2.5 sm:gap-3 flex-shrink-0">
+        <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
 
           <!-- Companion Theme Switcher Button -->
           <button id="nav-theme-toggle" type="button" aria-label="Toggle light/dark theme" title="Toggle theme"
@@ -167,7 +167,7 @@
 
           <!-- Primary CTA Button -->
           <button
-            class="open-contact-modal inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] active:scale-98 rounded-xl shadow-sm transition-all whitespace-nowrap cursor-pointer">
+            class="open-contact-modal inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] active:scale-98 rounded-xl shadow-sm transition-all whitespace-nowrap cursor-pointer">
             <span>Get in Touch</span>
           </button>
 
@@ -1992,151 +1992,146 @@
         </p>
       </div>
 
-      <!-- Main Layout: Left Card -> Connector Line -> Center Fox Box -> Connector Line -> Right Card -->
-      <div class="max-w-6xl mx-auto">
-        <div class="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-0 relative">
+      <!-- Main Layout: Dual Research Streams (Clean, Balanced & Professional Side-by-Side Hub) -->
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-14 items-center justify-items-center">
 
           <!-- ============================================================
-               LEFT CARD: BUYERS & MINDFUL COLLECTORS (Fox Footprint Shape)
+               LEFT CARD: BUYERS & MINDFUL COLLECTORS (Realistic Fox Paw Shape)
                ============================================================ -->
-          <div class="reveal-item fox-paw-card buyer-paw w-full lg:w-[38%]">
-            
-            <!-- 4 Fox Toe Pads (Arched Digital Pads) -->
-            <div class="fox-toes-row" aria-hidden="true">
-              <div class="fox-toe fox-toe-1">
-                <span class="text-[9px] font-mono font-bold text-blue-600 dark:text-blue-400">Craft</span>
-              </div>
-              <div class="fox-toe fox-toe-2">
-                <span class="text-[9px] font-mono font-bold text-blue-600 dark:text-blue-400">Story</span>
-              </div>
-              <div class="fox-toe fox-toe-3">
-                <span class="text-[9px] font-mono font-bold text-blue-600 dark:text-blue-400">Origin</span>
-              </div>
-              <div class="fox-toe fox-toe-4">
-                <span class="text-[9px] font-mono font-bold text-blue-600 dark:text-blue-400">2 min</span>
-              </div>
-            </div>
+          <div class="reveal-item fox-paw-card buyer-paw w-full max-w-[390px] sm:max-w-[410px]">
+            <div class="fox-paw-container">
+              <svg class="paw-svg select-none pointer-events-none" viewBox="0 0 420 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <!-- Toe 1: Outer Left -->
+                <g class="toe-group toe-group-1">
+                  <path class="paw-claw" d="M 76 66 C 73 54, 68 44, 65 38 C 72 45, 80 56, 84 68 Z" />
+                  <path class="paw-toe-shape" d="M 84 69 C 97 73, 106 91, 102 113 C 98 134, 84 147, 72 143 C 59 139, 51 121, 55 100 C 59 79, 72 66, 84 69 Z" />
+                </g>
 
-            <!-- Fox Palm Pad (Card Core) -->
-            <div class="fox-palm-pad">
-              <div>
-                <span class="font-mono text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest block">
+                <!-- Toe 2: Inner Left (Elongated & Elevated) -->
+                <g class="toe-group toe-group-2">
+                  <path class="paw-claw" d="M 167 34 C 166 21, 163 11, 161 6 C 166 15, 173 26, 176 36 Z" />
+                  <path class="paw-toe-shape" d="M 173 37 C 188 39, 197 59, 195 87 C 193 114, 181 131, 167 129 C 152 127, 143 108, 145 80 C 147 52, 158 35, 173 37 Z" />
+                </g>
+
+                <!-- Toe 3: Inner Right (Elongated & Elevated) -->
+                <g class="toe-group toe-group-3">
+                  <path class="paw-claw" d="M 253 34 C 254 21, 257 11, 259 6 C 254 15, 247 26, 244 36 Z" />
+                  <path class="paw-toe-shape" d="M 247 37 C 262 35, 273 52, 275 80 C 277 108, 268 127, 253 129 C 239 131, 227 114, 225 87 C 223 59, 232 39, 247 37 Z" />
+                </g>
+
+                <!-- Toe 4: Outer Right -->
+                <g class="toe-group toe-group-4">
+                  <path class="paw-claw" d="M 344 66 C 347 54, 352 44, 355 38 C 348 45, 340 56, 336 68 Z" />
+                  <path class="paw-toe-shape" d="M 336 69 C 348 66, 361 79, 365 100 C 369 121, 361 139, 348 143 C 336 147, 322 134, 318 113 C 314 91, 323 73, 336 69 Z" />
+                </g>
+
+                <!-- Main Metacarpal Palm Pad (Authentic Fox Silhouette with Interdigital Notch & Flared Cheeks) -->
+                <path class="paw-pad-shape" d="
+                  M 210 166
+                  C 184 144, 138 138, 102 156
+                  C 58 178, 28 226, 20 282
+                  C 12 342, 34 398, 76 440
+                  C 114 478, 160 488, 210 486
+                  C 260 488, 306 478, 344 440
+                  C 386 398, 408 342, 400 282
+                  C 392 226, 362 178, 318 156
+                  C 282 138, 236 144, 210 166
+                  Z" />
+              </svg>
+
+              <!-- Card Content situated inside the Fox Palm Pad -->
+              <div class="paw-card-body">
+                <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-1">
                   FOR PATRONS &amp; BUYERS
                 </span>
-                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mt-1.5">
+                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">
                   Collector's Voice
                 </h3>
-                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-xs mx-auto leading-relaxed font-normal">
-                  Tell us how you discover, collect, and connect with authentic handcrafted creations.
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-[250px] leading-relaxed font-normal">
+                  Help us shape a transparent home for authentic craft.
                 </p>
-              </div>
 
-              <div class="pt-2">
                 <a href="https://forms.gle/nyHF3kPukdbBG12A9" target="_blank" rel="noopener noreferrer"
-                  class="survey-action-btn bg-[#0066FF] hover:bg-[#0052CC] text-white shadow-sm mt-4">
+                  class="survey-action-btn bg-[#0066FF] hover:bg-[#0052CC] text-white shadow-sm mt-3.5">
                   <span>Take Collector Survey</span>
                   <span class="survey-btn-arrow text-base">➔</span>
                 </a>
+
                 <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-2 block">
-                  ~2 mins · Open to all craft lovers
+                  ~2 mins · Google Forms
                 </span>
               </div>
             </div>
-
           </div>
 
           <!-- ============================================================
-               LEFT CONDUIT: Animated Connecting Line (Desktop)
+               RIGHT CARD: SELLERS & TRADITIONAL ARTISANS (Realistic Fox Paw Shape)
                ============================================================ -->
-          <div class="hidden lg:flex items-center flex-1 relative h-6 mx-2" aria-hidden="true">
-            <div class="w-full survey-conduit">
-              <div class="survey-pulse-dot-left"></div>
-            </div>
-            <!-- Terminal Nodes -->
-            <div class="conduit-node conduit-node-left left-0 -translate-x-1/2"></div>
-            <div class="conduit-node right-0 translate-x-1/2"></div>
-          </div>
+          <div class="reveal-item reveal-delay-1 fox-paw-card seller-paw w-full max-w-[390px] sm:max-w-[410px]">
+            <div class="fox-paw-container">
+              <svg class="paw-svg select-none pointer-events-none" viewBox="0 0 420 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <!-- Toe 1: Outer Left -->
+                <g class="toe-group toe-group-1">
+                  <path class="paw-claw" d="M 76 66 C 73 54, 68 44, 65 38 C 72 45, 80 56, 84 68 Z" />
+                  <path class="paw-toe-shape" d="M 84 69 C 97 73, 106 91, 102 113 C 98 134, 84 147, 72 143 C 59 139, 51 121, 55 100 C 59 79, 72 66, 84 69 Z" />
+                </g>
 
-          <!-- ============================================================
-               CENTER MASCOT: Survey Fox Vessel ("Fox Box")
-               ============================================================ -->
-          <div class="w-full lg:w-[22%] flex flex-col items-center justify-center flex-shrink-0 z-10 my-6 lg:my-0">
-            <div class="survey-mascot-box p-5 rounded-3xl text-center flex flex-col items-center w-52 sm:w-56">
-              
-              <!-- Fox Illustration Container -->
-              <div class="w-36 h-36 sm:w-40 sm:h-40 flex items-center justify-center relative">
-                <img src="assests/survay_fox.png" alt="CAPI Fieldwork Mascot"
-                  class="w-full h-full object-contain survey-fox-img select-none pointer-events-none"
-                  draggable="false" loading="lazy" />
-              </div>
+                <!-- Toe 2: Inner Left (Elongated & Elevated) -->
+                <g class="toe-group toe-group-2">
+                  <path class="paw-claw" d="M 167 34 C 166 21, 163 11, 161 6 C 166 15, 173 26, 176 36 Z" />
+                  <path class="paw-toe-shape" d="M 173 37 C 188 39, 197 59, 195 87 C 193 114, 181 131, 167 129 C 152 127, 143 108, 145 80 C 147 52, 158 35, 173 37 Z" />
+                </g>
 
-              <!-- Status Pill -->
-              <div class="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[10px] font-mono font-medium text-slate-600 dark:text-slate-300">
-                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
-                <span>FIELD RESEARCH HUB</span>
-              </div>
-            </div>
-          </div>
+                <!-- Toe 3: Inner Right (Elongated & Elevated) -->
+                <g class="toe-group toe-group-3">
+                  <path class="paw-claw" d="M 253 34 C 254 21, 257 11, 259 6 C 254 15, 247 26, 244 36 Z" />
+                  <path class="paw-toe-shape" d="M 247 37 C 262 35, 273 52, 275 80 C 277 108, 268 127, 253 129 C 239 131, 227 114, 225 87 C 223 59, 232 39, 247 37 Z" />
+                </g>
 
-          <!-- ============================================================
-               RIGHT CONDUIT: Animated Connecting Line (Desktop)
-               ============================================================ -->
-          <div class="hidden lg:flex items-center flex-1 relative h-6 mx-2" aria-hidden="true">
-            <div class="w-full survey-conduit">
-              <div class="survey-pulse-dot-right"></div>
-            </div>
-            <!-- Terminal Nodes -->
-            <div class="conduit-node left-0 -translate-x-1/2"></div>
-            <div class="conduit-node conduit-node-right right-0 translate-x-1/2"></div>
-          </div>
+                <!-- Toe 4: Outer Right -->
+                <g class="toe-group toe-group-4">
+                  <path class="paw-claw" d="M 344 66 C 347 54, 352 44, 355 38 C 348 45, 340 56, 336 68 Z" />
+                  <path class="paw-toe-shape" d="M 336 69 C 348 66, 361 79, 365 100 C 369 121, 361 139, 348 143 C 336 147, 322 134, 318 113 C 314 91, 323 73, 336 69 Z" />
+                </g>
 
-          <!-- ============================================================
-               RIGHT CARD: SELLERS & TRADITIONAL ARTISANS (Fox Footprint Shape)
-               ============================================================ -->
-          <div class="reveal-item reveal-delay-1 fox-paw-card seller-paw w-full lg:w-[38%]">
-            
-            <!-- 4 Fox Toe Pads (Arched Digital Pads) -->
-            <div class="fox-toes-row" aria-hidden="true">
-              <div class="fox-toe fox-toe-1">
-                <span class="text-[9px] font-mono font-bold text-amber-600 dark:text-amber-400">Studio</span>
-              </div>
-              <div class="fox-toe fox-toe-2">
-                <span class="text-[9px] font-mono font-bold text-amber-600 dark:text-amber-400">Fair</span>
-              </div>
-              <div class="fox-toe fox-toe-3">
-                <span class="text-[9px] font-mono font-bold text-amber-600 dark:text-amber-400">Reach</span>
-              </div>
-              <div class="fox-toe fox-toe-4">
-                <span class="text-[9px] font-mono font-bold text-amber-600 dark:text-amber-400">3 min</span>
-              </div>
-            </div>
+                <!-- Main Metacarpal Palm Pad -->
+                <path class="paw-pad-shape" d="
+                  M 210 166
+                  C 184 144, 138 138, 102 156
+                  C 58 178, 28 226, 20 282
+                  C 12 342, 34 398, 76 440
+                  C 114 478, 160 488, 210 486
+                  C 260 488, 306 478, 344 440
+                  C 386 398, 408 342, 400 282
+                  C 392 226, 362 178, 318 156
+                  C 282 138, 236 144, 210 166
+                  Z" />
+              </svg>
 
-            <!-- Fox Palm Pad (Card Core) -->
-            <div class="fox-palm-pad">
-              <div>
-                <span class="font-mono text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-widest block">
+              <!-- Card Content situated inside the Fox Palm Pad -->
+              <div class="paw-card-body">
+                <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400 mb-1">
                   FOR CREATORS &amp; ARTISANS
                 </span>
-                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mt-1.5">
+                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">
                   Artisan's Workshop
                 </h3>
-                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-xs mx-auto leading-relaxed font-normal">
-                  Tell us what fair tools, direct reach, and heritage protection your craft truly needs.
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-[250px] leading-relaxed font-normal">
+                  Tell us what fair tools and reach your studio needs.
                 </p>
-              </div>
 
-              <div class="pt-2">
                 <a href="https://forms.gle/Jtn6yY7nchTfguQC9" target="_blank" rel="noopener noreferrer"
-                  class="survey-action-btn bg-[#D97706] hover:bg-[#B45309] text-white shadow-sm mt-4">
+                  class="survey-action-btn bg-[#D97706] hover:bg-[#B45309] text-white shadow-sm mt-3.5">
                   <span>Take Artisan Survey</span>
                   <span class="survey-btn-arrow text-base">➔</span>
                 </a>
+
                 <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-2 block">
-                  ~3 mins · Built for independent creators
+                  ~3 mins · Google Forms
                 </span>
               </div>
             </div>
-
           </div>
 
         </div>

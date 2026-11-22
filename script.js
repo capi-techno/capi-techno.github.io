@@ -899,10 +899,10 @@ function initScrollReveal() {
 }
 
 /* ==========================================================================
-   10. INTERACTIVE 3D PERSPECTIVE FOR SURVEY CARDS & MASCOT
+   10. INTERACTIVE 3D PERSPECTIVE FOR SURVEY FOX PAW CARDS
    ========================================================================== */
 function initSurveyCards() {
-  const interactiveItems = document.querySelectorAll('.fox-paw-card, .survey-card, .survey-mascot-box');
+  const interactiveItems = document.querySelectorAll('.fox-paw-card');
   if (!interactiveItems.length) return;
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
