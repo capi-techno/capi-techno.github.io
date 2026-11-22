@@ -1,6 +1,6 @@
 /* ==========================================================================
    CAPI Technologies - Award-Worthy Corporate Design System
-   Primary Canvas: #FFFFFF | Cards: #FFFFFF | Accent: Electric Blue (#0066FF)
+   Primary Canvas: #FAFAFA | Cards: #FFFFFF | Accent: Electric Blue (#0066FF)
    Dark Theme: Obsidian Midnight (#0A0D14) | Surfaces: (#121824)
    ========================================================================== */
 
@@ -8,7 +8,7 @@
 :root {
   --color-primary: #0066FF;
   --color-primary-hover: #0052CC;
-  --color-bg-light: #FFFFFF;
+  --color-bg-light: #FAFAFA;
   --color-surface-light: #FFFFFF;
   --color-border-light: #E2E8F0;
   --color-border-light-hover: #CBD5E1;
@@ -190,7 +190,11 @@ html.dark .hero-btn-secondary:hover .btn-arrow-right {
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #f1f5f9;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #0A0D14;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -222,7 +226,7 @@ header.navbar {
   z-index: 100;
   transition: all 0.3s ease;
   padding: 1.1rem 0;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(250, 250, 250, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(226, 232, 240, 0.7);
@@ -1032,7 +1036,7 @@ body.splash-active {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #FFFFFF;
+  background-color: #FAFAFA;
   background-image: radial-gradient(circle at 50% 45%, rgba(0, 102, 255, 0.05) 0%, transparent 70%);
   transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
     visibility 0.55s cubic-bezier(0.16, 1, 0.3, 1),

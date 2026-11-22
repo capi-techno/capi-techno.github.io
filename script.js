@@ -555,7 +555,7 @@ function initContactModal() {
   });
 
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const submitBtn = form.querySelector('button[type="submit"]');
       const nameInput = document.getElementById('contact-name');
@@ -581,25 +581,61 @@ function initContactModal() {
           </span>`;
       }
 
-      // Route message directly to official company email: capitechnoteam@gmail.com
-      const mailSubject = encodeURIComponent(`CAPI Inquiry: ${topicText} - ${name}`);
-      const mailBody = encodeURIComponent(
-        `Hello CAPI Technologies Team,\n\n${msg}\n\n---\nSender Name: ${name}\nSender Email: ${email}\nInquiry Category: ${topicText}`
-      );
-      const mailtoLink = `mailto:capitechnoteam@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+      // Automatically dispatch message directly to capitechnoteam@gmail.com
+      const payload = {
+        name: name,
+        email: email,
+        category: topicText,
+        message: msg,
+        _subject: `New CAPI Inquiry: [${topicText}] from ${name}`,
+        _template: 'table'
+      };
 
-      setTimeout(() => {
-        closeModal();
-        showToast('Connecting you with capitechnoteam@gmail.com...');
-        window.location.href = mailtoLink;
-        form.reset();
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/capitechnoteam@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (response.ok && (result.success === 'true' || result.success === true)) {
+          closeModal();
+          showToast('Message sent directly to capitechnoteam@gmail.com!');
+          form.reset();
+        } else {
+          // Reliable fallback to mailto draft if external service requires initial activation
+          fallbackMailto(topicText, name, email, msg);
+        }
+      } catch (err) {
+        // Fallback to client mailto if offline or blocked
+        fallbackMailto(topicText, name, email, msg);
+      } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
         }
-      }, 400);
+      }
     });
   }
+}
+
+function fallbackMailto(topicText, name, email, msg) {
+  const modal = document.getElementById('contact-modal');
+  if (modal) modal.classList.remove('active');
+  document.body.style.overflow = '';
+  showToast('Opening email client for capitechnoteam@gmail.com...');
+  const mailSubject = encodeURIComponent(`CAPI Inquiry: ${topicText} - ${name}`);
+  const mailBody = encodeURIComponent(
+    `Hello CAPI Technologies Team,\n\n${msg}\n\n---\nSender Name: ${name}\nSender Email: ${email}\nInquiry Category: ${topicText}`
+  );
+  window.location.href = `mailto:capitechnoteam@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+  const form = document.getElementById('contact-form');
+  if (form) form.reset();
 }
 
 function initEmailCopy() {
