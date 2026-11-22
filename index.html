@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CAPI Technologies | Bringing Traditional Craftsmanship into the Digital World.</title>
+  <title>CAPI Technologies | Bringing Traditional Craft into the Digital World</title>
   <meta name="description"
     content="CAPI Technologies is a purpose-driven technology company dedicated to creating digital opportunities that connect traditional creators, craftsmen, and independent makers with people who value authentic craftsmanship." />
 
@@ -29,7 +29,7 @@
             capi: {
               blue: '#0066FF',
               darkblue: '#0052CC',
-              lightbg: '#FAFAFA',
+              lightbg: '#FFFFFF',
               warmgray: '#F3F4F6',
               amber: '#D97706',
               terracotta: '#C2410C',
@@ -66,7 +66,7 @@
 </head>
 
 <body
-  class="bg-[#FAFAFA] dark:bg-[#0A0D14] text-slate-800 dark:text-slate-200 font-sans selection:bg-[#0066FF] selection:text-white transition-colors duration-300">
+  class="bg-white dark:bg-[#0A0D14] text-slate-800 dark:text-slate-200 font-sans selection:bg-[#0066FF] selection:text-white transition-colors duration-300">
 
   <!-- ==========================================================================
        INTRO / SPLASH SCREEN
@@ -153,7 +153,7 @@
 
           <!-- Companion Theme Switcher Button -->
           <button id="nav-theme-toggle" type="button" aria-label="Toggle light/dark theme" title="Toggle theme"
-            class="w-9 h-9 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-blue-600 hover:border-blue-300 shadow-2xs transition-all cursor-pointer">
+            class="w-9 h-9 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-blue-600 hover:border-blue-300 shadow-2xs transition-all cursor-pointer">
             <svg class="w-4 h-4 hidden dark:block text-amber-400" fill="none" stroke="currentColor" stroke-width="2"
               viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -168,7 +168,7 @@
 
           <!-- Primary CTA Button -->
           <button
-            class="open-contact-modal inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] active:scale-98 rounded-xl shadow-sm transition-all whitespace-nowrap cursor-pointer">
+            class="open-contact-modal btn-primary inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs font-bold text-white bg-[#0066FF] rounded-xl whitespace-nowrap cursor-pointer">
             <span>Get in Touch</span>
           </button>
 
@@ -242,11 +242,8 @@
           </div>
 
           <!-- Main Hero Headline -->
-          <h1
-            class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.35rem] xl:text-[3.75rem] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.12]">
-            Bringing Traditional Craftsmanship into the<span
-              class="bg-gradient-to-r from-[#0066FF] via-blue-600 to-indigo-600 bg-clip-text text-transparent"> Digital
-              World.</span>
+          <h1 class="hero-headline font-extrabold text-slate-900 dark:text-white leading-[1.28]">
+            Bringing Traditional Craft into the <span class="text-[#0066FF] dark:text-blue-400">Digital World.</span>
           </h1>
 
           <!-- Supporting Description -->
@@ -260,16 +257,16 @@
           <!-- Action CTAs -->
           <div class="flex flex-wrap items-center gap-4 pt-2">
             <a href="#craft"
-              class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:py-4 text-[15px] font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] rounded-xl shadow-sm hover:shadow-md transition-all active:scale-98">
+              class="hero-btn-primary group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:py-4 text-[15px] font-bold text-white bg-[#0066FF] rounded-xl cursor-pointer">
               <span>Explore Our Vision</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="btn-arrow-down w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
             </a>
             <button
-              class="open-contact-modal inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:py-4 text-[15px] font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#121824] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xs transition-all cursor-pointer">
+              class="open-contact-modal hero-btn-secondary group inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:py-4 text-[15px] font-semibold text-slate-700 dark:text-slate-200 bg-white rounded-xl cursor-pointer">
               <span>Get in Touch</span>
-              <span class="text-xs text-slate-400">➔</span>
+              <span class="btn-arrow-right text-xs text-slate-400">➔</span>
             </button>
           </div>
 
@@ -540,7 +537,7 @@
        Who we are, why we exist, what we believe, and the impact we create
        ========================================================================== -->
   <section id="about"
-    class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+    class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200 dark:border-white/[0.08] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Section Header -->
@@ -586,7 +583,7 @@
         <!-- Visual Core Values Card -->
         <div class="reveal-item reveal-delay-1 lg:col-span-6">
           <div
-            class="glass-card rounded-2xl p-7 sm:p-9 border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-[#121824] space-y-6">
+            class="glass-card rounded-2xl p-7 sm:p-9 border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] space-y-6">
             <h4 class="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF] dark:text-blue-400">
               OUR GUIDING BELIEFS
             </h4>
@@ -643,7 +640,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
 
         <div
-          class="reveal-item glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-blue-400/60 transition-all">
+          class="reveal-item glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-blue-400/60 transition-all">
           <div
             class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/40 text-[#0066FF] dark:text-blue-400 flex items-center justify-center mb-4">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -661,7 +658,7 @@
         </div>
 
         <div
-          class="reveal-item reveal-delay-1 glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-amber-400/60 transition-all">
+          class="reveal-item reveal-delay-1 glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-amber-400/60 transition-all">
           <div
             class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-4">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -676,7 +673,7 @@
         </div>
 
         <div
-          class="reveal-item reveal-delay-2 glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 hover:border-emerald-400/60 transition-all">
+          class="reveal-item reveal-delay-2 glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-emerald-400/60 transition-all">
           <div
             class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -702,7 +699,7 @@
        Interactive 3D Flippable Playing Cards with Draw-to-Center Animation
        ========================================================================== -->
   <section id="craft"
-    class="py-20 md:py-28 bg-[#FAFAFA] dark:bg-[#0A0D14] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+    class="py-20 md:py-28 bg-white dark:bg-[#0A0D14] border-t border-slate-200 dark:border-white/[0.08] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Section Header -->
@@ -726,7 +723,7 @@
            INTERACTIVE DISPLAY VIEW OPTIONS TOOLBAR
            ==================================================================== -->
       <div
-        class="reveal-item reveal-delay-2 flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-slate-200/80 dark:border-slate-800">
+        class="reveal-item reveal-delay-2 flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-slate-200 dark:border-slate-800">
 
         <!-- View Mode Switcher -->
         <div role="group" aria-label="Crafts display view options"
@@ -757,7 +754,7 @@
 
             <!-- Front Face -->
             <div
-              class="card-face card-front p-6 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-md hover:border-blue-400 transition-all backface-hidden relative overflow-hidden">
+              class="card-face card-front p-6 bg-white dark:bg-[#121824] border border-slate-200 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-md hover:border-blue-400 transition-all backface-hidden relative overflow-hidden">
               <div class="flex flex-col items-start gap-4">
                 <div class="flex items-center justify-between w-full">
                   <div
@@ -786,7 +783,7 @@
                 </div>
               </div>
               <div
-                class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-[#0066FF] dark:text-blue-400">
+                class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-[#0066FF] dark:text-blue-400">
                 <span>Click to Draw &amp; Flip</span>
                 <span class="text-sm">➔</span>
               </div>
@@ -794,7 +791,7 @@
 
             <!-- Back Face (Revealed on Click/Flip) -->
             <div
-              class="card-face card-back p-5 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-xl text-slate-900 dark:text-slate-200 backface-hidden rotate-y-180 absolute inset-0 overflow-hidden">
+              class="card-face card-back p-5 bg-white dark:bg-[#121824] border border-slate-200 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-xl text-slate-900 dark:text-slate-200 backface-hidden rotate-y-180 absolute inset-0 overflow-hidden">
               <div class="space-y-3 flex-1 min-h-0 overflow-y-auto pr-0.5">
                 <div class="flex items-center justify-between">
                   <span
@@ -815,7 +812,7 @@
                   </p>
                 </div>
                 <div
-                  class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+                  class="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
                   <div class="flex items-center gap-2">
                     <span class="text-amber-500 font-bold">✓</span>
                     <span>Preserving craft techniques and origins</span>
@@ -826,10 +823,11 @@
                   </div>
                 </div>
               </div>
-              <div class="pt-3 border-t border-slate-100 dark:border-slate-800 shrink-0 mt-2.5">
+              <div class="pt-3 border-t border-slate-200 dark:border-slate-800 shrink-0 mt-2.5">
                 <button
-                  class="open-contact-modal w-full py-2.5 px-3 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] active:scale-98 rounded-xl shadow-xs transition-all cursor-pointer">
-                  Be Part of This Initiative ➔
+                  class="open-contact-modal btn-primary group w-full py-2.5 px-3 text-xs font-bold text-white bg-[#0066FF] rounded-xl cursor-pointer flex items-center justify-center gap-1.5">
+                  <span>Be Part of This Initiative</span>
+                  <span class="btn-arrow-right">➔</span>
                 </button>
               </div>
             </div>
@@ -844,7 +842,7 @@
 
             <!-- Front Face -->
             <div
-              class="card-face card-front p-6 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-md hover:border-blue-400 transition-all backface-hidden relative overflow-hidden">
+              class="card-face card-front p-6 bg-white dark:bg-[#121824] border border-slate-200 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-md hover:border-blue-400 transition-all backface-hidden relative overflow-hidden">
               <div class="flex flex-col items-start gap-4">
                 <div class="flex items-center justify-between w-full">
                   <div
@@ -873,7 +871,7 @@
                 </div>
               </div>
               <div
-                class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-[#0066FF] dark:text-blue-400">
+                class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-[#0066FF] dark:text-blue-400">
                 <span>Click to Draw &amp; Flip</span>
                 <span class="text-sm">➔</span>
               </div>
@@ -881,7 +879,7 @@
 
             <!-- Back Face -->
             <div
-              class="card-face card-back p-5 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-xl text-slate-900 dark:text-slate-200 backface-hidden rotate-y-180 absolute inset-0 overflow-hidden">
+              class="card-face card-back p-5 bg-white dark:bg-[#121824] border border-slate-200 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-xl text-slate-900 dark:text-slate-200 backface-hidden rotate-y-180 absolute inset-0 overflow-hidden">
               <div class="space-y-3 flex-1 min-h-0 overflow-y-auto pr-0.5">
                 <div class="flex items-center justify-between">
                   <span
@@ -902,7 +900,7 @@
                   </p>
                 </div>
                 <div
-                  class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+                  class="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
                   <div class="flex items-center gap-2">
                     <span class="text-blue-500 font-bold">✓</span>
                     <span>Verifying cultural patterns and fair pricing</span>
@@ -913,10 +911,11 @@
                   </div>
                 </div>
               </div>
-              <div class="pt-3 border-t border-slate-100 dark:border-slate-800 shrink-0 mt-2.5">
+              <div class="pt-3 border-t border-slate-200 dark:border-slate-800 shrink-0 mt-2.5">
                 <button
-                  class="open-contact-modal w-full py-2.5 px-3 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] active:scale-98 rounded-xl shadow-xs transition-all cursor-pointer">
-                  Be Part of This Initiative ➔
+                  class="open-contact-modal btn-primary group w-full py-2.5 px-3 text-xs font-bold text-white bg-[#0066FF] rounded-xl cursor-pointer flex items-center justify-center gap-1.5">
+                  <span>Be Part of This Initiative</span>
+                  <span class="btn-arrow-right">➔</span>
                 </button>
               </div>
             </div>
@@ -931,7 +930,7 @@
 
             <!-- Front Face -->
             <div
-              class="card-face card-front p-6 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-md hover:border-blue-400 transition-all backface-hidden relative overflow-hidden">
+              class="card-face card-front p-6 bg-white dark:bg-[#121824] border border-slate-200 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-md hover:border-blue-400 transition-all backface-hidden relative overflow-hidden">
               <div class="flex flex-col items-start gap-4">
                 <div class="flex items-center justify-between w-full">
                   <div
@@ -960,7 +959,7 @@
                 </div>
               </div>
               <div
-                class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-[#0066FF] dark:text-blue-400">
+                class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-[#0066FF] dark:text-blue-400">
                 <span>Click to Draw &amp; Flip</span>
                 <span class="text-sm">➔</span>
               </div>
@@ -968,7 +967,7 @@
 
             <!-- Back Face -->
             <div
-              class="card-face card-back p-5 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-xl text-slate-900 dark:text-slate-200 backface-hidden rotate-y-180 absolute inset-0 overflow-hidden">
+              class="card-face card-back p-5 bg-white dark:bg-[#121824] border border-slate-200 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-xl text-slate-900 dark:text-slate-200 backface-hidden rotate-y-180 absolute inset-0 overflow-hidden">
               <div class="space-y-3 flex-1 min-h-0 overflow-y-auto pr-0.5">
                 <div class="flex items-center justify-between">
                   <span
@@ -989,7 +988,7 @@
                   </p>
                 </div>
                 <div
-                  class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+                  class="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
                   <div class="flex items-center gap-2">
                     <span class="text-emerald-500 font-bold">✓</span>
                     <span>Highlighting ethical timber origins</span>
@@ -1000,10 +999,11 @@
                   </div>
                 </div>
               </div>
-              <div class="pt-3 border-t border-slate-100 dark:border-slate-800 shrink-0 mt-2.5">
+              <div class="pt-3 border-t border-slate-200 dark:border-slate-800 shrink-0 mt-2.5">
                 <button
-                  class="open-contact-modal w-full py-2.5 px-3 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] active:scale-98 rounded-xl shadow-xs transition-all cursor-pointer">
-                  Be Part of This Initiative ➔
+                  class="open-contact-modal btn-primary group w-full py-2.5 px-3 text-xs font-bold text-white bg-[#0066FF] rounded-xl cursor-pointer flex items-center justify-center gap-1.5">
+                  <span>Be Part of This Initiative</span>
+                  <span class="btn-arrow-right">➔</span>
                 </button>
               </div>
             </div>
@@ -1018,7 +1018,7 @@
 
             <!-- Front Face -->
             <div
-              class="card-face card-front p-6 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-md hover:border-blue-400 transition-all backface-hidden relative overflow-hidden">
+              class="card-face card-front p-6 bg-white dark:bg-[#121824] border border-slate-200 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-md hover:border-blue-400 transition-all backface-hidden relative overflow-hidden">
               <div class="flex flex-col items-start gap-4">
                 <div class="flex items-center justify-between w-full">
                   <div
@@ -1047,7 +1047,7 @@
                 </div>
               </div>
               <div
-                class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-[#0066FF] dark:text-blue-400">
+                class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-[#0066FF] dark:text-blue-400">
                 <span>Click to Draw &amp; Flip</span>
                 <span class="text-sm">➔</span>
               </div>
@@ -1055,7 +1055,7 @@
 
             <!-- Back Face -->
             <div
-              class="card-face card-back p-5 bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-xl text-slate-900 dark:text-slate-200 backface-hidden rotate-y-180 absolute inset-0 overflow-hidden">
+              class="card-face card-back p-5 bg-white dark:bg-[#121824] border border-slate-200 dark:border-slate-700 rounded-2xl flex flex-col justify-between h-full shadow-xl text-slate-900 dark:text-slate-200 backface-hidden rotate-y-180 absolute inset-0 overflow-hidden">
               <div class="space-y-3 flex-1 min-h-0 overflow-y-auto pr-0.5">
                 <div class="flex items-center justify-between">
                   <span
@@ -1076,7 +1076,7 @@
                   </p>
                 </div>
                 <div
-                  class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+                  class="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
                   <div class="flex items-center gap-2">
                     <span class="text-purple-500 font-bold">✓</span>
                     <span>Verifying artisan signatures and metal origins</span>
@@ -1087,10 +1087,11 @@
                   </div>
                 </div>
               </div>
-              <div class="pt-3 border-t border-slate-100 dark:border-slate-800 shrink-0 mt-2.5">
+              <div class="pt-3 border-t border-slate-200 dark:border-slate-800 shrink-0 mt-2.5">
                 <button
-                  class="open-contact-modal w-full py-2.5 px-3 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] active:scale-98 rounded-xl shadow-xs transition-all cursor-pointer">
-                  Be Part of This Initiative ➔
+                  class="open-contact-modal btn-primary group w-full py-2.5 px-3 text-xs font-bold text-white bg-[#0066FF] rounded-xl cursor-pointer flex items-center justify-center gap-1.5">
+                  <span>Be Part of This Initiative</span>
+                  <span class="btn-arrow-right">➔</span>
                 </button>
               </div>
             </div>
@@ -1108,7 +1109,7 @@
        Deep dive into our ambitions, supporting traditional creativity
        ========================================================================== -->
   <section id="purpose"
-    class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+    class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200 dark:border-white/[0.08] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Section Header -->
@@ -1133,7 +1134,7 @@
 
         <!-- Purpose Card 1 -->
         <div
-          class="reveal-item glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-blue-400 transition-all flex flex-col justify-between">
+          class="reveal-item glass-card rounded-2xl p-8 border border-slate-200 dark:border-slate-800 hover:border-blue-400 transition-all flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-5">
               <div
@@ -1154,14 +1155,14 @@
             </p>
           </div>
           <div
-            class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-[#0066FF] dark:text-blue-400 flex items-center gap-1.5">
+            class="pt-6 mt-6 border-t border-slate-200 dark:border-slate-800 text-xs font-semibold text-[#0066FF] dark:text-blue-400 flex items-center gap-1.5">
             <span>Preserving Generational Heritage</span> ➔
           </div>
         </div>
 
         <!-- Purpose Card 2 -->
         <div
-          class="reveal-item reveal-delay-1 glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-amber-400 transition-all flex flex-col justify-between">
+          class="reveal-item reveal-delay-1 glass-card rounded-2xl p-8 border border-slate-200 dark:border-slate-800 hover:border-amber-400 transition-all flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-5">
               <div
@@ -1182,14 +1183,14 @@
             </p>
           </div>
           <div
-            class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
+            class="pt-6 mt-6 border-t border-slate-200 dark:border-slate-800 text-xs font-semibold text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
             <span>Reaching Beyond Borders</span> ➔
           </div>
         </div>
 
         <!-- Purpose Card 3 -->
         <div
-          class="reveal-item reveal-delay-2 glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-emerald-400 transition-all flex flex-col justify-between">
+          class="reveal-item reveal-delay-2 glass-card rounded-2xl p-8 border border-slate-200 dark:border-slate-800 hover:border-emerald-400 transition-all flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-5">
               <div
@@ -1210,14 +1211,14 @@
             </p>
           </div>
           <div
-            class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+            class="pt-6 mt-6 border-t border-slate-200 dark:border-slate-800 text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
             <span>Building Meaningful Connections</span> ➔
           </div>
         </div>
 
         <!-- Purpose Card 4 -->
         <div
-          class="reveal-item reveal-delay-3 glass-card rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800 hover:border-purple-400 transition-all flex flex-col justify-between">
+          class="reveal-item reveal-delay-3 glass-card rounded-2xl p-8 border border-slate-200 dark:border-slate-800 hover:border-purple-400 transition-all flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-5">
               <div
@@ -1238,7 +1239,7 @@
             </p>
           </div>
           <div
-            class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 text-xs font-semibold text-purple-600 dark:text-purple-400 flex items-center gap-1.5">
+            class="pt-6 mt-6 border-t border-slate-200 dark:border-slate-800 text-xs font-semibold text-purple-600 dark:text-purple-400 flex items-center gap-1.5">
             <span>Bridging Past & Present</span> ➔
           </div>
         </div>
@@ -1262,13 +1263,13 @@
        Interactive Rolling Stat Counters Matrix
        ========================================================================== -->
   <section id="metrics"
-    class="py-16 bg-[#FAFAFA] dark:bg-[#0A0D14] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+    class="py-16 bg-white dark:bg-[#0A0D14] border-t border-slate-200 dark:border-white/[0.08] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <div
-        class="reveal-item telemetry-cockpit max-w-5xl mx-auto rounded-3xl bg-white dark:bg-[#121824] border border-slate-200/90 dark:border-slate-800 shadow-sm p-6 sm:p-8">
+        class="reveal-item telemetry-cockpit max-w-5xl mx-auto rounded-3xl bg-white dark:bg-[#121824] border border-slate-200 dark:border-slate-800 shadow-sm p-6 sm:p-8">
         <div
-          class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center divide-y lg:divide-y-0 lg:divide-x divide-slate-100 dark:divide-slate-800">
+          class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center divide-y lg:divide-y-0 lg:divide-x divide-slate-200 dark:divide-slate-800">
 
           <div class="pt-4 lg:pt-0">
             <div class="text-3xl sm:text-4xl font-extrabold text-[#0066FF] dark:text-blue-400 font-mono">
@@ -1313,7 +1314,7 @@
        Laser Beam Guide + Mouse Spotlight Glow + 4 Expanding Fluid Stages
        ========================================================================== -->
   <section id="why-us"
-    class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+    class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200 dark:border-white/[0.08] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Section Header -->
@@ -1335,7 +1336,7 @@
 
       <!-- The Interactive Reliability Rail Console (Full-width, Seamless Fit) -->
       <div
-        class="reveal-item reveal-delay-3 reliability-console relative max-w-7xl mx-auto rounded-3xl bg-slate-50/70 dark:bg-[#121824]/90 border border-slate-200/90 dark:border-white/[0.08] shadow-xs overflow-hidden p-3.5 sm:p-4 lg:p-4.5">
+        class="reveal-item reveal-delay-3 reliability-console relative max-w-7xl mx-auto rounded-3xl bg-white dark:bg-[#121824]/90 border border-slate-200 dark:border-white/[0.08] shadow-xs overflow-hidden p-3.5 sm:p-4 lg:p-4.5">
 
         <!-- Animated Top Laser Guide Beam -->
         <div
@@ -1355,7 +1356,7 @@
 
           <!-- Stage 01: Purpose-Led Innovation -->
           <div
-            class="reliability-stage group rounded-2xl p-5 sm:p-6 bg-white dark:bg-[#162030] border border-slate-200/80 dark:border-white/[0.06] shadow-2xs cursor-pointer flex flex-col justify-between"
+            class="reliability-stage group rounded-2xl p-5 sm:p-6 bg-white dark:bg-[#162030] border border-slate-200 dark:border-white/[0.06] shadow-2xs cursor-pointer flex flex-col justify-between"
             data-stage="1">
             <div class="space-y-4">
               <div class="flex items-center justify-between">
@@ -1383,7 +1384,7 @@
               </div>
             </div>
             <div
-              class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-blue-600 dark:text-blue-400 font-semibold">
+              class="pt-4 mt-4 border-t border-slate-200 dark:border-slate-800/80 flex items-center justify-between text-xs text-blue-600 dark:text-blue-400 font-semibold">
               <span>Human Value First</span>
               <span>➔</span>
             </div>
@@ -1391,7 +1392,7 @@
 
           <!-- Stage 02: Respect for Living Craft -->
           <div
-            class="reliability-stage group rounded-2xl p-5 sm:p-6 bg-white dark:bg-[#162030] border border-slate-200/80 dark:border-white/[0.06] shadow-2xs cursor-pointer flex flex-col justify-between"
+            class="reliability-stage group rounded-2xl p-5 sm:p-6 bg-white dark:bg-[#162030] border border-slate-200 dark:border-white/[0.06] shadow-2xs cursor-pointer flex flex-col justify-between"
             data-stage="2">
             <div class="space-y-4">
               <div class="flex items-center justify-between">
@@ -1419,7 +1420,7 @@
               </div>
             </div>
             <div
-              class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-amber-600 dark:text-amber-400 font-semibold">
+              class="pt-4 mt-4 border-t border-slate-200 dark:border-slate-800/80 flex items-center justify-between text-xs text-amber-600 dark:text-amber-400 font-semibold">
               <span>Preserving Authenticity</span>
               <span>➔</span>
             </div>
@@ -1427,7 +1428,7 @@
 
           <!-- Stage 03: Accessible Digital Bridges -->
           <div
-            class="reliability-stage group rounded-2xl p-5 sm:p-6 bg-white dark:bg-[#162030] border border-slate-200/80 dark:border-white/[0.06] shadow-2xs cursor-pointer flex flex-col justify-between"
+            class="reliability-stage group rounded-2xl p-5 sm:p-6 bg-white dark:bg-[#162030] border border-slate-200 dark:border-white/[0.06] shadow-2xs cursor-pointer flex flex-col justify-between"
             data-stage="3">
             <div class="space-y-4">
               <div class="flex items-center justify-between">
@@ -1455,7 +1456,7 @@
               </div>
             </div>
             <div
-              class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
+              class="pt-4 mt-4 border-t border-slate-200 dark:border-slate-800/80 flex items-center justify-between text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
               <span>Technology Made Simple</span>
               <span>➔</span>
             </div>
@@ -1463,7 +1464,7 @@
 
           <!-- Stage 04: Sustainable Creator Growth -->
           <div
-            class="reliability-stage group rounded-2xl p-5 sm:p-6 bg-white dark:bg-[#162030] border border-slate-200/80 dark:border-white/[0.06] shadow-2xs cursor-pointer flex flex-col justify-between"
+            class="reliability-stage group rounded-2xl p-5 sm:p-6 bg-white dark:bg-[#162030] border border-slate-200 dark:border-white/[0.06] shadow-2xs cursor-pointer flex flex-col justify-between"
             data-stage="4">
             <div class="space-y-4">
               <div class="flex items-center justify-between">
@@ -1491,7 +1492,7 @@
               </div>
             </div>
             <div
-              class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-purple-600 dark:text-purple-400 font-semibold">
+              class="pt-4 mt-4 border-t border-slate-200 dark:border-slate-800/80 flex items-center justify-between text-xs text-purple-600 dark:text-purple-400 font-semibold">
               <span>Building a Lasting Future</span>
               <span>➔</span>
             </div>
@@ -1509,7 +1510,7 @@
        Side-by-side balanced cards with compass & star emblems
        ========================================================================== -->
   <section id="vision-mission"
-    class="py-20 md:py-28 bg-[#FAFAFA] dark:bg-[#0A0D14] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+    class="py-20 md:py-28 bg-white dark:bg-[#0A0D14] border-t border-slate-200 dark:border-white/[0.08] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Section Header -->
@@ -1533,7 +1534,7 @@
 
         <!-- Card 1: Our Vision -->
         <div
-          class="reveal-item glass-card rounded-2xl p-8 sm:p-10 border border-slate-200/90 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50/50 to-blue-50/30 dark:from-[#121824] dark:via-[#141C2B] dark:to-[#0E131D] relative overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
+          class="reveal-item glass-card rounded-2xl p-8 sm:p-10 border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] relative overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
           <div class="relative z-10 space-y-5">
             <div
               class="inline-flex items-center gap-2.5 px-3 py-1 rounded-lg bg-blue-50 dark:bg-blue-900/40 border border-blue-200/70 dark:border-blue-800 text-[#0066FF] dark:text-blue-400 text-xs font-mono font-bold">
@@ -1557,7 +1558,7 @@
           </div>
 
           <div
-            class="pt-6 mt-6 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono">
+            class="pt-6 mt-6 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono">
             <span>Long-Term Horizon</span>
             <span class="text-[#0066FF] dark:text-blue-400 font-semibold">CAPI Technologies</span>
           </div>
@@ -1565,7 +1566,7 @@
 
         <!-- Card 2: Our Mission -->
         <div
-          class="reveal-item reveal-delay-1 glass-card rounded-2xl p-8 sm:p-10 border border-slate-200/90 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50/50 to-amber-50/30 dark:from-[#121824] dark:via-[#141C2B] dark:to-[#0E131D] relative overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
+          class="reveal-item reveal-delay-1 glass-card rounded-2xl p-8 sm:p-10 border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] relative overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
           <div class="relative z-10 space-y-5">
             <div
               class="inline-flex items-center gap-2.5 px-3 py-1 rounded-lg bg-amber-50 dark:bg-amber-900/40 border border-amber-200/70 dark:border-amber-800 text-amber-600 dark:text-amber-400 text-xs font-mono font-bold">
@@ -1589,7 +1590,7 @@
           </div>
 
           <div
-            class="pt-6 mt-6 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono">
+            class="pt-6 mt-6 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono">
             <span>Everyday Commitment</span>
             <span class="text-amber-600 dark:text-amber-400 font-semibold">CAPI Technologies</span>
           </div>
@@ -1605,7 +1606,7 @@
        Clean, approachable 4-member team presentation (equal desktop layout)
        ========================================================================== -->
   <section id="team"
-    class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+    class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200 dark:border-white/[0.08] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Section Header -->
@@ -1630,7 +1631,7 @@
 
         <!-- Team Member 1 -->
         <div
-          class="reveal-item team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
+          class="reveal-item team-card glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
           <div>
             <div
               class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-blue-600 to-indigo-500 p-0.5 shadow-sm select-none"
@@ -1663,7 +1664,7 @@
             </div>
           </div>
 
-          <div class="pt-5 mt-5 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-center">
+          <div class="pt-5 mt-5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-center">
             <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#0066FF] dark:text-slate-400 dark:hover:text-blue-400 font-medium transition-colors"
               title="Connect on LinkedIn">
@@ -1678,7 +1679,7 @@
 
         <!-- Team Member 2 -->
         <div
-          class="reveal-item reveal-delay-1 team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
+          class="reveal-item reveal-delay-1 team-card glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
           <div>
             <div
               class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-indigo-600 to-purple-500 p-0.5 shadow-sm select-none"
@@ -1708,7 +1709,7 @@
             </div>
           </div>
 
-          <div class="pt-5 mt-5 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-center">
+          <div class="pt-5 mt-5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-center">
             <a href="https://www.linkedin.com/in/chathuka-pehesara-5bb993398/" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#0066FF] dark:text-slate-400 dark:hover:text-blue-400 font-medium transition-colors"
               title="Connect on LinkedIn">
@@ -1723,7 +1724,7 @@
 
         <!-- Team Member 3 -->
         <div
-          class="reveal-item reveal-delay-2 team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
+          class="reveal-item reveal-delay-2 team-card glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
           <div>
             <div
               class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-amber-500 to-orange-500 p-0.5 shadow-sm select-none"
@@ -1753,7 +1754,7 @@
             </div>
           </div>
 
-          <div class="pt-5 mt-5 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-center">
+          <div class="pt-5 mt-5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-center">
             <a href="https://www.linkedin.com/in/isu-craz/" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#0066FF] dark:text-slate-400 dark:hover:text-blue-400 font-medium transition-colors"
               title="Connect on LinkedIn">
@@ -1768,7 +1769,7 @@
 
         <!-- Team Member 4 -->
         <div
-          class="reveal-item reveal-delay-3 team-card glass-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 bg-slate-50/40 dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
+          class="reveal-item reveal-delay-3 team-card glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-500 transition-all group">
           <div>
             <div
               class="relative w-28 h-28 mx-auto mb-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-emerald-500 to-teal-500 p-0.5 shadow-sm select-none"
@@ -1798,7 +1799,7 @@
             </div>
           </div>
 
-          <div class="pt-5 mt-5 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-center">
+          <div class="pt-5 mt-5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-center">
             <a href="https://www.linkedin.com/in/archana-panchali-59b834367/" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#0066FF] dark:text-slate-400 dark:hover:text-blue-400 font-medium transition-colors"
               title="Connect on LinkedIn">
@@ -1821,7 +1822,7 @@
        Interactive Filter Tabs & Display View Options
        ========================================================================== -->
   <section id="future"
-    class="py-20 md:py-28 bg-[#FAFAFA] dark:bg-[#0A0D14] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+    class="py-20 md:py-28 bg-white dark:bg-[#0A0D14] border-t border-slate-200 dark:border-white/[0.08] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Section Header -->
@@ -1863,7 +1864,7 @@
               </p>
             </div>
             <div
-              class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+              class="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
               <div class="flex items-center gap-2">
                 <span class="text-blue-500 font-bold">✓</span>
                 <span>Understanding artisan needs and workflows</span>
@@ -1874,17 +1875,18 @@
               </div>
             </div>
           </div>
-          <div class="pt-5 mt-5 border-t border-slate-100 dark:border-slate-800">
+          <div class="pt-5 mt-5 border-t border-slate-200 dark:border-slate-800">
             <button
-              class="open-contact-modal w-full py-2 px-3 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] rounded-xl transition-colors cursor-pointer">
-              Collaborate With Us ➔
+              class="open-contact-modal btn-primary group w-full py-2 px-3 text-xs font-bold text-white bg-[#0066FF] rounded-xl cursor-pointer flex items-center justify-center gap-1.5">
+              <span>Collaborate With Us</span>
+              <span class="btn-arrow-right">➔</span>
             </button>
           </div>
         </div>
 
         <!-- Milestone 2 -->
         <div
-          class="reveal-item reveal-delay-1 future-card glass-card rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-[#121824] shadow-sm flex flex-col justify-between"
+          class="reveal-item reveal-delay-1 future-card glass-card rounded-2xl p-7 border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] shadow-sm flex flex-col justify-between"
           data-category="design">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
@@ -1901,7 +1903,7 @@
               </p>
             </div>
             <div
-              class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+              class="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
               <div class="flex items-center gap-2">
                 <span class="text-amber-500 font-bold">✓</span>
                 <span>Simple and accessible creator experiences</span>
@@ -1912,17 +1914,18 @@
               </div>
             </div>
           </div>
-          <div class="pt-5 mt-5 border-t border-slate-100 dark:border-slate-800">
+          <div class="pt-5 mt-5 border-t border-slate-200 dark:border-slate-800">
             <button
-              class="open-contact-modal w-full py-2 px-3 text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors cursor-pointer">
-              Explore Collaboration ➔
+              class="open-contact-modal btn-secondary group w-full py-2 px-3 text-xs font-bold text-slate-700 dark:text-slate-200 bg-white rounded-xl cursor-pointer flex items-center justify-center gap-1.5">
+              <span>Explore Collaboration</span>
+              <span class="btn-arrow-right">➔</span>
             </button>
           </div>
         </div>
 
         <!-- Milestone 3 -->
         <div
-          class="reveal-item reveal-delay-2 future-card glass-card rounded-2xl p-7 border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-[#121824] shadow-sm flex flex-col justify-between"
+          class="reveal-item reveal-delay-2 future-card glass-card rounded-2xl p-7 border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] shadow-sm flex flex-col justify-between"
           data-category="future">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
@@ -1939,7 +1942,7 @@
               </p>
             </div>
             <div
-              class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+              class="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
               <div class="flex items-center gap-2">
                 <span class="text-slate-400 font-bold">○</span>
                 <span>Multilingual craft storytelling tools</span>
@@ -1950,10 +1953,11 @@
               </div>
             </div>
           </div>
-          <div class="pt-5 mt-5 border-t border-slate-100 dark:border-slate-800">
+          <div class="pt-5 mt-5 border-t border-slate-200 dark:border-slate-800">
             <button
-              class="open-contact-modal w-full py-2 px-3 text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors cursor-pointer">
-              Partner With Us ➔
+              class="open-contact-modal btn-secondary group w-full py-2 px-3 text-xs font-bold text-slate-700 dark:text-slate-200 bg-white rounded-xl cursor-pointer flex items-center justify-center gap-1.5">
+              <span>Partner With Us</span>
+              <span class="btn-arrow-right">➔</span>
             </button>
           </div>
         </div>
@@ -1973,7 +1977,7 @@
        Professional dual-stream research portal uniting Collectors and Artisans
        ========================================================================== -->
   <section id="surveys"
-    class="py-20 md:py-28 bg-[#FAFAFA] dark:bg-[#0A0D14] border-t border-slate-200/80 dark:border-white/[0.08] relative overflow-hidden">
+    class="py-20 md:py-28 bg-white dark:bg-[#0A0D14] border-t border-slate-200 dark:border-white/[0.08] relative overflow-hidden">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -2062,7 +2066,7 @@
                 </p>
 
                 <a href="https://forms.gle/nyHF3kPukdbBG12A9" target="_blank" rel="noopener noreferrer"
-                  class="survey-action-btn bg-[#0066FF] hover:bg-[#0052CC] text-white shadow-sm mt-3.5">
+                  class="survey-action-btn btn-primary bg-[#0066FF] text-white mt-3.5">
                   <span>Collector Survey</span>
                   <span class="survey-btn-arrow text-base">➔</span>
                 </a>
@@ -2138,7 +2142,7 @@
                 </p>
 
                 <a href="https://forms.gle/Jtn6yY7nchTfguQC9" target="_blank" rel="noopener noreferrer"
-                  class="survey-action-btn bg-[#D97706] hover:bg-[#B45309] text-white shadow-sm mt-3.5">
+                  class="survey-action-btn artisan-btn bg-[#D97706] text-white mt-3.5">
                   <span>Artisan Survey</span>
                   <span class="survey-btn-arrow text-base">➔</span>
                 </a>
@@ -2168,12 +2172,12 @@
        Professional closing section welcoming creators, collaborators & partners
        ========================================================================== -->
   <section id="contact"
-    class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200/80 dark:border-white/[0.08] relative">
+    class="py-20 md:py-28 bg-white dark:bg-[#0E131D] border-t border-slate-200 dark:border-white/[0.08] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Main Contact Glass Card -->
       <div
-        class="reveal-item glass-card p-8 md:p-14 max-w-4xl mx-auto text-center rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-md relative overflow-hidden bg-gradient-to-br from-blue-50/40 via-white to-slate-50/60 dark:from-[#121824] dark:via-[#162030] dark:to-[#0E131D]">
+        class="reveal-item glass-card p-8 md:p-14 max-w-4xl mx-auto text-center rounded-3xl border border-slate-200 dark:border-slate-800 shadow-md relative overflow-hidden bg-white dark:bg-[#121824]">
 
         <!-- Brand Icon -->
         <div
@@ -2197,12 +2201,12 @@
           Have an idea or want to collaborate? Whether you're a creator, artisan, or craft enthusiast, we'd love to
           connect.
         </p>
-        <p><b>Every meaningful connection starts with a conversation</p>
+        <p class="font-bold text-slate-800 dark:text-slate-200 mt-2">Every meaningful connection starts with a conversation</p>
 
         <!-- Action CTAs -->
         <div class="flex flex-wrap items-center justify-center gap-4 mt-8">
           <button id="copy-email-btn" type="button"
-            class="inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] active:scale-98 rounded-xl shadow-sm transition-all cursor-pointer">
+            class="btn-primary group inline-flex items-center gap-2.5 px-6 py-3.5 text-xs font-bold text-white bg-[#0066FF] rounded-xl cursor-pointer">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -2211,24 +2215,25 @@
           </button>
 
           <button
-            class="open-contact-modal inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#1A2538] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xs transition-all cursor-pointer">
+            class="open-contact-modal btn-secondary group inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold text-slate-700 dark:text-slate-200 bg-white rounded-xl cursor-pointer">
             <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
             <span>Send Direct Message</span>
+            <span class="btn-arrow-right">➔</span>
           </button>
         </div>
 
         <!-- Editable Social & Organization Links -->
         <div
-          class="pt-10 mt-10 border-t border-slate-200/80 dark:border-slate-800 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500 dark:text-slate-400">
-          <a href="mailto:contact@capi-techno.com"
+          class="pt-10 mt-10 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500 dark:text-slate-400">
+          <a href="mailto:capitechnoteam@gmail.com"
             class="hover:text-[#0066FF] dark:hover:text-blue-400 font-mono transition-colors">
-            contact@capi-techno.com
+            capitechnoteam@gmail.com
           </a>
           <span class="text-slate-300 dark:text-slate-700">·</span>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+          <a href="https://www.linkedin.com/company/capi-technologies" target="_blank" rel="noopener noreferrer"
             class="hover:text-[#0066FF] dark:hover:text-blue-400 font-medium transition-colors">
             LinkedIn
           </a>
@@ -2285,12 +2290,13 @@
           <a href="#future" class="hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors">Future</a>
           <a href="#surveys" class="hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors">Surveys</a>
           <a href="#contact" class="hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors">Contact</a>
+          <a href="https://www.linkedin.com/company/capi-technologies" target="_blank" rel="noopener noreferrer" class="text-[#0066FF] dark:text-blue-400 hover:underline">LinkedIn</a>
         </div>
 
       </div>
 
       <div
-        class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800/60 text-center text-[11px] text-slate-400 dark:text-slate-500">
+        class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800/60 text-center text-[11px] text-slate-400 dark:text-slate-500">
         Dedicated to connecting traditional creativity with modern digital opportunities.
       </div>
     </div>
@@ -2318,7 +2324,7 @@
           TECHNOLOGIES</span>
         <h3 id="modal-title" class="text-xl font-bold text-slate-900 dark:text-white mt-1">Connect with Our Team</h3>
         <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
-          Share your inquiry, creative background, or partnership thoughts below.
+          Share your inquiry below or reach us directly at <a href="mailto:capitechnoteam@gmail.com" class="font-mono text-[#0066FF] dark:text-blue-400 font-medium hover:underline">capitechnoteam@gmail.com</a>.
         </p>
       </div>
 
@@ -2358,9 +2364,13 @@
         </div>
 
         <button type="submit"
-          class="w-full py-3 px-4 text-xs font-bold text-white bg-[#0066FF] hover:bg-[#0052CC] active:scale-98 rounded-xl shadow-sm transition-all cursor-pointer">
-          Send Message ➔
+          class="btn-primary group w-full py-3 px-4 text-xs font-bold text-white bg-[#0066FF] rounded-xl cursor-pointer flex items-center justify-center gap-2">
+          <span>Send Message</span>
+          <span class="btn-arrow-right">➔</span>
         </button>
+        <div class="text-center pt-2 text-[11px] text-slate-400 dark:text-slate-500">
+          Inquiries route directly to <a href="mailto:capitechnoteam@gmail.com" class="font-mono text-[#0066FF] dark:text-blue-400 hover:underline">capitechnoteam@gmail.com</a>
+        </div>
       </form>
     </div>
   </div>

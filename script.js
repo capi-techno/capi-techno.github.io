@@ -558,6 +558,16 @@ function initContactModal() {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const submitBtn = form.querySelector('button[type="submit"]');
+      const nameInput = document.getElementById('contact-name');
+      const emailInput = document.getElementById('contact-email');
+      const topicInput = document.getElementById('contact-topic');
+      const msgInput = document.getElementById('contact-msg');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const topicText = topicInput ? topicInput.options[topicInput.selectedIndex].text : 'General Inquiry';
+      const msg = msgInput ? msgInput.value.trim() : '';
+
       const originalText = submitBtn ? submitBtn.innerHTML : 'Send Message ➔';
       if (submitBtn) {
         submitBtn.disabled = true;
@@ -567,20 +577,27 @@ function initContactModal() {
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            <span>Sending...</span>
+            <span>Connecting...</span>
           </span>`;
       }
 
-      // Fast, responsive submission feedback with zero lag
+      // Route message directly to official company email: capitechnoteam@gmail.com
+      const mailSubject = encodeURIComponent(`CAPI Inquiry: ${topicText} - ${name}`);
+      const mailBody = encodeURIComponent(
+        `Hello CAPI Technologies Team,\n\n${msg}\n\n---\nSender Name: ${name}\nSender Email: ${email}\nInquiry Category: ${topicText}`
+      );
+      const mailtoLink = `mailto:capitechnoteam@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+
       setTimeout(() => {
         closeModal();
-        showToast('Thank you! Your message has been sent to the CAPI team.');
+        showToast('Connecting you with capitechnoteam@gmail.com...');
+        window.location.href = mailtoLink;
         form.reset();
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalText;
         }
-      }, 350);
+      }, 400);
     });
   }
 }
@@ -590,9 +607,9 @@ function initEmailCopy() {
   if (!copyBtn) return;
 
   copyBtn.addEventListener('click', () => {
-    const email = 'contact@capi-techno.com';
+    const email = 'capitechnoteam@gmail.com';
     navigator.clipboard.writeText(email).then(() => {
-      showToast(`Copied team email: ${email}`);
+      showToast(`Copied official team email: ${email}`);
     }).catch(() => {
       showToast(`Team email: ${email}`);
     });
