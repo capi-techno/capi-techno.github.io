@@ -85,9 +85,7 @@
       <!-- Minimal Loading Track & Status -->
       <div class="splash-loading-group">
         <div class="splash-track-wrapper">
-          <div class="splash-progress-track">
-            <div id="splash-progress-bar" class="splash-progress-bar"></div>
-          </div>
+          <div id="splash-progress-bar" class="splash-progress-bar"></div>
         </div>
 
         <div class="splash-meta">
@@ -97,9 +95,9 @@
       </div>
 
       <!-- Clean Enter / Skip Action -->
-      <button id="splash-skip-btn" class="splash-skip-btn" type="button" aria-label="Enter Site">
+      <button id="splash-skip-btn" class="splash-skip-btn group" type="button" aria-label="Enter Site">
         <span>Enter Site</span>
-        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="splash-btn-arrow w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
         </svg>
       </button>
@@ -2372,6 +2370,60 @@
           Inquiries route directly to <a href="mailto:capitechnoteam@gmail.com" class="font-mono text-[#0066FF] dark:text-blue-400 hover:underline">capitechnoteam@gmail.com</a>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       404 ROUTE ERROR MODAL (Client-side & Hash Navigation Fallback)
+       ========================================================================== -->
+  <div id="route-error-modal"
+    class="fixed inset-0 z-[1000] flex justify-center p-4 sm:p-6 overflow-y-auto bg-slate-900/60 dark:bg-black/80 backdrop-blur-sm"
+    role="dialog" aria-modal="true" aria-labelledby="route-error-title">
+    <div
+      class="modal-card bg-white dark:bg-[#121824] rounded-2xl max-w-md w-full p-6 sm:p-7 border border-slate-200 dark:border-slate-800 shadow-2xl relative my-auto text-center">
+
+      <button id="close-route-error-btn"
+        class="absolute top-4 right-4 sm:top-5 sm:right-5 text-slate-400 hover:text-slate-700 dark:hover:text-white transition-colors cursor-pointer p-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 z-10"
+        aria-label="Close route error modal">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- 404 Mascot Box & Aura -->
+      <div class="relative w-44 sm:w-52 h-40 sm:h-44 mx-auto mb-3 flex items-center justify-center">
+        <div class="mascot-404-aura"></div>
+        <div class="mascot-404-box">
+          <img src="assests/404 Mascot.png" alt="CAPI 404 Mascot"
+            class="w-full h-full object-contain select-none pointer-events-none drop-shadow-xl" />
+        </div>
+      </div>
+
+      <!-- Route Error Details -->
+      <div
+        class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-[11px] font-mono font-bold text-[#0066FF] dark:text-blue-400 mb-2.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-ping"></span>
+        <span>404 // ROUTE ERROR</span>
+      </div>
+
+      <h3 id="route-error-title" class="text-xl font-bold text-slate-900 dark:text-white">Route Not Found</h3>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 mb-5 leading-relaxed">
+        The destination <code id="route-error-slug"
+          class="font-mono text-[#0066FF] dark:text-blue-400 bg-blue-50 dark:bg-slate-800 px-1.5 py-0.5 rounded font-bold"></code>
+        could not be found in this workshop. Let us guide you back to our primary showcase.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-2.5">
+        <button id="route-error-home-btn"
+          class="btn-primary group flex-1 py-2.5 px-4 text-xs font-bold text-white bg-[#0066FF] rounded-xl cursor-pointer flex items-center justify-center gap-2">
+          <span>Return to Overview</span>
+          <span class="btn-arrow-right">➔</span>
+        </button>
+        <button id="route-error-craft-btn"
+          class="btn-secondary group flex-1 py-2.5 px-4 text-xs font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#121824] border border-slate-200 dark:border-slate-800 rounded-xl cursor-pointer flex items-center justify-center gap-2">
+          <span>Explore Crafts</span>
+        </button>
+      </div>
     </div>
   </div>
 

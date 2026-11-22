@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initEmailCopy();
   initSurveyCards();
   initScrollReveal();
+  initRouteErrorHandler();
 });
 
 /* ==========================================================================
@@ -995,6 +996,96 @@ function initSurveyCards() {
     });
   });
 }
+
+/* ==========================================================================
+   14. ROUTE ERROR & 404 CONTROLLER (Mascot Guided Navigation)
+   ========================================================================== */
+function initRouteErrorHandler() {
+  const modal = document.getElementById('route-error-modal');
+  const slugEl = document.getElementById('route-error-slug');
+  const closeBtn = document.getElementById('close-route-error-btn');
+  const homeBtn = document.getElementById('route-error-home-btn');
+  const craftBtn = document.getElementById('route-error-craft-btn');
+
+  if (!modal) return;
+
+  function openRouteError(route) {
+    if (slugEl) slugEl.textContent = route || '#unknown';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeRouteError() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    // Clear invalid hash from browser URL without reloading
+    if (window.location.hash) {
+      try {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      } catch (e) {}
+    }
+  }
+
+  // Global programmatic helper for any route / 404 failure
+  window.showRouteError = function(route) {
+    openRouteError(route);
+  };
+
+  function validateCurrentRoute() {
+    const hash = window.location.hash;
+    if (!hash || hash === '#' || hash === '#overview' || hash === '#splash-screen') return;
+
+    try {
+      const cleanId = hash.replace(/^#/, '');
+      const target = document.getElementById(cleanId);
+      if (!target) {
+        openRouteError(hash);
+      }
+    } catch (e) {
+      openRouteError(hash);
+    }
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', closeRouteError);
+
+  if (homeBtn) {
+    homeBtn.addEventListener('click', () => {
+      closeRouteError();
+      const overview = document.getElementById('overview');
+      if (overview) {
+        overview.scrollIntoView({ behavior: 'smooth' });
+        try { history.replaceState(null, '', '#overview'); } catch (e) {}
+      }
+    });
+  }
+
+  if (craftBtn) {
+    craftBtn.addEventListener('click', () => {
+      closeRouteError();
+      const craft = document.getElementById('craft');
+      if (craft) {
+        craft.scrollIntoView({ behavior: 'smooth' });
+        try { history.replaceState(null, '', '#craft'); } catch (e) {}
+      }
+    });
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeRouteError();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeRouteError();
+    }
+  });
+
+  window.addEventListener('hashchange', validateCurrentRoute);
+
+  // Validate initial load hash after initial splash completes
+  setTimeout(validateCurrentRoute, 1200);
+}
+
 
 
 

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - Page & Route Not Found | CAPI Technologies</title>
+  <meta name="description"
+    content="The route or craft you are looking for could not be found. Let our companion guide you safely back to CAPI Technologies." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="Logo.png" />
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            capi: {
+              blue: '#0066FF',
+              darkblue: '#0052CC',
+              lightbg: '#FAFAFA',
+              warmgray: '#F3F4F6',
+              amber: '#D97706',
+              terracotta: '#C2410C',
+              dark: '#0A0D14',
+              carddark: '#121824'
+            }
+          },
+          fontFamily: {
+            sans: ['Geist', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+            condensed: ['Roboto Condensed', 'sans-serif'],
+            mono: ['Geist Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Theme Persistence Initializer (Default: Light Theme, Zero Flash) -->
+  <script>
+      (function () {
+        try {
+          const saved = localStorage.getItem('capi-theme');
+          if (saved === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) { }
+      })();
+  </script>
+</head>
+
+<body
+  class="bg-[#FAFAFA] dark:bg-[#0A0D14] text-slate-800 dark:text-slate-200 font-sans selection:bg-[#0066FF] selection:text-white transition-colors duration-300 min-h-screen flex flex-col justify-between">
+
+  <!-- Subtle Ambient Background Mesh -->
+  <div class="bg-mesh pointer-events-none fixed inset-0 z-0 opacity-40 dark:opacity-20"></div>
+
+  <!-- ==========================================================================
+       HEADER & NAVIGATION BAR
+       ========================================================================== -->
+  <header class="navbar relative z-50">
+    <div class="max-w-[1536px] mx-auto px-3 sm:px-5 lg:px-6 xl:px-8">
+      <div class="flex items-center justify-between gap-3 lg:gap-5 w-full">
+
+        <!-- Logo & Brand Name -->
+        <a href="index.html#overview"
+          class="flex items-center gap-2.5 sm:gap-3 flex-shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-xl"
+          aria-label="CAPI Technologies Home">
+          <div
+            class="relative w-10 h-10 flex items-center justify-center rounded-xl bg-[#050B17] border border-blue-500/40 group-hover:border-blue-400 transition-all shadow-sm overflow-hidden">
+            <video autoplay muted loop playsinline class="w-full h-full object-cover mix-blend-screen">
+              <source src="assests/CAPI-Logo.mp4" type="video/mp4" />
+              <img src="Logo.png" alt="CAPI Logo" class="w-7 h-7 object-contain" />
+            </video>
+          </div>
+          <div class="flex flex-col">
+            <span
+              class="text-lg font-extrabold tracking-wider text-slate-900 dark:text-white transition-colors">CAPI</span>
+            <span
+              class="text-[9px] text-[#0066FF] font-mono tracking-widest uppercase -mt-1 font-bold">TECHNOLOGIES</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav
+          class="hidden lg:flex items-center justify-center flex-1 mx-3 lg:mx-6 xl:mx-10 2xl:mx-14 gap-2 lg:gap-2.5 xl:gap-3.5 2xl:gap-5 text-xs xl:text-[13px] 2xl:text-sm font-semibold whitespace-nowrap">
+          <a href="index.html#about" class="nav-link whitespace-nowrap">About</a>
+          <a href="index.html#craft" class="nav-link whitespace-nowrap">Craft &amp; Horizons</a>
+          <a href="index.html#purpose" class="nav-link whitespace-nowrap">Our Purpose</a>
+          <a href="index.html#why-us" class="nav-link whitespace-nowrap">Why Us</a>
+          <a href="index.html#vision-mission" class="nav-link whitespace-nowrap">Vision &amp; Mission</a>
+          <a href="index.html#team" class="nav-link whitespace-nowrap">Our Team</a>
+          <a href="index.html#future" class="nav-link whitespace-nowrap">Future</a>
+          <a href="index.html#contact" class="nav-link whitespace-nowrap">Contact</a>
+        </nav>
+
+        <!-- Header Action Buttons -->
+        <div class="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
+
+          <!-- Companion Theme Switcher Button -->
+          <button id="nav-theme-toggle" type="button" aria-label="Toggle light/dark theme" title="Toggle theme"
+            class="w-9 h-9 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-blue-600 hover:border-blue-300 shadow-2xs transition-all cursor-pointer">
+            <svg class="w-4 h-4 hidden dark:block text-amber-400" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+            </svg>
+            <svg class="w-4 h-4 block dark:hidden text-slate-600" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+            </svg>
+          </button>
+
+          <!-- Primary CTA Button -->
+          <a href="index.html"
+            class="btn-primary inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs font-bold text-white bg-[#0066FF] rounded-xl whitespace-nowrap cursor-pointer">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span>Home</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button id="mobile-menu-btn" type="button" aria-label="Toggle mobile menu"
+            class="lg:hidden w-9 h-9 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-blue-600 transition-all cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation Menu -->
+    <div id="mobile-nav"
+      class="hidden lg:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#0A0D14]/95 backdrop-blur-md px-4 py-4 space-y-3 transition-all">
+      <a href="index.html#about"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">About Our
+        Company</a>
+      <a href="index.html#craft"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Craft &amp;
+        Horizons</a>
+      <a href="index.html#purpose"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Our Purpose</a>
+      <a href="index.html#why-us"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Why Choose
+        Us</a>
+      <a href="index.html#vision-mission"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Vision &amp;
+        Mission</a>
+      <a href="index.html#team"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Founding
+        Team</a>
+      <a href="index.html#future"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Future
+        Roadmap</a>
+      <a href="index.html#contact"
+        class="block py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600">Get in Touch</a>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN 404 & ROUTE ERROR HERO EXPERIENCE
+       ========================================================================== -->
+  <main class="relative z-10 flex-grow flex items-center justify-center px-4 sm:px-6 py-12 sm:py-16 md:py-20">
+    <div class="max-w-3xl w-full mx-auto text-center flex flex-col items-center">
+
+      <!-- Status Pill -->
+      <div
+        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-xs font-mono font-bold text-[#0066FF] dark:text-blue-400 mb-6 shadow-xs">
+        <span>ERROR 404 | ROUTE_NOT_FOUND</span>
+      </div>
+
+      <!-- Mascot Showcase Vessel -->
+      <div class="relative w-full max-w-[340px] sm:max-w-[420px] mx-auto mb-6 flex items-center justify-center">
+        <div class="mascot-404-aura"></div>
+        <div class="mascot-404-box">
+          <img src="assests/404 Mascot.png" alt="CAPI 404 Mascot"
+            class="w-full h-auto object-contain select-none pointer-events-none drop-shadow-2xl" />
+        </div>
+      </div>
+
+      <!-- Headings -->
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-3">
+        Lost in the Digital Landscape?
+      </h1>
+      <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl mx-auto mb-8 leading-relaxed">
+        The route or craft page you are looking for has been relocated, does not exist, or a navigation error was
+        encountered. Our blue husky companion is here to guide you safely back.
+      </p>
+
+      <!-- Action CTAs -->
+      <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-10 w-full">
+        <a href="index.html"
+          class="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-bold text-white bg-[#0066FF] rounded-xl shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition-all cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          <span>Return to Homepage</span>
+        </a>
+
+        <a href="index.html#craft"
+          class="btn-secondary inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-[#121824] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xs transition-all cursor-pointer">
+          <span>Explore Crafts &amp; Horizons</span>
+          <span class="btn-arrow-right">➔</span>
+        </a>
+      </div>
+
+      <!-- Quick Destination Shortcuts -->
+      <div
+        class="w-full max-w-lg mx-auto p-4 sm:p-5 rounded-2xl bg-white/90 dark:bg-[#121824]/90 border border-slate-200 dark:border-slate-800 shadow-sm backdrop-blur-sm">
+        <p class="text-[11px] font-mono uppercase tracking-widest font-bold text-slate-400 dark:text-slate-500 mb-2.5">
+          Popular Destinations
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-semibold">
+          <a href="index.html#about"
+            class="px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 hover:bg-blue-50 dark:hover:bg-blue-900/30 text-slate-700 dark:text-slate-300 hover:text-blue-600 transition-colors">About
+            Us</a>
+          <a href="index.html#craft"
+            class="px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 hover:bg-blue-50 dark:hover:bg-blue-900/30 text-slate-700 dark:text-slate-300 hover:text-blue-600 transition-colors">Traditions</a>
+          <a href="index.html#team"
+            class="px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 hover:bg-blue-50 dark:hover:bg-blue-900/30 text-slate-700 dark:text-slate-300 hover:text-blue-600 transition-colors">Our
+            Team</a>
+          <a href="index.html#contact"
+            class="px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 hover:bg-blue-50 dark:hover:bg-blue-900/30 text-slate-700 dark:text-slate-300 hover:text-blue-600 transition-colors">Contact</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       MINIMAL FOOTER
+       ========================================================================== -->
+  <footer
+    class="relative z-10 border-t border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-[#0A0D14]/70 backdrop-blur-sm py-6">
+    <div
+      class="max-w-[1536px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+      <div>
+        &copy; 2026 CAPI Technologies. Crafting authentic digital experiences.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://www.linkedin.com/company/capi-technologies" target="_blank" rel="noopener noreferrer"
+          class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">LinkedIn</a>
+        <span>&bull;</span>
+        <a href="mailto:capitechnoteam@gmail.com"
+          class="font-mono hover:text-blue-600 dark:hover:text-blue-400 transition-colors">capitechnoteam@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Inline Script for Theme & Navigation -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Theme Toggle Logic
+      const navToggle = document.getElementById('nav-theme-toggle');
+      function applyTheme(theme) {
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+          try { localStorage.setItem('capi-theme', 'dark'); } catch (e) { }
+        } else {
+          document.documentElement.classList.remove('dark');
+          try { localStorage.setItem('capi-theme', 'light'); } catch (e) { }
+        }
+      }
+
+      if (navToggle) {
+        navToggle.addEventListener('click', () => {
+          const isDark = document.documentElement.classList.contains('dark');
+          applyTheme(isDark ? 'light' : 'dark');
+        });
+      }
+
+      // Mobile Menu Toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileNav = document.getElementById('mobile-nav');
+      if (mobileBtn && mobileNav) {
+        mobileBtn.addEventListener('click', () => {
+          mobileNav.classList.toggle('hidden');
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

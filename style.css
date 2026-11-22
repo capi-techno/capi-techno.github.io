@@ -783,30 +783,35 @@ html.dark header.navbar.scrolled {
 }
 
 /* Modal Transition Styles (Instant & Silky Smooth, Zero Lag, Top-Level Layer) */
-#contact-modal {
+#contact-modal,
+#route-error-modal {
   z-index: 1000 !important;
   transition: opacity 0.2s ease, visibility 0.2s ease;
   will-change: opacity;
   -webkit-overflow-scrolling: touch;
 }
 
-#contact-modal.active {
+#contact-modal.active,
+#route-error-modal.active {
   opacity: 1 !important;
   pointer-events: auto !important;
   visibility: visible !important;
 }
 
-#contact-modal.active .modal-card {
+#contact-modal.active .modal-card,
+#route-error-modal.active .modal-card {
   transform: scale(1) !important;
 }
 
-#contact-modal:not(.active) {
+#contact-modal:not(.active),
+#route-error-modal:not(.active) {
   opacity: 0 !important;
   pointer-events: none !important;
   visibility: hidden !important;
 }
 
-#contact-modal:not(.active) .modal-card {
+#contact-modal:not(.active) .modal-card,
+#route-error-modal:not(.active) .modal-card {
   transform: scale(0.96) !important;
 }
 
@@ -1135,10 +1140,36 @@ html.dark .splash-aura {
   pointer-events: none;
 }
 
+/* 404 & Route Error Mascot Vessel */
+.mascot-404-aura {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.22) 0%, rgba(56, 189, 248, 0.08) 55%, transparent 75%);
+  filter: blur(28px);
+  animation: splashPulse 2.8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+html.dark .mascot-404-aura {
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.38) 0%, rgba(56, 189, 248, 0.16) 55%, transparent 75%);
+}
+
+.mascot-404-box {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 14px 28px rgba(0, 102, 255, 0.18));
+  animation: splashFloat 3.2s ease-in-out infinite alternate;
+}
+
 /* Loading Progress Bar & Monospace Meta */
 .splash-loading-group {
   width: 100%;
-  max-width: 240px;
+  max-width: 290px;
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
@@ -1147,23 +1178,24 @@ html.dark .splash-aura {
 
 .splash-track-wrapper {
   width: 100%;
-  height: 4px;
-  background: rgba(148, 163, 184, 0.22);
+  height: 5px;
+  background: rgba(148, 163, 184, 0.25);
   border-radius: 9999px;
   overflow: hidden;
   position: relative;
 }
 
 html.dark .splash-track-wrapper {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .splash-progress-bar {
+  display: block;
   height: 100%;
   width: 0%;
   background: linear-gradient(90deg, #0066FF 0%, #38BDF8 100%);
   border-radius: 9999px;
-  transition: width 0.12s linear;
+  transition: width 0.08s linear;
   box-shadow: 0 0 10px rgba(0, 102, 255, 0.65);
 }
 
@@ -1174,8 +1206,9 @@ html.dark .splash-track-wrapper {
   width: 100%;
   font-size: 0.6875rem;
   font-family: var(--font-mono);
-  letter-spacing: 0.12em;
-  color: #64748B;
+  letter-spacing: 0.08em;
+  color: #475569;
+  white-space: nowrap;
 }
 
 html.dark .splash-meta {
@@ -1183,13 +1216,17 @@ html.dark .splash-meta {
 }
 
 .splash-caption {
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
+  white-space: nowrap;
+  letter-spacing: 0.08em;
 }
 
 .splash-percent {
-  font-weight: 700;
+  font-weight: 800;
   color: #0066FF;
+  white-space: nowrap;
+  margin-left: 0.75rem;
 }
 
 html.dark .splash-percent {
@@ -1200,36 +1237,60 @@ html.dark .splash-percent {
 .splash-skip-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.45rem 1.15rem;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.35rem;
   border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: #64748B;
-  background: rgba(148, 163, 184, 0.12);
-  border: 1px solid rgba(148, 163, 184, 0.24);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #0F172A;
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.splash-skip-btn .splash-btn-arrow {
+  color: #0066FF;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .splash-skip-btn:hover {
   color: #0066FF;
-  background: rgba(0, 102, 255, 0.08);
-  border-color: rgba(0, 102, 255, 0.35);
-  transform: translateY(-1px);
+  background: #FFFFFF;
+  border-color: #0066FF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -3px rgba(0, 102, 255, 0.22), 0 3px 6px -2px rgba(0, 102, 255, 0.12);
 }
 
+.splash-skip-btn:hover .splash-btn-arrow {
+  transform: translateX(4px);
+}
+
+.splash-skip-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 102, 255, 0.15);
+}
+
+/* Dark Mode */
 html.dark .splash-skip-btn {
-  color: #94A3B8;
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.12);
+  color: #F8FAFC;
+  background: #121824;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+html.dark .splash-skip-btn .splash-btn-arrow {
+  color: #38BDF8;
 }
 
 html.dark .splash-skip-btn:hover {
-  color: #38BDF8;
-  background: rgba(56, 189, 248, 0.1);
-  border-color: rgba(56, 189, 248, 0.35);
+  color: #FFFFFF;
+  background: #172033;
+  border-color: #38BDF8;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.6), 0 0 14px rgba(56, 189, 248, 0.25);
 }
 
 /* ==========================================================================
