@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRetroTelevision();
   initContactModal();
   initEmailCopy();
+  initSurveyCards();
   initScrollReveal();
 });
 
@@ -896,5 +897,51 @@ function initScrollReveal() {
     }, { passive: true });
   });
 }
+
+/* ==========================================================================
+   10. INTERACTIVE 3D PERSPECTIVE FOR SURVEY CARDS & MASCOT
+   ========================================================================== */
+function initSurveyCards() {
+  const interactiveItems = document.querySelectorAll('.fox-paw-card, .survey-card, .survey-mascot-box');
+  if (!interactiveItems.length) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  interactiveItems.forEach(item => {
+    let bounds = null;
+    let rafId = null;
+
+    const updateBounds = () => {
+      bounds = item.getBoundingClientRect();
+    };
+
+    item.addEventListener('mouseenter', updateBounds, { passive: true });
+
+    item.addEventListener('mousemove', (e) => {
+      if (!bounds) updateBounds();
+      const mouseX = e.clientX - bounds.left;
+      const mouseY = e.clientY - bounds.top;
+
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const normX = (mouseX / bounds.width - 0.5) * 2; // -1 to 1
+        const normY = (mouseY / bounds.height - 0.5) * 2; // -1 to 1
+
+        const tiltX = -normY * 3.0; // Restrained, elegant 3.0deg max
+        const tiltY = normX * 3.0;
+
+        item.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) translateZ(2px)`;
+      });
+    }, { passive: true });
+
+    item.addEventListener('mouseleave', () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      item.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+      bounds = null;
+    });
+  });
+}
+
 
 
